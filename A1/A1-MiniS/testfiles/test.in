@@ -1,0 +1,8 @@
+x = 1.0
+y = 0.0
+if x then
+        for y = 1.0 until 10.0
+                do
+                        y = 10.0
+                od 
+fi
