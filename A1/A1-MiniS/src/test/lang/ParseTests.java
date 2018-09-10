@@ -12,9 +12,21 @@ public class ParseTests {
 	/** Directory where the test input files are stored. */
 	private static final File TEST_DIRECTORY = new File("testfiles");
 
-	@Test public void identifier() {
-		Util.testValidSyntax(TEST_DIRECTORY, "test.in");
+	@Test public void testASSIGNMENT() {
+		Util.testValidSyntax(TEST_DIRECTORY, "assignment.in");
 	}
+
+	@Test public void testIF() {
+		Util.testValidSyntax(TEST_DIRECTORY, "if.in");
+	}
+
+	@Test public void testFOR() {
+		Util.testValidSyntax(TEST_DIRECTORY, "for.in");
+	}
+
+	// @Test public void identifier() {
+	// 	Util.testValidSyntax(TEST_DIRECTORY, "test.in");
+	// }
 
 	// @Test public void let() {
 	// 	Util.testValidSyntax(TEST_DIRECTORY, "let.in");
