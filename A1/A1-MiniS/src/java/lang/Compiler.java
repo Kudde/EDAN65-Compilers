@@ -25,14 +25,15 @@ public class Compiler {
 
 	private static void parse(Reader reader) {
 		LangScanner scanner = new LangScanner(reader);
-		LangParser parser = new LangParser();
+		//LangParser parser = new LangParser();
+		RecursiveDescentCompiler parser = new RecursiveDescentCompiler();
 
 		try {
 			parser.parse(scanner);
 			System.out.println("Valid syntax");
-		} catch (SyntaxError | beaver.Parser.Exception e) {
-			System.err.println("Syntax error: " + e.getMessage());
-		} catch (IOException e) {
+		// } catch (SyntaxError | beaver.Parser.Exception e) {
+		// 	System.err.println("Syntax error: " + e.getMessage());
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

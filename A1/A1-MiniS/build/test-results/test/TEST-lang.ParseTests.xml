@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.ParseTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-09-10T12:43:16" hostname="taco.local" time="0.01">
+<testsuite name="lang.ParseTests" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-09-11T14:54:07" hostname="taco.local" time="0.013">
   <properties/>
-  <testcase name="testFOR" classname="lang.ParseTests" time="0.009"/>
-  <testcase name="testASSIGNMENT" classname="lang.ParseTests" time="0.001"/>
-  <testcase name="testIF" classname="lang.ParseTests" time="0.0"/>
+  <testcase name="testParseError" classname="lang.ParseTests" time="0.011"/>
+  <testcase name="testFOR" classname="lang.ParseTests" time="0.0"/>
+  <testcase name="testError" classname="lang.ParseTests" time="0.001"/>
+  <testcase name="testMucho" classname="lang.ParseTests" time="0.0"/>
+  <testcase name="testASSIGNMENT" classname="lang.ParseTests" time="0.0"/>
+  <testcase name="testIF" classname="lang.ParseTests" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
