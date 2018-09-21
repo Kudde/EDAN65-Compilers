@@ -12,4 +12,8 @@ public class ASTTests {
 		Util.testValidSyntax(TEST_DIRECTORY, "test1.in");
 	}
 
+	@Test public void test2() {
+		Util.testValidSyntax(TEST_DIRECTORY, "test2.in");
+	}
+
 }

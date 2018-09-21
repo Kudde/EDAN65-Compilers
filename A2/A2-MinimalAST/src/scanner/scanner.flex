@@ -29,7 +29,7 @@ import lang.ast.LangParser.SyntaxError;
 // macros
 WhiteSpace = [ ] | \t | \f | \n | \r
 ID = [a-zA-Z]+
-Numeral = [0-9]
+NUMERAL = [0-9]
 
 %%
 
@@ -38,10 +38,13 @@ Numeral = [0-9]
 
 // token definitions
 "int"         { return sym(Terminals.INT);}
+"="           { return sym(Terminals.ASSIGN);}
 "("           { return sym(Terminals.LPARENT);}
 ")"           { return sym(Terminals.RPARENT);}
+";"           { return sym(Terminals.SEMMIC);}
 "{"           { return sym(Terminals.LCARET);}
 "}"           { return sym(Terminals.RCARET);}
+{NUMERAL}     { return sym(Terminals.NUMERAL);}
 {ID}          { return sym(Terminals.ID);}
 <<EOF>>       { return sym(Terminals.EOF); }
 

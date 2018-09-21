@@ -1,7 +1,17 @@
 Program ::= Fun*;
 
-Fun ::= type:TypeDecl name:IdDecl;
+Fun ::= type:TypeDecl name:IdDecl Block;
+Block ::= [Stmt];
+
+abstract Stmt;
+AssignStmt: Stmt ::= IdUse Expr;
+DeclStmt: Stmt ::= TypeDecl IdDecl;
+
+abstract Expr;
+Literal: Expr ::= <NUMERAL>;
+IdExpr: Expr ::= IdUse;
 
 
 TypeDecl ::= <Type>;
+IdUse ::= <ID>;
 IdDecl ::= <ID>;

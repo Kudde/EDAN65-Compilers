@@ -9,27 +9,66 @@
 	}
 :};
 
-%terminals ID, INT, LPARENT, RPARENT, LCARET, RCARET;
+%terminals ID, INT, ASSIGN, SEMMIC, LPARENT, RPARENT, LCARET, RCARET, NUMERAL;
 
 %typeof program = "Program";
 %typeof fun = "Fun";
 %typeof fun_list = "List";
 %typeof id_decl = "IdDecl";
+%typeof id_use = "IdUse";
 %typeof type_decl = "TypeDecl";
+
+%typeof block = "Block";
+%typeof opt_block = "Opt";
+%typeof stmt_list = "List";
+
+%typeof stmt = "Stmt";
+%typeof assign = "AssignStmt";
+%typeof decl = "DeclStmt";
+
+%typeof expr = "Expr";
+%typeof id_expr = "IdExpr";
+
+%typeof literal = "Literal";
 
 
 %goal program;
 
 program = fun_list.a {: return new Program(a); :} ;
 
-
 fun_list =
 	fun.a 			{: return new List().add(a); :}
 	| fun_list.a fun.b 	{: return a.add(b); :}
 	;
 
-fun = type_decl.a id_decl.b LPARENT RPARENT LCARET RCARET
-	{: return new Fun(a, b); :} ;
+fun = type_decl.a id_decl.b LPARENT RPARENT block.c {: return new Fun(a, b, c); :} ;
+
+
+block =
+	LCARET RCARET	{: return new Block(new Opt()); :}
+	| LCARET stmt_list.a RCARET {: return new Block(new Opt(a)); :}
+	;
+
+opt_block =
+ 	block.a		{: return new Opt(a); :}
+        | 		{: return new Opt(); :}
+	;
+
+stmt_list =
+	stmt.a 			{: return new List().add(a); :}
+	| stmt_list.a stmt.b 	{: return a.add(b); :}
+	;
+
+stmt = decl | assign;
+
+decl = type_decl.a id_decl.b SEMMIC {: return new DeclStmt(a, b); :} ;
+assign = id_use.a ASSIGN expr.b SEMMIC {: return new AssignStmt(a, b); :} ;
+
+expr = literal | id_expr;
+id_expr = id_use.id {: return new IdExpr(id); :} ;
+literal = NUMERAL.i {: return new Literal(i); :} ;
 
 type_decl = INT.i {: return new TypeDecl(i); :} ;
+
+id_use = ID.id {: return new IdUse(id); :} ;
 id_decl = ID.id {: return new IdDecl(id); :} ;

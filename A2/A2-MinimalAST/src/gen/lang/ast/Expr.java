@@ -5,16 +5,16 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:6
- * @astdecl Stmt : ASTNode;
- * @production Stmt : {@link ASTNode};
+ * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:10
+ * @astdecl Expr : ASTNode;
+ * @production Expr : {@link ASTNode};
 
  */
-public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
+public abstract class Expr extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public Stmt() {
+  public Expr() {
     super();
   }
   /**
@@ -47,8 +47,8 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:25
    */
-  public Stmt clone() throws CloneNotSupportedException {
-    Stmt node = (Stmt) super.clone();
+  public Expr clone() throws CloneNotSupportedException {
+    Expr node = (Expr) super.clone();
     return node;
   }
   /**
@@ -60,7 +60,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:36
    */
   @Deprecated
-  public abstract Stmt fullCopy();
+  public abstract Expr fullCopy();
   /**
    * Create a deep copy of the AST subtree at this node.
    * The copy is dangling, i.e. has no parent.
@@ -68,7 +68,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:44
    */
-  public abstract Stmt treeCopyNoTransform();
+  public abstract Expr treeCopyNoTransform();
   /**
    * Create a deep copy of the AST subtree at this node.
    * The subtree of this node is traversed to trigger rewrites before copy.
@@ -77,5 +77,5 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:52
    */
-  public abstract Stmt treeCopy();
+  public abstract Expr treeCopy();
 }

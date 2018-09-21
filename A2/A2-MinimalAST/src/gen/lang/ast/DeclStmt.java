@@ -5,16 +5,16 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:4
- * @astdecl Block : ASTNode ::= [Stmt];
- * @production Block : {@link ASTNode} ::= <span class="component">[{@link Stmt}]</span>;
+ * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:8
+ * @astdecl DeclStmt : Stmt ::= TypeDecl IdDecl;
+ * @production DeclStmt : {@link Stmt} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span>;
 
  */
-public class Block extends ASTNode<ASTNode> implements Cloneable {
+public class DeclStmt extends Stmt implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public Block() {
+  public DeclStmt() {
     super();
   }
   /**
@@ -25,25 +25,25 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:10
    */
   public void init$Children() {
-    children = new ASTNode[1];
-    setChild(new Opt(), 0);
+    children = new ASTNode[2];
   }
   /**
-   * @declaredat ASTNode:14
+   * @declaredat ASTNode:13
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"Stmt"},
-    type = {"Opt<Stmt>"},
-    kind = {"Opt"}
+    name = {"TypeDecl", "IdDecl"},
+    type = {"TypeDecl", "IdDecl"},
+    kind = {"Child", "Child"}
   )
-  public Block(Opt<Stmt> p0) {
+  public DeclStmt(TypeDecl p0, IdDecl p1) {
     setChild(p0, 0);
+    setChild(p1, 1);
   }
   /** @apilevel low-level 
    * @declaredat ASTNode:23
    */
   protected int numChildren() {
-    return 1;
+    return 2;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:27
@@ -60,16 +60,16 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:35
    */
-  public Block clone() throws CloneNotSupportedException {
-    Block node = (Block) super.clone();
+  public DeclStmt clone() throws CloneNotSupportedException {
+    DeclStmt node = (DeclStmt) super.clone();
     return node;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:40
    */
-  public Block copy() {
+  public DeclStmt copy() {
     try {
-      Block node = (Block) clone();
+      DeclStmt node = (DeclStmt) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -88,7 +88,7 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:59
    */
   @Deprecated
-  public Block fullCopy() {
+  public DeclStmt fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -98,8 +98,8 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:69
    */
-  public Block treeCopyNoTransform() {
-    Block tree = (Block) copy();
+  public DeclStmt treeCopyNoTransform() {
+    DeclStmt tree = (DeclStmt) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -119,8 +119,8 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:89
    */
-  public Block treeCopy() {
-    Block tree = (Block) copy();
+  public DeclStmt treeCopy() {
+    DeclStmt tree = (DeclStmt) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -139,54 +139,55 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the optional node for the Stmt child. This is the <code>Opt</code>
-   * node containing the child Stmt, not the actual child!
-   * @param opt The new node to be used as the optional node for the Stmt child.
-   * @apilevel low-level
-   */
-  public void setStmtOpt(Opt<Stmt> opt) {
-    setChild(opt, 0);
-  }
-  /**
-   * Replaces the (optional) Stmt child.
-   * @param node The new node to be used as the Stmt child.
+   * Replaces the TypeDecl child.
+   * @param node The new node to replace the TypeDecl child.
    * @apilevel high-level
    */
-  public void setStmt(Stmt node) {
-    getStmtOpt().setChild(node, 0);
+  public void setTypeDecl(TypeDecl node) {
+    setChild(node, 0);
   }
   /**
-   * Check whether the optional Stmt child exists.
-   * @return {@code true} if the optional Stmt child exists, {@code false} if it does not.
+   * Retrieves the TypeDecl child.
+   * @return The current node used as the TypeDecl child.
    * @apilevel high-level
    */
-  public boolean hasStmt() {
-    return getStmtOpt().getNumChild() != 0;
+  @ASTNodeAnnotation.Child(name="TypeDecl")
+  public TypeDecl getTypeDecl() {
+    return (TypeDecl) getChild(0);
   }
   /**
-   * Retrieves the (optional) Stmt child.
-   * @return The Stmt child, if it exists. Returns {@code null} otherwise.
-   * @apilevel low-level
-   */
-  public Stmt getStmt() {
-    return (Stmt) getStmtOpt().getChild(0);
-  }
-  /**
-   * Retrieves the optional node for the Stmt child. This is the <code>Opt</code> node containing the child Stmt, not the actual child!
-   * @return The optional node for child the Stmt child.
-   * @apilevel low-level
-   */
-  @ASTNodeAnnotation.OptChild(name="Stmt")
-  public Opt<Stmt> getStmtOpt() {
-    return (Opt<Stmt>) getChild(0);
-  }
-  /**
-   * Retrieves the optional node for child Stmt. This is the <code>Opt</code> node containing the child Stmt, not the actual child!
+   * Retrieves the TypeDecl child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The optional node for child Stmt.
+   * @return The current node used as the TypeDecl child.
    * @apilevel low-level
    */
-  public Opt<Stmt> getStmtOptNoTransform() {
-    return (Opt<Stmt>) getChildNoTransform(0);
+  public TypeDecl getTypeDeclNoTransform() {
+    return (TypeDecl) getChildNoTransform(0);
+  }
+  /**
+   * Replaces the IdDecl child.
+   * @param node The new node to replace the IdDecl child.
+   * @apilevel high-level
+   */
+  public void setIdDecl(IdDecl node) {
+    setChild(node, 1);
+  }
+  /**
+   * Retrieves the IdDecl child.
+   * @return The current node used as the IdDecl child.
+   * @apilevel high-level
+   */
+  @ASTNodeAnnotation.Child(name="IdDecl")
+  public IdDecl getIdDecl() {
+    return (IdDecl) getChild(1);
+  }
+  /**
+   * Retrieves the IdDecl child.
+   * <p><em>This method does not invoke AST transformations.</em></p>
+   * @return The current node used as the IdDecl child.
+   * @apilevel low-level
+   */
+  public IdDecl getIdDeclNoTransform() {
+    return (IdDecl) getChildNoTransform(1);
   }
 }

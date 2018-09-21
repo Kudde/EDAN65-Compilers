@@ -5,16 +5,16 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:17
- * @astdecl IdDecl : ASTNode ::= <ID:String>;
- * @production IdDecl : {@link ASTNode} ::= <span class="component">&lt;ID:String&gt;</span>;
+ * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:16
+ * @astdecl IdUse : ASTNode ::= <ID:String>;
+ * @production IdUse : {@link ASTNode} ::= <span class="component">&lt;ID:String&gt;</span>;
 
  */
-public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
+public class IdUse extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public IdDecl() {
+  public IdUse() {
     super();
   }
   /**
@@ -34,13 +34,13 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
     type = {"String"},
     kind = {"Token"}
   )
-  public IdDecl(String p0) {
+  public IdUse(String p0) {
     setID(p0);
   }
   /**
    * @declaredat ASTNode:20
    */
-  public IdDecl(beaver.Symbol p0) {
+  public IdUse(beaver.Symbol p0) {
     setID(p0);
   }
   /** @apilevel low-level 
@@ -64,16 +64,16 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:36
    */
-  public IdDecl clone() throws CloneNotSupportedException {
-    IdDecl node = (IdDecl) super.clone();
+  public IdUse clone() throws CloneNotSupportedException {
+    IdUse node = (IdUse) super.clone();
     return node;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:41
    */
-  public IdDecl copy() {
+  public IdUse copy() {
     try {
-      IdDecl node = (IdDecl) clone();
+      IdUse node = (IdUse) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -92,7 +92,7 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:60
    */
   @Deprecated
-  public IdDecl fullCopy() {
+  public IdUse fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -102,8 +102,8 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:70
    */
-  public IdDecl treeCopyNoTransform() {
-    IdDecl tree = (IdDecl) copy();
+  public IdUse treeCopyNoTransform() {
+    IdUse tree = (IdUse) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -123,8 +123,8 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:90
    */
-  public IdDecl treeCopy() {
-    IdDecl tree = (IdDecl) copy();
+  public IdUse treeCopy() {
+    IdUse tree = (IdUse) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -140,7 +140,7 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:104
    */
   protected boolean is$Equal(ASTNode node) {
-    return super.is$Equal(node) && (tokenString_ID == ((IdDecl) node).tokenString_ID);    
+    return super.is$Equal(node) && (tokenString_ID == ((IdUse) node).tokenString_ID);    
   }
   /**
    * Replaces the lexeme ID.

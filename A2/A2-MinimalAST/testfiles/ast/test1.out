@@ -3,6 +3,10 @@ Program
     Fun
       TypeDecl Type="int"
       IdDecl ID="a"
+      Block
+        Opt
     Fun
       TypeDecl Type="int"
       IdDecl ID="b"
+      Block
+        Opt

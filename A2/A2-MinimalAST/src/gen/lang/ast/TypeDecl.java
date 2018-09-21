@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:6
+ * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:15
  * @astdecl TypeDecl : ASTNode ::= <Type:String>;
  * @production TypeDecl : {@link ASTNode} ::= <span class="component">&lt;Type:String&gt;</span>;
 

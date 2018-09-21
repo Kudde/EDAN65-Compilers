@@ -5,16 +5,16 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:4
- * @astdecl Block : ASTNode ::= [Stmt];
- * @production Block : {@link ASTNode} ::= <span class="component">[{@link Stmt}]</span>;
+ * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:7
+ * @astdecl AssignStmt : Stmt ::= IdUse Expr;
+ * @production AssignStmt : {@link Stmt} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}</span>;
 
  */
-public class Block extends ASTNode<ASTNode> implements Cloneable {
+public class AssignStmt extends Stmt implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public Block() {
+  public AssignStmt() {
     super();
   }
   /**
@@ -25,25 +25,25 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:10
    */
   public void init$Children() {
-    children = new ASTNode[1];
-    setChild(new Opt(), 0);
+    children = new ASTNode[2];
   }
   /**
-   * @declaredat ASTNode:14
+   * @declaredat ASTNode:13
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"Stmt"},
-    type = {"Opt<Stmt>"},
-    kind = {"Opt"}
+    name = {"IdUse", "Expr"},
+    type = {"IdUse", "Expr"},
+    kind = {"Child", "Child"}
   )
-  public Block(Opt<Stmt> p0) {
+  public AssignStmt(IdUse p0, Expr p1) {
     setChild(p0, 0);
+    setChild(p1, 1);
   }
   /** @apilevel low-level 
    * @declaredat ASTNode:23
    */
   protected int numChildren() {
-    return 1;
+    return 2;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:27
@@ -60,16 +60,16 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:35
    */
-  public Block clone() throws CloneNotSupportedException {
-    Block node = (Block) super.clone();
+  public AssignStmt clone() throws CloneNotSupportedException {
+    AssignStmt node = (AssignStmt) super.clone();
     return node;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:40
    */
-  public Block copy() {
+  public AssignStmt copy() {
     try {
-      Block node = (Block) clone();
+      AssignStmt node = (AssignStmt) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -88,7 +88,7 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:59
    */
   @Deprecated
-  public Block fullCopy() {
+  public AssignStmt fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -98,8 +98,8 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:69
    */
-  public Block treeCopyNoTransform() {
-    Block tree = (Block) copy();
+  public AssignStmt treeCopyNoTransform() {
+    AssignStmt tree = (AssignStmt) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -119,8 +119,8 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:89
    */
-  public Block treeCopy() {
-    Block tree = (Block) copy();
+  public AssignStmt treeCopy() {
+    AssignStmt tree = (AssignStmt) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -139,54 +139,55 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the optional node for the Stmt child. This is the <code>Opt</code>
-   * node containing the child Stmt, not the actual child!
-   * @param opt The new node to be used as the optional node for the Stmt child.
-   * @apilevel low-level
-   */
-  public void setStmtOpt(Opt<Stmt> opt) {
-    setChild(opt, 0);
-  }
-  /**
-   * Replaces the (optional) Stmt child.
-   * @param node The new node to be used as the Stmt child.
+   * Replaces the IdUse child.
+   * @param node The new node to replace the IdUse child.
    * @apilevel high-level
    */
-  public void setStmt(Stmt node) {
-    getStmtOpt().setChild(node, 0);
+  public void setIdUse(IdUse node) {
+    setChild(node, 0);
   }
   /**
-   * Check whether the optional Stmt child exists.
-   * @return {@code true} if the optional Stmt child exists, {@code false} if it does not.
+   * Retrieves the IdUse child.
+   * @return The current node used as the IdUse child.
    * @apilevel high-level
    */
-  public boolean hasStmt() {
-    return getStmtOpt().getNumChild() != 0;
+  @ASTNodeAnnotation.Child(name="IdUse")
+  public IdUse getIdUse() {
+    return (IdUse) getChild(0);
   }
   /**
-   * Retrieves the (optional) Stmt child.
-   * @return The Stmt child, if it exists. Returns {@code null} otherwise.
-   * @apilevel low-level
-   */
-  public Stmt getStmt() {
-    return (Stmt) getStmtOpt().getChild(0);
-  }
-  /**
-   * Retrieves the optional node for the Stmt child. This is the <code>Opt</code> node containing the child Stmt, not the actual child!
-   * @return The optional node for child the Stmt child.
-   * @apilevel low-level
-   */
-  @ASTNodeAnnotation.OptChild(name="Stmt")
-  public Opt<Stmt> getStmtOpt() {
-    return (Opt<Stmt>) getChild(0);
-  }
-  /**
-   * Retrieves the optional node for child Stmt. This is the <code>Opt</code> node containing the child Stmt, not the actual child!
+   * Retrieves the IdUse child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The optional node for child Stmt.
+   * @return The current node used as the IdUse child.
    * @apilevel low-level
    */
-  public Opt<Stmt> getStmtOptNoTransform() {
-    return (Opt<Stmt>) getChildNoTransform(0);
+  public IdUse getIdUseNoTransform() {
+    return (IdUse) getChildNoTransform(0);
+  }
+  /**
+   * Replaces the Expr child.
+   * @param node The new node to replace the Expr child.
+   * @apilevel high-level
+   */
+  public void setExpr(Expr node) {
+    setChild(node, 1);
+  }
+  /**
+   * Retrieves the Expr child.
+   * @return The current node used as the Expr child.
+   * @apilevel high-level
+   */
+  @ASTNodeAnnotation.Child(name="Expr")
+  public Expr getExpr() {
+    return (Expr) getChild(1);
+  }
+  /**
+   * Retrieves the Expr child.
+   * <p><em>This method does not invoke AST transformations.</em></p>
+   * @return The current node used as the Expr child.
+   * @apilevel low-level
+   */
+  public Expr getExprNoTransform() {
+    return (Expr) getChildNoTransform(1);
   }
 }

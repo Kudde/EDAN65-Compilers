@@ -5,16 +5,16 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:17
- * @astdecl IdDecl : ASTNode ::= <ID:String>;
- * @production IdDecl : {@link ASTNode} ::= <span class="component">&lt;ID:String&gt;</span>;
+ * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:11
+ * @astdecl Literal : Expr ::= <NUMERAL:String>;
+ * @production Literal : {@link Expr} ::= <span class="component">&lt;NUMERAL:String&gt;</span>;
 
  */
-public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
+public class Literal extends Expr implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public IdDecl() {
+  public Literal() {
     super();
   }
   /**
@@ -30,18 +30,18 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:12
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"ID"},
+    name = {"NUMERAL"},
     type = {"String"},
     kind = {"Token"}
   )
-  public IdDecl(String p0) {
-    setID(p0);
+  public Literal(String p0) {
+    setNUMERAL(p0);
   }
   /**
    * @declaredat ASTNode:20
    */
-  public IdDecl(beaver.Symbol p0) {
-    setID(p0);
+  public Literal(beaver.Symbol p0) {
+    setNUMERAL(p0);
   }
   /** @apilevel low-level 
    * @declaredat ASTNode:24
@@ -64,16 +64,16 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:36
    */
-  public IdDecl clone() throws CloneNotSupportedException {
-    IdDecl node = (IdDecl) super.clone();
+  public Literal clone() throws CloneNotSupportedException {
+    Literal node = (Literal) super.clone();
     return node;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:41
    */
-  public IdDecl copy() {
+  public Literal copy() {
     try {
-      IdDecl node = (IdDecl) clone();
+      Literal node = (Literal) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -92,7 +92,7 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:60
    */
   @Deprecated
-  public IdDecl fullCopy() {
+  public Literal fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -102,8 +102,8 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:70
    */
-  public IdDecl treeCopyNoTransform() {
-    IdDecl tree = (IdDecl) copy();
+  public Literal treeCopyNoTransform() {
+    Literal tree = (Literal) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -123,8 +123,8 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:90
    */
-  public IdDecl treeCopy() {
-    IdDecl tree = (IdDecl) copy();
+  public Literal treeCopy() {
+    Literal tree = (Literal) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -140,44 +140,44 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:104
    */
   protected boolean is$Equal(ASTNode node) {
-    return super.is$Equal(node) && (tokenString_ID == ((IdDecl) node).tokenString_ID);    
+    return super.is$Equal(node) && (tokenString_NUMERAL == ((Literal) node).tokenString_NUMERAL);    
   }
   /**
-   * Replaces the lexeme ID.
-   * @param value The new value for the lexeme ID.
+   * Replaces the lexeme NUMERAL.
+   * @param value The new value for the lexeme NUMERAL.
    * @apilevel high-level
    */
-  public void setID(String value) {
-    tokenString_ID = value;
+  public void setNUMERAL(String value) {
+    tokenString_NUMERAL = value;
   }
   /** @apilevel internal 
    */
-  protected String tokenString_ID;
+  protected String tokenString_NUMERAL;
   /**
    */
-  public int IDstart;
+  public int NUMERALstart;
   /**
    */
-  public int IDend;
+  public int NUMERALend;
   /**
-   * JastAdd-internal setter for lexeme ID using the Beaver parser.
-   * @param symbol Symbol containing the new value for the lexeme ID
+   * JastAdd-internal setter for lexeme NUMERAL using the Beaver parser.
+   * @param symbol Symbol containing the new value for the lexeme NUMERAL
    * @apilevel internal
    */
-  public void setID(beaver.Symbol symbol) {
+  public void setNUMERAL(beaver.Symbol symbol) {
     if (symbol.value != null && !(symbol.value instanceof String))
-    throw new UnsupportedOperationException("setID is only valid for String lexemes");
-    tokenString_ID = (String)symbol.value;
-    IDstart = symbol.getStart();
-    IDend = symbol.getEnd();
+    throw new UnsupportedOperationException("setNUMERAL is only valid for String lexemes");
+    tokenString_NUMERAL = (String)symbol.value;
+    NUMERALstart = symbol.getStart();
+    NUMERALend = symbol.getEnd();
   }
   /**
-   * Retrieves the value for the lexeme ID.
-   * @return The value for the lexeme ID.
+   * Retrieves the value for the lexeme NUMERAL.
+   * @return The value for the lexeme NUMERAL.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Token(name="ID")
-  public String getID() {
-    return tokenString_ID != null ? tokenString_ID : "";
+  @ASTNodeAnnotation.Token(name="NUMERAL")
+  public String getNUMERAL() {
+    return tokenString_NUMERAL != null ? tokenString_NUMERAL : "";
   }
 }
