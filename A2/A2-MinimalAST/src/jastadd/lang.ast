@@ -1,1 +1,7 @@
-Program ::= <ID>;
+Program ::= Fun*;
+
+Fun ::= type:TypeDecl name:IdDecl;
+
+
+TypeDecl ::= <Type>;
+IdDecl ::= <ID>;

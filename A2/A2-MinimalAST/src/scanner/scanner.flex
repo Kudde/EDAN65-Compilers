@@ -37,13 +37,12 @@ Numeral = [0-9]
 {WhiteSpace}  { }
 
 // token definitions
-{ID}          { return sym(Terminals.ID); }
-"="           { return sym(Terminal.ASSIGN);}
-"int"         { return sym(Terminal.INT);}
-"("           { return sym(Terminal.LPARENT);}
-")"           { return sym(Terminal.RPARENT);}
-"{"           { return sym(Terminal.LCARET);}
-"}"           { return sym(Terminal.RCARET);}
+"int"         { return sym(Terminals.INT);}
+"("           { return sym(Terminals.LPARENT);}
+")"           { return sym(Terminals.RPARENT);}
+"{"           { return sym(Terminals.LCARET);}
+"}"           { return sym(Terminals.RCARET);}
+{ID}          { return sym(Terminals.ID);}
 <<EOF>>       { return sym(Terminals.EOF); }
 
 /* error fallback */

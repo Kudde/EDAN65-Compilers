@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lang.TestDumpTree" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-09-21T08:53:17" hostname="taco.local" time="0.03">
+  <properties/>
+  <testcase name="runTest[test1.in]" classname="lang.TestDumpTree" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

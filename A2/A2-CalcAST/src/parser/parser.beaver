@@ -52,8 +52,8 @@ ask =
 	;
 
 binding_list =
-	binding.a {: return new List().add(a); :}
-	| binding_list.a binding.b {: return a.add(b); :}
+	binding.a 			{: return new List().add(a); :}
+	| binding_list.a binding.b 	{: return a.add(b); :}
 	;
 
 binding = id_decl.a ASSIGN exp.b {: return new Binding(a, b); :} ;

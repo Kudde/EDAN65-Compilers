@@ -1,0 +1,8 @@
+Program
+  List
+    Fun
+      TypeDecl Type="int"
+      IdDecl ID="a"
+    Fun
+      TypeDecl Type="int"
+      IdDecl ID="b"

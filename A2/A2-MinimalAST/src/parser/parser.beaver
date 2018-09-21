@@ -9,10 +9,27 @@
 	}
 :};
 
-%terminals ID;
+%terminals ID, INT, LPARENT, RPARENT, LCARET, RCARET;
 
 %typeof program = "Program";
+%typeof fun = "Fun";
+%typeof fun_list = "List";
+%typeof id_decl = "IdDecl";
+%typeof type_decl = "TypeDecl";
+
 
 %goal program;
 
-program = ID.id {: return new Program(id); :} ;
+program = fun_list.a {: return new Program(a); :} ;
+
+
+fun_list =
+	fun.a 			{: return new List().add(a); :}
+	| fun_list.a fun.b 	{: return a.add(b); :}
+	;
+
+fun = type_decl.a id_decl.b LPARENT RPARENT LCARET RCARET
+	{: return new Fun(a, b); :} ;
+
+type_decl = INT.i {: return new TypeDecl(i); :} ;
+id_decl = ID.id {: return new IdDecl(id); :} ;

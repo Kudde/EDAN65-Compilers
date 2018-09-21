@@ -5,16 +5,16 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:1
- * @astdecl Program : ASTNode ::= Fun*;
- * @production Program : {@link ASTNode} ::= <span class="component">{@link Fun}*</span>;
+ * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:5
+ * @astdecl Block : ASTNode ::= Stmt*;
+ * @production Block : {@link ASTNode} ::= <span class="component">{@link Stmt}*</span>;
 
  */
-public class Program extends ASTNode<ASTNode> implements Cloneable {
+public class Block extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public Program() {
+  public Block() {
     super();
   }
   /**
@@ -32,11 +32,11 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:14
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"Fun"},
-    type = {"List<Fun>"},
+    name = {"Stmt"},
+    type = {"List<Stmt>"},
     kind = {"List"}
   )
-  public Program(List<Fun> p0) {
+  public Block(List<Stmt> p0) {
     setChild(p0, 0);
   }
   /** @apilevel low-level 
@@ -60,16 +60,16 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:35
    */
-  public Program clone() throws CloneNotSupportedException {
-    Program node = (Program) super.clone();
+  public Block clone() throws CloneNotSupportedException {
+    Block node = (Block) super.clone();
     return node;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:40
    */
-  public Program copy() {
+  public Block copy() {
     try {
-      Program node = (Program) clone();
+      Block node = (Block) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -88,7 +88,7 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:59
    */
   @Deprecated
-  public Program fullCopy() {
+  public Block fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -98,8 +98,8 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:69
    */
-  public Program treeCopyNoTransform() {
-    Program tree = (Program) copy();
+  public Block treeCopyNoTransform() {
+    Block tree = (Block) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -119,8 +119,8 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:89
    */
-  public Program treeCopy() {
-    Program tree = (Program) copy();
+  public Block treeCopy() {
+    Block tree = (Block) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -139,113 +139,113 @@ public class Program extends ASTNode<ASTNode> implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the Fun list.
-   * @param list The new list node to be used as the Fun list.
+   * Replaces the Stmt list.
+   * @param list The new list node to be used as the Stmt list.
    * @apilevel high-level
    */
-  public void setFunList(List<Fun> list) {
+  public void setStmtList(List<Stmt> list) {
     setChild(list, 0);
   }
   /**
-   * Retrieves the number of children in the Fun list.
-   * @return Number of children in the Fun list.
+   * Retrieves the number of children in the Stmt list.
+   * @return Number of children in the Stmt list.
    * @apilevel high-level
    */
-  public int getNumFun() {
-    return getFunList().getNumChild();
+  public int getNumStmt() {
+    return getStmtList().getNumChild();
   }
   /**
-   * Retrieves the number of children in the Fun list.
+   * Retrieves the number of children in the Stmt list.
    * Calling this method will not trigger rewrites.
-   * @return Number of children in the Fun list.
+   * @return Number of children in the Stmt list.
    * @apilevel low-level
    */
-  public int getNumFunNoTransform() {
-    return getFunListNoTransform().getNumChildNoTransform();
+  public int getNumStmtNoTransform() {
+    return getStmtListNoTransform().getNumChildNoTransform();
   }
   /**
-   * Retrieves the element at index {@code i} in the Fun list.
+   * Retrieves the element at index {@code i} in the Stmt list.
    * @param i Index of the element to return.
-   * @return The element at position {@code i} in the Fun list.
+   * @return The element at position {@code i} in the Stmt list.
    * @apilevel high-level
    */
-  public Fun getFun(int i) {
-    return (Fun) getFunList().getChild(i);
+  public Stmt getStmt(int i) {
+    return (Stmt) getStmtList().getChild(i);
   }
   /**
-   * Check whether the Fun list has any children.
+   * Check whether the Stmt list has any children.
    * @return {@code true} if it has at least one child, {@code false} otherwise.
    * @apilevel high-level
    */
-  public boolean hasFun() {
-    return getFunList().getNumChild() != 0;
+  public boolean hasStmt() {
+    return getStmtList().getNumChild() != 0;
   }
   /**
-   * Append an element to the Fun list.
-   * @param node The element to append to the Fun list.
+   * Append an element to the Stmt list.
+   * @param node The element to append to the Stmt list.
    * @apilevel high-level
    */
-  public void addFun(Fun node) {
-    List<Fun> list = (parent == null) ? getFunListNoTransform() : getFunList();
+  public void addStmt(Stmt node) {
+    List<Stmt> list = (parent == null) ? getStmtListNoTransform() : getStmtList();
     list.addChild(node);
   }
   /** @apilevel low-level 
    */
-  public void addFunNoTransform(Fun node) {
-    List<Fun> list = getFunListNoTransform();
+  public void addStmtNoTransform(Stmt node) {
+    List<Stmt> list = getStmtListNoTransform();
     list.addChild(node);
   }
   /**
-   * Replaces the Fun list element at index {@code i} with the new node {@code node}.
+   * Replaces the Stmt list element at index {@code i} with the new node {@code node}.
    * @param node The new node to replace the old list element.
    * @param i The list index of the node to be replaced.
    * @apilevel high-level
    */
-  public void setFun(Fun node, int i) {
-    List<Fun> list = getFunList();
+  public void setStmt(Stmt node, int i) {
+    List<Stmt> list = getStmtList();
     list.setChild(node, i);
   }
   /**
-   * Retrieves the Fun list.
-   * @return The node representing the Fun list.
+   * Retrieves the Stmt list.
+   * @return The node representing the Stmt list.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.ListChild(name="Fun")
-  public List<Fun> getFunList() {
-    List<Fun> list = (List<Fun>) getChild(0);
+  @ASTNodeAnnotation.ListChild(name="Stmt")
+  public List<Stmt> getStmtList() {
+    List<Stmt> list = (List<Stmt>) getChild(0);
     return list;
   }
   /**
-   * Retrieves the Fun list.
+   * Retrieves the Stmt list.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the Fun list.
+   * @return The node representing the Stmt list.
    * @apilevel low-level
    */
-  public List<Fun> getFunListNoTransform() {
-    return (List<Fun>) getChildNoTransform(0);
+  public List<Stmt> getStmtListNoTransform() {
+    return (List<Stmt>) getChildNoTransform(0);
   }
   /**
-   * @return the element at index {@code i} in the Fun list without
+   * @return the element at index {@code i} in the Stmt list without
    * triggering rewrites.
    */
-  public Fun getFunNoTransform(int i) {
-    return (Fun) getFunListNoTransform().getChildNoTransform(i);
+  public Stmt getStmtNoTransform(int i) {
+    return (Stmt) getStmtListNoTransform().getChildNoTransform(i);
   }
   /**
-   * Retrieves the Fun list.
-   * @return The node representing the Fun list.
+   * Retrieves the Stmt list.
+   * @return The node representing the Stmt list.
    * @apilevel high-level
    */
-  public List<Fun> getFuns() {
-    return getFunList();
+  public List<Stmt> getStmts() {
+    return getStmtList();
   }
   /**
-   * Retrieves the Fun list.
+   * Retrieves the Stmt list.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the Fun list.
+   * @return The node representing the Stmt list.
    * @apilevel low-level
    */
-  public List<Fun> getFunsNoTransform() {
-    return getFunListNoTransform();
+  public List<Stmt> getStmtsNoTransform() {
+    return getStmtListNoTransform();
   }
 }

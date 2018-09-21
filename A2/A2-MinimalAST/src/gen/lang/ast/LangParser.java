@@ -11,16 +11,28 @@ import java.util.ArrayList;
 public class LangParser extends Parser {
 	static public class Terminals {
 		static public final short EOF = 0;
-		static public final short ID = 1;
+		static public final short INT = 1;
+		static public final short LPARENT = 2;
+		static public final short ID = 3;
+		static public final short RPARENT = 4;
+		static public final short LCARET = 5;
+		static public final short RCARET = 6;
 
 		static public final String[] NAMES = {
 			"EOF",
-			"ID"
+			"INT",
+			"LPARENT",
+			"ID",
+			"RPARENT",
+			"LCARET",
+			"RCARET"
 		};
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9mzoh4103080i5N5dVo42oIAu02GBIFJT4iJSAHwhU7Rt#5BiVI3OW=");
+		"U9nrZiaIX20CHDi516Nsotokl#qizZmiFKvIhqbIT43IKqMzMarUR4tgrFjBViZLgqO5HGs" +
+		"INqf#ArCdjE6kqDhLyw33qRB3QA2BJ4#pjcWXG8O25pZ35MvGDzxXSNXiBzMu##Eyr$$O8x" +
+		"AfsVwOUNEWJzGZb1z5Do4I");
 
 	static public class SyntaxError extends RuntimeException { public SyntaxError(String msg) {super(msg);}}
 	// Disable syntax error recovery
@@ -34,10 +46,43 @@ public class LangParser extends Parser {
 
 	protected Symbol invokeReduceAction(int rule_num, int offset) {
 		switch(rule_num) {
-			case 0: // program = ID.id
+			case 0: // program = fun_list.a
+			{
+					final Symbol _symbol_a = _symbols[offset + 1];
+					final List a = (List) _symbol_a.value;
+					 return new Program(a);
+			}
+			case 1: // fun_list = fun.a
+			{
+					final Symbol _symbol_a = _symbols[offset + 1];
+					final Fun a = (Fun) _symbol_a.value;
+					 return new List().add(a);
+			}
+			case 2: // fun_list = fun_list.a fun.b
+			{
+					final Symbol _symbol_a = _symbols[offset + 1];
+					final List a = (List) _symbol_a.value;
+					final Symbol _symbol_b = _symbols[offset + 2];
+					final Fun b = (Fun) _symbol_b.value;
+					 return a.add(b);
+			}
+			case 3: // fun = type_decl.a id_decl.b LPARENT RPARENT LCARET RCARET
+			{
+					final Symbol _symbol_a = _symbols[offset + 1];
+					final TypeDecl a = (TypeDecl) _symbol_a.value;
+					final Symbol _symbol_b = _symbols[offset + 2];
+					final IdDecl b = (IdDecl) _symbol_b.value;
+					 return new Fun(a, b);
+			}
+			case 4: // type_decl = INT.i
+			{
+					final Symbol i = _symbols[offset + 1];
+					 return new TypeDecl(i);
+			}
+			case 5: // id_decl = ID.id
 			{
 					final Symbol id = _symbols[offset + 1];
-					 return new Program(id);
+					 return new IdDecl(id);
 			}
 			default:
 				throw new IllegalArgumentException("unknown production #" + rule_num);
