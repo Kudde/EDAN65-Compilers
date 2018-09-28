@@ -5,9 +5,9 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:3
- * @astdecl Fun : ASTNode ::= type:TypeDecl name:IdDecl Block;
- * @production Fun : {@link ASTNode} ::= <span class="component">type:{@link TypeDecl}</span> <span class="component">name:{@link IdDecl}</span> <span class="component">{@link Block}</span>;
+ * @declaredat /h/d5/d/dat14kjo/Desktop/A2/A2-MinimalAST/src/jastadd/lang.ast:3
+ * @astdecl Fun : ASTNode ::= type:TypeDecl name:IdDecl Param Block;
+ * @production Fun : {@link ASTNode} ::= <span class="component">type:{@link TypeDecl}</span> <span class="component">name:{@link IdDecl}</span> <span class="component">{@link Param}</span> <span class="component">{@link Block}</span>;
 
  */
 public class Fun extends ASTNode<ASTNode> implements Cloneable {
@@ -25,48 +25,49 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:10
    */
   public void init$Children() {
-    children = new ASTNode[3];
+    children = new ASTNode[4];
   }
   /**
    * @declaredat ASTNode:13
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"type", "name", "Block"},
-    type = {"TypeDecl", "IdDecl", "Block"},
-    kind = {"Child", "Child", "Child"}
+    name = {"type", "name", "Param", "Block"},
+    type = {"TypeDecl", "IdDecl", "Param", "Block"},
+    kind = {"Child", "Child", "Child", "Child"}
   )
-  public Fun(TypeDecl p0, IdDecl p1, Block p2) {
+  public Fun(TypeDecl p0, IdDecl p1, Param p2, Block p3) {
     setChild(p0, 0);
     setChild(p1, 1);
     setChild(p2, 2);
+    setChild(p3, 3);
   }
   /** @apilevel low-level 
-   * @declaredat ASTNode:24
+   * @declaredat ASTNode:25
    */
   protected int numChildren() {
-    return 3;
+    return 4;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:28
+   * @declaredat ASTNode:29
    */
   public void flushAttrCache() {
     super.flushAttrCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:32
+   * @declaredat ASTNode:33
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:36
+   * @declaredat ASTNode:37
    */
   public Fun clone() throws CloneNotSupportedException {
     Fun node = (Fun) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:41
+   * @declaredat ASTNode:42
    */
   public Fun copy() {
     try {
@@ -86,7 +87,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:60
+   * @declaredat ASTNode:61
    */
   @Deprecated
   public Fun fullCopy() {
@@ -97,7 +98,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:70
+   * @declaredat ASTNode:71
    */
   public Fun treeCopyNoTransform() {
     Fun tree = (Fun) copy();
@@ -118,7 +119,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:90
+   * @declaredat ASTNode:91
    */
   public Fun treeCopy() {
     Fun tree = (Fun) copy();
@@ -134,7 +135,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:104
+   * @declaredat ASTNode:105
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -192,12 +193,38 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
     return (IdDecl) getChildNoTransform(1);
   }
   /**
+   * Replaces the Param child.
+   * @param node The new node to replace the Param child.
+   * @apilevel high-level
+   */
+  public void setParam(Param node) {
+    setChild(node, 2);
+  }
+  /**
+   * Retrieves the Param child.
+   * @return The current node used as the Param child.
+   * @apilevel high-level
+   */
+  @ASTNodeAnnotation.Child(name="Param")
+  public Param getParam() {
+    return (Param) getChild(2);
+  }
+  /**
+   * Retrieves the Param child.
+   * <p><em>This method does not invoke AST transformations.</em></p>
+   * @return The current node used as the Param child.
+   * @apilevel low-level
+   */
+  public Param getParamNoTransform() {
+    return (Param) getChildNoTransform(2);
+  }
+  /**
    * Replaces the Block child.
    * @param node The new node to replace the Block child.
    * @apilevel high-level
    */
   public void setBlock(Block node) {
-    setChild(node, 2);
+    setChild(node, 3);
   }
   /**
    * Retrieves the Block child.
@@ -206,7 +233,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    */
   @ASTNodeAnnotation.Child(name="Block")
   public Block getBlock() {
-    return (Block) getChild(2);
+    return (Block) getChild(3);
   }
   /**
    * Retrieves the Block child.
@@ -215,6 +242,6 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    */
   public Block getBlockNoTransform() {
-    return (Block) getChildNoTransform(2);
+    return (Block) getChildNoTransform(3);
   }
 }

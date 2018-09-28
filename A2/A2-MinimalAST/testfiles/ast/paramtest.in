@@ -1,0 +1,4 @@
+int oneparam(int a) {
+}
+int twoparams(int a, int b) {
+}

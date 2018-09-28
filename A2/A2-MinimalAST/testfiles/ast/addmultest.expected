@@ -1,0 +1,28 @@
+Program
+  List
+    Fun
+      TypeDecl Type="int"
+      IdDecl Decl="addmul"
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type="int"
+            IdDecl Decl="x"
+            Opt
+          DeclStmt
+            TypeDecl Type="int"
+            IdDecl Decl="y"
+            Opt
+          DeclStmt
+            TypeDecl Type="int"
+            IdDecl Decl="k"
+            Opt
+          AssignStmt
+            ID ID="k"
+            Plus
+              Mul
+                ID ID="x"
+                ID ID="y"
+              Literal NUMERAL="3"

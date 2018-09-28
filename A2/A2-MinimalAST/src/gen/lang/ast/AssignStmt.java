@@ -5,9 +5,9 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:7
- * @astdecl AssignStmt : Stmt ::= IdUse Expr;
- * @production AssignStmt : {@link Stmt} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}</span>;
+ * @declaredat /h/d5/d/dat14kjo/Desktop/A2/A2-MinimalAST/src/jastadd/lang.ast:11
+ * @astdecl AssignStmt : Stmt ::= ID Expr;
+ * @production AssignStmt : {@link Stmt} ::= <span class="component">{@link ID}</span> <span class="component">{@link Expr}</span>;
 
  */
 public class AssignStmt extends Stmt implements Cloneable {
@@ -31,11 +31,11 @@ public class AssignStmt extends Stmt implements Cloneable {
    * @declaredat ASTNode:13
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"IdUse", "Expr"},
-    type = {"IdUse", "Expr"},
+    name = {"ID", "Expr"},
+    type = {"ID", "Expr"},
     kind = {"Child", "Child"}
   )
-  public AssignStmt(IdUse p0, Expr p1) {
+  public AssignStmt(ID p0, Expr p1) {
     setChild(p0, 0);
     setChild(p1, 1);
   }
@@ -139,30 +139,30 @@ public class AssignStmt extends Stmt implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the IdUse child.
-   * @param node The new node to replace the IdUse child.
+   * Replaces the ID child.
+   * @param node The new node to replace the ID child.
    * @apilevel high-level
    */
-  public void setIdUse(IdUse node) {
+  public void setID(ID node) {
     setChild(node, 0);
   }
   /**
-   * Retrieves the IdUse child.
-   * @return The current node used as the IdUse child.
+   * Retrieves the ID child.
+   * @return The current node used as the ID child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="IdUse")
-  public IdUse getIdUse() {
-    return (IdUse) getChild(0);
+  @ASTNodeAnnotation.Child(name="ID")
+  public ID getID() {
+    return (ID) getChild(0);
   }
   /**
-   * Retrieves the IdUse child.
+   * Retrieves the ID child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the IdUse child.
+   * @return The current node used as the ID child.
    * @apilevel low-level
    */
-  public IdUse getIdUseNoTransform() {
-    return (IdUse) getChildNoTransform(0);
+  public ID getIDNoTransform() {
+    return (ID) getChildNoTransform(0);
   }
   /**
    * Replaces the Expr child.

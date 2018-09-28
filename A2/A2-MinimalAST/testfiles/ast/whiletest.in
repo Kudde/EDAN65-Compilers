@@ -1,0 +1,5 @@
+int whiletest() {
+while(1) {
+x = 2;
+}
+}

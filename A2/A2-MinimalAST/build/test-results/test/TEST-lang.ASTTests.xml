@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.ASTTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-09-21T14:45:58" hostname="taco.local" time="0.001">
+<testsuite name="lang.ASTTests" tests="13" skipped="0" failures="0" errors="0" timestamp="2018-09-28T08:00:52" hostname="beta-7" time="0.035">
   <properties/>
-  <testcase name="test1" classname="lang.ASTTests" time="0.001"/>
-  <testcase name="test2" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="whiletest" classname="lang.ASTTests" time="0.024"/>
+  <testcase name="subtest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="allexprtest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="funcalltest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="addtest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="funtest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="gcdtest" classname="lang.ASTTests" time="0.002"/>
+  <testcase name="randomtest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="decltest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="multest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="addmultest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="divtest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="paramtest" classname="lang.ASTTests" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

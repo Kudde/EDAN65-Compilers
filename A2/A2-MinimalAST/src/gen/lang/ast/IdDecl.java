@@ -5,9 +5,9 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:17
- * @astdecl IdDecl : ASTNode ::= <ID:String>;
- * @production IdDecl : {@link ASTNode} ::= <span class="component">&lt;ID:String&gt;</span>;
+ * @declaredat /h/d5/d/dat14kjo/Desktop/A2/A2-MinimalAST/src/jastadd/lang.ast:21
+ * @astdecl IdDecl : ASTNode ::= <Decl:String>;
+ * @production IdDecl : {@link ASTNode} ::= <span class="component">&lt;Decl:String&gt;</span>;
 
  */
 public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
@@ -30,18 +30,18 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:12
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"ID"},
+    name = {"Decl"},
     type = {"String"},
     kind = {"Token"}
   )
   public IdDecl(String p0) {
-    setID(p0);
+    setDecl(p0);
   }
   /**
    * @declaredat ASTNode:20
    */
   public IdDecl(beaver.Symbol p0) {
-    setID(p0);
+    setDecl(p0);
   }
   /** @apilevel low-level 
    * @declaredat ASTNode:24
@@ -140,44 +140,44 @@ public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:104
    */
   protected boolean is$Equal(ASTNode node) {
-    return super.is$Equal(node) && (tokenString_ID == ((IdDecl) node).tokenString_ID);    
+    return super.is$Equal(node) && (tokenString_Decl == ((IdDecl) node).tokenString_Decl);    
   }
   /**
-   * Replaces the lexeme ID.
-   * @param value The new value for the lexeme ID.
+   * Replaces the lexeme Decl.
+   * @param value The new value for the lexeme Decl.
    * @apilevel high-level
    */
-  public void setID(String value) {
-    tokenString_ID = value;
+  public void setDecl(String value) {
+    tokenString_Decl = value;
   }
   /** @apilevel internal 
    */
-  protected String tokenString_ID;
+  protected String tokenString_Decl;
   /**
    */
-  public int IDstart;
+  public int Declstart;
   /**
    */
-  public int IDend;
+  public int Declend;
   /**
-   * JastAdd-internal setter for lexeme ID using the Beaver parser.
-   * @param symbol Symbol containing the new value for the lexeme ID
+   * JastAdd-internal setter for lexeme Decl using the Beaver parser.
+   * @param symbol Symbol containing the new value for the lexeme Decl
    * @apilevel internal
    */
-  public void setID(beaver.Symbol symbol) {
+  public void setDecl(beaver.Symbol symbol) {
     if (symbol.value != null && !(symbol.value instanceof String))
-    throw new UnsupportedOperationException("setID is only valid for String lexemes");
-    tokenString_ID = (String)symbol.value;
-    IDstart = symbol.getStart();
-    IDend = symbol.getEnd();
+    throw new UnsupportedOperationException("setDecl is only valid for String lexemes");
+    tokenString_Decl = (String)symbol.value;
+    Declstart = symbol.getStart();
+    Declend = symbol.getEnd();
   }
   /**
-   * Retrieves the value for the lexeme ID.
-   * @return The value for the lexeme ID.
+   * Retrieves the value for the lexeme Decl.
+   * @return The value for the lexeme Decl.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Token(name="ID")
-  public String getID() {
-    return tokenString_ID != null ? tokenString_ID : "";
+  @ASTNodeAnnotation.Token(name="Decl")
+  public String getDecl() {
+    return tokenString_Decl != null ? tokenString_Decl : "";
   }
 }

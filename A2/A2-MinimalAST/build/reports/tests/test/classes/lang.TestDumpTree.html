@@ -23,13 +23,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">2</div>
+<div class="counter">13</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">11</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.044s</div>
+<div class="counter">0.146s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">50%</div>
+<div class="percent">15%</div>
 <p>successful</p>
 </div>
 </td>
@@ -70,30 +70,1353 @@
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
 <div class="test">
-<a name="runTest[test2.in]"></a>
-<h3 class="failures">runTest[test2.in]</h3>
+<a name="runTest[addmultest.in]"></a>
+<h3 class="failures">runTest[addmultest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;addmul&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Plus
+              Mul
+                ID ID=&quot;x&quot;
+                ID ID=&quot;y&quot;]
+              Liter...&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;addmul&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Plus
+              Mul
+                ID ID=&quot;x&quot;
+                ID ID=&quot;y&quot;]
+              Liter...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[addtest.in]"></a>
+<h3 class="failures">runTest[addtest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;add&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;3&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;2&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Plus
+              ID ID=&quot;x&quot;
+              ID ID=&quot;y&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Plus
+              Literal NUMERAL=&quot;2&quot;]
+              Liter...&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;add&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;3&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;2&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Plus
+              ID ID=&quot;x&quot;
+              ID ID=&quot;y&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Plus
+              Literal NUMERAL=&quot;2&quot;]
+              Liter...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[allexprtest.in]"></a>
+<h3 class="failures">runTest[allexprtest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;expr&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;ans&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Literal NUMERAL=&quot;5&quot;
+          AssignStmt
+            ID ID=&quot;ans&quot;
+            Mod
+              Sub
+                Plus
+                  ID ID=&quot;x&quot;
+                  Mul
+                    Plus
+                      Literal NUMERAL=&quot;2&quot;
+                      Literal NUMERAL=&quot;3&quot;
+                    Literal NUMERAL=&quot;2&quot;
+                Div
+                  Literal NUMERAL=&quot;4&quot;
+                  Literal NUMERAL=&quot;2&quot;]
+              Liter...&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;expr&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;ans&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Literal NUMERAL=&quot;5&quot;
+          AssignStmt
+            ID ID=&quot;ans&quot;
+            Mod
+              Sub
+                Plus
+                  ID ID=&quot;x&quot;
+                  Mul
+                    Plus
+                      Literal NUMERAL=&quot;2&quot;
+                      Literal NUMERAL=&quot;3&quot;
+                    Literal NUMERAL=&quot;2&quot;
+                Div
+                  Literal NUMERAL=&quot;4&quot;
+                  Literal NUMERAL=&quot;2&quot;]
+              Liter...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[decltest.in]"></a>
+<h3 class="failures">runTest[decltest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;a&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;5&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            ID ID=&quot;x&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt]
+              Liter...&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;a&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;5&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            ID ID=&quot;x&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt]
+              Liter...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[divtest.in]"></a>
+<h3 class="failures">runTest[divtest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;div&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Div
+              ID ID=&quot;x&quot;
+              ID ID=&quot;y&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Div
+              Literal NUMERAL=&quot;2&quot;]
+              Liter...&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;div&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Div
+              ID ID=&quot;x&quot;
+              ID ID=&quot;y&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Div
+              Literal NUMERAL=&quot;2&quot;]
+              Liter...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[funcalltest.in]"></a>
+<h3 class="failures">runTest[funcalltest.in]</h3>
 <span class="code">
 <pre>org.junit.ComparisonFailure: Output differs expected:&lt;[]&gt; but was:&lt;[Program
   List
     Fun
       TypeDecl Type=&quot;int&quot;
-      IdDecl ID=&quot;a&quot;
+      IdDecl Decl=&quot;hello&quot;
+      Param
+        List
       Block
-        Opt
-          List
-            DeclStmt
-              TypeDecl Type=&quot;int&quot;
-              IdDecl ID=&quot;x&quot;
-            DeclStmt
-              TypeDecl Type=&quot;int&quot;
-              IdDecl ID=&quot;y&quot;
-            AssignStmt
-              IdUse ID=&quot;x&quot;
-              Literal NUMERAL=&quot;5&quot;
-            AssignStmt
-              IdUse ID=&quot;y&quot;
-              IdExpr
-                IdUse ID=&quot;x&quot;]&gt;
+        List]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[gcd.in]"></a>
+<h3 class="failures">runTest[gcd.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;[]&gt; but was:&lt;[Program
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;gcd1&quot;
+      Param
+        List
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;b&quot;
+      Block
+        List
+          WhileStmt
+            NotEqual
+              ID ID=&quot;a&quot;
+              ID ID=&quot;b&quot;
+            Block
+              List
+                IfStmt
+                  Greater
+                    ID ID=&quot;a&quot;
+                    ID ID=&quot;b&quot;
+                  Block
+                    List
+                      AssignStmt
+                        ID ID=&quot;a&quot;
+                        Sub
+                          ID ID=&quot;a&quot;
+                          ID ID=&quot;b&quot;
+                  Opt
+                    Block
+                      List
+                        AssignStmt
+                          ID ID=&quot;b&quot;
+                          Sub
+                            ID ID=&quot;b&quot;
+                            ID ID=&quot;a&quot;
+          ReturnStmt
+            ID ID=&quot;a&quot;
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;gcd2&quot;
+      Param
+        List
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;b&quot;
+      Block
+        List
+          IfStmt
+            Equal
+              ID ID=&quot;b&quot;
+              Literal NUMERAL=&quot;0&quot;
+            Block
+              List
+                ReturnStmt
+                  ID ID=&quot;a&quot;
+            Opt
+          ReturnStmt
+            FunCall ID=&quot;gcd2&quot;
+              List
+                ID ID=&quot;b&quot;
+                Mod
+                  ID ID=&quot;a&quot;
+                  ID ID=&quot;b&quot;
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;main&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;b&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;a&quot;
+            FunCall ID=&quot;read&quot;
+              List
+          AssignStmt
+            ID ID=&quot;b&quot;
+            FunCall ID=&quot;read&quot;
+              List
+          ExprStmt
+            FunCall ID=&quot;print&quot;
+              List
+                FunCall ID=&quot;gcd1&quot;
+                  List
+                    ID ID=&quot;a&quot;
+                    ID ID=&quot;b&quot;
+          ExprStmt
+            FunCall ID=&quot;print&quot;
+              List
+                FunCall ID=&quot;gcd2&quot;
+                  List
+                    ID ID=&quot;a&quot;
+                    ID ID=&quot;b&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;diff&quot;
+            Opt
+              Sub
+                FunCall ID=&quot;gcd1&quot;
+                  List
+                    ID ID=&quot;a&quot;
+                    ID ID=&quot;b&quot;
+                FunCall ID=&quot;gcd2&quot;
+                  List
+                    ID ID=&quot;a&quot;
+                    ID ID=&quot;b&quot;
+          ExprStmt
+            FunCall ID=&quot;print&quot;
+              List
+                ID ID=&quot;diff&quot;
+          ReturnStmt
+            Literal NUMERAL=&quot;0&quot;]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[multest.in]"></a>
+<h3 class="failures">runTest[multest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;mul&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Mul
+              ID ID=&quot;x&quot;]
+              ID ID...&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;mul&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Mul
+              ID ID=&quot;x&quot;]
+              ID ID...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[paramtest.in]"></a>
+<h3 class="failures">runTest[paramtest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;oneparam&quot;
+      Param
+        List
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+      Block
+        List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;twoparams&quot;
+      Param
+        List
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;b&quot;
+      Block]
+        List&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;oneparam&quot;
+      Param
+        List
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+      Block
+        List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;twoparams&quot;
+      Param
+        List
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;b&quot;
+      Block]
+        List&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[randomtest.in]"></a>
+<h3 class="failures">runTest[randomtest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;...           ID ID=&quot;a&quot;[]&gt; but was:&lt;...           ID ID=&quot;a&quot;[
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;gcd2&quot;
+      Param
+        List
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;a&quot;
+          ParamDecl
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;b&quot;
+      Block
+        List
+          IfStmt
+            Equal
+              ID ID=&quot;b&quot;
+              Literal NUMERAL=&quot;0&quot;
+            Block
+              List
+                ReturnStmt
+                  ID ID=&quot;a&quot;
+            Opt
+          ReturnStmt
+            FunCall ID=&quot;gcd2&quot;
+              List
+                ID ID=&quot;b&quot;
+                Mod
+                  ID ID=&quot;a&quot;
+                  ID ID=&quot;b&quot;]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at lang.Util.compareOutput(Util.java:46)
+	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.runTestClass(JUnitTestClassExecuter.java:114)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecuter.execute(JUnitTestClassExecuter.java:57)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassProcessor.processTestClass(JUnitTestClassProcessor.java:66)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:32)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:93)
+	at com.sun.proxy.$Proxy1.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:108)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:146)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:128)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:404)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:63)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:46)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:55)
+	at java.lang.Thread.run(Thread.java:748)
+</pre>
+</span>
+</div>
+<div class="test">
+<a name="runTest[subtest.in]"></a>
+<h3 class="failures">runTest[subtest.in]</h3>
+<span class="code">
+<pre>org.junit.ComparisonFailure: Output differs expected:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;sub&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Sub
+              ID ID=&quot;y&quot;
+              ID ID=&quot;x&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Sub
+              Literal NUMERAL=&quot;5&quot;]
+              Liter...&gt; but was:&lt;Program[
+  List
+    Fun
+      TypeDecl Type=&quot;int&quot;
+      IdDecl Decl=&quot;sub&quot;
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;x&quot;
+            Opt
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;y&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;x&quot;
+            Literal NUMERAL=&quot;2&quot;
+          AssignStmt
+            ID ID=&quot;y&quot;
+            Literal NUMERAL=&quot;3&quot;
+          DeclStmt
+            TypeDecl Type=&quot;int&quot;
+            IdDecl Decl=&quot;k&quot;
+            Opt
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Sub
+              ID ID=&quot;y&quot;
+              ID ID=&quot;x&quot;
+          AssignStmt
+            ID ID=&quot;k&quot;
+            Sub
+              Literal NUMERAL=&quot;5&quot;]
+              Liter...&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at lang.Util.compareOutput(Util.java:46)
 	at lang.TestDumpTree.runTest(TestDumpTree.java:31)
@@ -166,14 +1489,69 @@
 </tr>
 </thead>
 <tr>
-<td class="success">runTest[test1.in]</td>
-<td>0.037s</td>
+<td class="failures">runTest[addmultest.in]</td>
+<td>0.005s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[addtest.in]</td>
+<td>0.005s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[allexprtest.in]</td>
+<td>0.025s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[decltest.in]</td>
+<td>0.036s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[divtest.in]</td>
+<td>0.009s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[funcalltest.in]</td>
+<td>0.006s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">runTest[funtest.in]</td>
+<td>0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="failures">runTest[test2.in]</td>
+<td class="failures">runTest[gcd.in]</td>
+<td>0.011s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[multest.in]</td>
+<td>0.004s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[paramtest.in]</td>
+<td>0.013s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[randomtest.in]</td>
+<td>0.017s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="failures">runTest[subtest.in]</td>
 <td>0.007s</td>
 <td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">runTest[whiletest.in]</td>
+<td>0.003s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
@@ -185,7 +1563,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.4.1</a> at 2018-sep-21 16:45:58</p>
+<a href="http://www.gradle.org">Gradle 4.4.1</a> at Sep 28, 2018 10:00:53 AM</p>
 </div>
 </div>
 </body>

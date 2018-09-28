@@ -1,0 +1,16 @@
+Program
+  List
+    Fun
+      TypeDecl Type="int"
+      IdDecl Decl="a"
+      Param
+        List
+      Block
+        List
+    Fun
+      TypeDecl Type="int"
+      IdDecl Decl="b"
+      Param
+        List
+      Block
+        List

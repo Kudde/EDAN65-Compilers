@@ -1,0 +1,127 @@
+Program
+  List
+    Fun
+      TypeDecl Type="int"
+      IdDecl Decl="gcd1"
+      Param
+        List
+          ParamDecl
+            TypeDecl Type="int"
+            IdDecl Decl="a"
+          ParamDecl
+            TypeDecl Type="int"
+            IdDecl Decl="b"
+      Block
+        List
+          WhileStmt
+            NotEqual
+              ID ID="a"
+              ID ID="b"
+            Block
+              List
+                IfStmt
+                  Greater
+                    ID ID="a"
+                    ID ID="b"
+                  Block
+                    List
+                      AssignStmt
+                        ID ID="a"
+                        Sub
+                          ID ID="a"
+                          ID ID="b"
+                  Opt
+                    Block
+                      List
+                        AssignStmt
+                          ID ID="b"
+                          Sub
+                            ID ID="b"
+                            ID ID="a"
+          ReturnStmt
+            ID ID="a"
+    Fun
+      TypeDecl Type="int"
+      IdDecl Decl="gcd2"
+      Param
+        List
+          ParamDecl
+            TypeDecl Type="int"
+            IdDecl Decl="a"
+          ParamDecl
+            TypeDecl Type="int"
+            IdDecl Decl="b"
+      Block
+        List
+          IfStmt
+            Equal
+              ID ID="b"
+              Literal NUMERAL="0"
+            Block
+              List
+                ReturnStmt
+                  ID ID="a"
+            Opt
+          ReturnStmt
+            FunCall ID="gcd2"
+              List
+                ID ID="b"
+                Mod
+                  ID ID="a"
+                  ID ID="b"
+    Fun
+      TypeDecl Type="int"
+      IdDecl Decl="main"
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            TypeDecl Type="int"
+            IdDecl Decl="a"
+            Opt
+          DeclStmt
+            TypeDecl Type="int"
+            IdDecl Decl="b"
+            Opt
+          AssignStmt
+            ID ID="a"
+            FunCall ID="read"
+              List
+          AssignStmt
+            ID ID="b"
+            FunCall ID="read"
+              List
+          ExprStmt
+            FunCall ID="print"
+              List
+                FunCall ID="gcd1"
+                  List
+                    ID ID="a"
+                    ID ID="b"
+          ExprStmt
+            FunCall ID="print"
+              List
+                FunCall ID="gcd2"
+                  List
+                    ID ID="a"
+                    ID ID="b"
+          DeclStmt
+            TypeDecl Type="int"
+            IdDecl Decl="diff"
+            Opt
+              Sub
+                FunCall ID="gcd1"
+                  List
+                    ID ID="a"
+                    ID ID="b"
+                FunCall ID="gcd2"
+                  List
+                    ID ID="a"
+                    ID ID="b"
+          ExprStmt
+            FunCall ID="print"
+              List
+                ID ID="diff"
+          ReturnStmt
+            Literal NUMERAL="0"

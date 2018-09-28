@@ -1,17 +1,38 @@
 Program ::= Fun*;
 
-Fun ::= type:TypeDecl name:IdDecl Block;
-Block ::= [Stmt];
+Fun ::= type:TypeDecl name:IdDecl Param Block;
+Param ::= ParamStmt*;
+Block ::= Stmt*;
+
+abstract ParamStmt;
+ParamDecl: ParamStmt ::= TypeDecl IdDecl;
 
 abstract Stmt;
-AssignStmt: Stmt ::= IdUse Expr;
-DeclStmt: Stmt ::= TypeDecl IdDecl;
+AssignStmt: Stmt ::= ID Expr;
+DeclStmt: Stmt ::= TypeDecl IdDecl [Expr];
+WhileStmt: Stmt ::= Expr Block;
+IfStmt: Stmt ::= Expr If:Block [Else:Block];
+ReturnStmt: Stmt ::= Expr;
+ExprStmt: Stmt ::= Expr;
 
-abstract Expr;
-Literal: Expr ::= <NUMERAL>;
-IdExpr: Expr ::= IdUse;
 
 
 TypeDecl ::= <Type>;
-IdUse ::= <ID>;
-IdDecl ::= <ID>;
+IdDecl ::= <Decl>;
+
+abstract Expr;
+BinExpr: Expr ::= Left:Expr Right:Expr;
+Mul: BinExpr;
+Div: BinExpr;
+Plus: BinExpr;
+Sub: BinExpr;
+Mod: BinExpr;
+Equal: BinExpr;
+NotEqual: BinExpr;
+Less: BinExpr;
+Greater: BinExpr;
+LessEqual: BinExpr;
+GreaterEqual: BinExpr;
+Literal: Expr ::= <NUMERAL>;
+ID: Expr ::= <ID>;
+FunCall: Expr ::= <ID> Expr*;

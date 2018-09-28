@@ -5,9 +5,9 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A2/A2-MinimalAST/src/jastadd/lang.ast:4
- * @astdecl Block : ASTNode ::= [Stmt];
- * @production Block : {@link ASTNode} ::= <span class="component">[{@link Stmt}]</span>;
+ * @declaredat /h/d5/d/dat14kjo/Desktop/A2/A2-MinimalAST/src/jastadd/lang.ast:5
+ * @astdecl Block : ASTNode ::= Stmt*;
+ * @production Block : {@link ASTNode} ::= <span class="component">{@link Stmt}*</span>;
 
  */
 public class Block extends ASTNode<ASTNode> implements Cloneable {
@@ -26,17 +26,17 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
    */
   public void init$Children() {
     children = new ASTNode[1];
-    setChild(new Opt(), 0);
+    setChild(new List(), 0);
   }
   /**
    * @declaredat ASTNode:14
    */
   @ASTNodeAnnotation.Constructor(
     name = {"Stmt"},
-    type = {"Opt<Stmt>"},
-    kind = {"Opt"}
+    type = {"List<Stmt>"},
+    kind = {"List"}
   )
-  public Block(Opt<Stmt> p0) {
+  public Block(List<Stmt> p0) {
     setChild(p0, 0);
   }
   /** @apilevel low-level 
@@ -139,54 +139,113 @@ public class Block extends ASTNode<ASTNode> implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the optional node for the Stmt child. This is the <code>Opt</code>
-   * node containing the child Stmt, not the actual child!
-   * @param opt The new node to be used as the optional node for the Stmt child.
-   * @apilevel low-level
-   */
-  public void setStmtOpt(Opt<Stmt> opt) {
-    setChild(opt, 0);
-  }
-  /**
-   * Replaces the (optional) Stmt child.
-   * @param node The new node to be used as the Stmt child.
+   * Replaces the Stmt list.
+   * @param list The new list node to be used as the Stmt list.
    * @apilevel high-level
    */
-  public void setStmt(Stmt node) {
-    getStmtOpt().setChild(node, 0);
+  public void setStmtList(List<Stmt> list) {
+    setChild(list, 0);
   }
   /**
-   * Check whether the optional Stmt child exists.
-   * @return {@code true} if the optional Stmt child exists, {@code false} if it does not.
+   * Retrieves the number of children in the Stmt list.
+   * @return Number of children in the Stmt list.
+   * @apilevel high-level
+   */
+  public int getNumStmt() {
+    return getStmtList().getNumChild();
+  }
+  /**
+   * Retrieves the number of children in the Stmt list.
+   * Calling this method will not trigger rewrites.
+   * @return Number of children in the Stmt list.
+   * @apilevel low-level
+   */
+  public int getNumStmtNoTransform() {
+    return getStmtListNoTransform().getNumChildNoTransform();
+  }
+  /**
+   * Retrieves the element at index {@code i} in the Stmt list.
+   * @param i Index of the element to return.
+   * @return The element at position {@code i} in the Stmt list.
+   * @apilevel high-level
+   */
+  public Stmt getStmt(int i) {
+    return (Stmt) getStmtList().getChild(i);
+  }
+  /**
+   * Check whether the Stmt list has any children.
+   * @return {@code true} if it has at least one child, {@code false} otherwise.
    * @apilevel high-level
    */
   public boolean hasStmt() {
-    return getStmtOpt().getNumChild() != 0;
+    return getStmtList().getNumChild() != 0;
   }
   /**
-   * Retrieves the (optional) Stmt child.
-   * @return The Stmt child, if it exists. Returns {@code null} otherwise.
-   * @apilevel low-level
+   * Append an element to the Stmt list.
+   * @param node The element to append to the Stmt list.
+   * @apilevel high-level
    */
-  public Stmt getStmt() {
-    return (Stmt) getStmtOpt().getChild(0);
+  public void addStmt(Stmt node) {
+    List<Stmt> list = (parent == null) ? getStmtListNoTransform() : getStmtList();
+    list.addChild(node);
   }
-  /**
-   * Retrieves the optional node for the Stmt child. This is the <code>Opt</code> node containing the child Stmt, not the actual child!
-   * @return The optional node for child the Stmt child.
-   * @apilevel low-level
+  /** @apilevel low-level 
    */
-  @ASTNodeAnnotation.OptChild(name="Stmt")
-  public Opt<Stmt> getStmtOpt() {
-    return (Opt<Stmt>) getChild(0);
+  public void addStmtNoTransform(Stmt node) {
+    List<Stmt> list = getStmtListNoTransform();
+    list.addChild(node);
   }
   /**
-   * Retrieves the optional node for child Stmt. This is the <code>Opt</code> node containing the child Stmt, not the actual child!
+   * Replaces the Stmt list element at index {@code i} with the new node {@code node}.
+   * @param node The new node to replace the old list element.
+   * @param i The list index of the node to be replaced.
+   * @apilevel high-level
+   */
+  public void setStmt(Stmt node, int i) {
+    List<Stmt> list = getStmtList();
+    list.setChild(node, i);
+  }
+  /**
+   * Retrieves the Stmt list.
+   * @return The node representing the Stmt list.
+   * @apilevel high-level
+   */
+  @ASTNodeAnnotation.ListChild(name="Stmt")
+  public List<Stmt> getStmtList() {
+    List<Stmt> list = (List<Stmt>) getChild(0);
+    return list;
+  }
+  /**
+   * Retrieves the Stmt list.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The optional node for child Stmt.
+   * @return The node representing the Stmt list.
    * @apilevel low-level
    */
-  public Opt<Stmt> getStmtOptNoTransform() {
-    return (Opt<Stmt>) getChildNoTransform(0);
+  public List<Stmt> getStmtListNoTransform() {
+    return (List<Stmt>) getChildNoTransform(0);
+  }
+  /**
+   * @return the element at index {@code i} in the Stmt list without
+   * triggering rewrites.
+   */
+  public Stmt getStmtNoTransform(int i) {
+    return (Stmt) getStmtListNoTransform().getChildNoTransform(i);
+  }
+  /**
+   * Retrieves the Stmt list.
+   * @return The node representing the Stmt list.
+   * @apilevel high-level
+   */
+  public List<Stmt> getStmts() {
+    return getStmtList();
+  }
+  /**
+   * Retrieves the Stmt list.
+   * <p><em>This method does not invoke AST transformations.</em></p>
+   * @return The node representing the Stmt list.
+   * @apilevel low-level
+   */
+  public List<Stmt> getStmtsNoTransform() {
+    return getStmtListNoTransform();
   }
 }

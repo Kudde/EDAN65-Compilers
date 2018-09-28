@@ -1,0 +1,6 @@
+int addmul() {
+  int x;
+  int y;
+  int k;
+  k = x * y + 3;
+}
