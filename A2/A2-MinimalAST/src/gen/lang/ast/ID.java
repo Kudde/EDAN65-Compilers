@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /h/d5/d/dat14kjo/Desktop/A2/A2-MinimalAST/src/jastadd/lang.ast:37
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A2\\A2-MinimalAST\\src\\jastadd\\lang.ast:37
  * @astdecl ID : Expr ::= <ID:String>;
  * @production ID : {@link Expr} ::= <span class="component">&lt;ID:String&gt;</span>;
 

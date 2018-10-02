@@ -1,0 +1,59 @@
+
+Visitor framework:
+• In what situation might the accept method in ASTNode be useful?
+to check whether a class exists in the grammar.
+• Why is there not an accept method for the Expr class?
+Because it's abstract, you never create an instance of Expr.
+• What problem would you run into if you could not use aspects to add the accept methods?
+Would be much more problematic to implement the visit and accept methods, a lot of "instanceof"
+
+Suppose you have a main program with a Program AST. How would you use the visitor to find out
+if the program contains any Ask statement?
+Use the result method in CheckInteractiveVisitor for each ASTNode in the Program,
+it will then create a visitor of type checkInteractiveVisitor, then call the
+accept method on the node, sending the created visitor. This will trigger the
+visit method in the checkInteractiveVisitor if the node is of type 'Ask'.
+This will set isInteractive = true, return, and then the result method will Return
+true if and only if the node was of type 'Ask'.
+
+CheckInteractiveVisitor:
+• What other ways could you solve the problem (without using a visitor)?
+Instead of using the aspect visitor etc. one could use node.instanceof('ask')
+• Will the traversal go into subtrees of an Ask statement?
+Yes (see tests; ask3, ask4)
+• Suppose you wanted to count the number of Ask statements instead. How would you change the
+visitor?
+change the boolean into an int och add an int as well.
+Increment for each time the visit method in checkInteractiveVisitor is called
+and return the number in result method or add another getter.
+
+prettyPrint:
+Suppose you have a main program with a Program AST. What would a call look like that prettyprints
+it to standard output? (Hint: take a look in the main program Compiler.java in CalcComp.)
+Simply call the method with the ASTnode program;
+program.prettyPrint(System.out);
+If you want a PrintStream;
+program.prettyPrint(new PrintStream(new ByteArrayOutputStream()));
+
+
+NameAnalysis:
+• The symbol table is simpler than a traditional symbol table in that it only keeps track of names
+and not the binding (declaration) of a name. This would be needed to support, for example, type
+checking. How would you modify the SymbolTable class to support name binding?
+change the set into a hashmap with type as key and name as value and check
+so that the given type (key) has the given symbolname (value).
+
+
+• Suppose you have a main program with a Program AST. What would a call look like that performs
+name analysis and prints the errors to standard error? (Hint: google standard streams java if you
+don’t know what standard error is.)
+program.checkNames(System.err);
+
+
+• How does the push operation work in SymbolTable? Why is there no pop operation?
+
+the tail is the previous / earlier piece of code, as where tail.lookup(name)
+you can check if a symbol has been declared in an outer block/table.
+pop is not needed.. The variables are localized in the inner table,
+doesn't need to be removed in order to get correct coding.
+However, I guess you could implement pop in order to save space. (?)

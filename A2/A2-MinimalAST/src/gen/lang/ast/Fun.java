@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /h/d5/d/dat14kjo/Desktop/A2/A2-MinimalAST/src/jastadd/lang.ast:3
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A2\\A2-MinimalAST\\src\\jastadd\\lang.ast:3
  * @astdecl Fun : ASTNode ::= type:TypeDecl name:IdDecl Param Block;
  * @production Fun : {@link ASTNode} ::= <span class="component">type:{@link TypeDecl}</span> <span class="component">name:{@link IdDecl}</span> <span class="component">{@link Param}</span> <span class="component">{@link Block}</span>;
 
