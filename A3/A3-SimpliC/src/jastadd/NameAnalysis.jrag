@@ -68,39 +68,41 @@ aspect NameAnalysis {
 		}
 	}
 
-	public void Binding.checkNames(PrintStream err, SymbolTable symbols) {
-		getExpr().checkNames(err, symbols.push());
-		getIdDecl().checkNames(err, symbols);
-	}
-
-
-	public void Let.checkNames(PrintStream err, SymbolTable symbols) {
-		symbols = symbols.push();
-		for (int i = 0; i < getNumBinding(); ++i) {
-			getBinding(i).checkNames(err, symbols);
-		}
+	public void WhileStmt.checkNames(PrintStream err, SymbolTable symbols) {
 		getExpr().checkNames(err, symbols);
+		getBlock().checkNames(err, symbols.push());
 	}
 
-	public void Ask.checkNames(PrintStream err, SymbolTable symbols) {
-		if (hasDefault()) {
-			getDefault().checkNames(err, symbols.push());
+	public void IfStmt.checkNames(PrintStream err, SymbolTable symbols) {
+		getExpr().checkNames(err, symbols);
+		getIf().checkNames(err, symbols.push());
+		if (hasElse())
+			getElse().checkNames(err, symbols.push());
+	}
+
+	public void FunCall.checkNames(PrintStream err, SymbolTable symbols) {
+		if (!symbols.lookup(getID())) {
+			err.format("Error at line %d: symbol \'%s\' has not been declared before this use!", getLine(), getID());
+			err.println();
+		}
+		for (int i = 0; i < getNumExpr(); i++) {
+			getExpr(i).checkNames(err, symbols);
 		}
 	}
-
 	public void IdDecl.checkNames(PrintStream err, SymbolTable symbols) {
-		if (!symbols.declare(getID())) {
-			err.format("Error at line %d: symbol \'%s\' is already declared!", getLine(), getID());
+		if (!symbols.declare(getDecl())) {
+			err.format("Error at line %d: symbol \'%s\' is already declared!", getLine(), getDecl());
 			err.println();
 		}
 	}
 
-	public void IdUse.checkNames(PrintStream err, SymbolTable symbols) {
+	public void ID.checkNames(PrintStream err, SymbolTable symbols) {
 		if (!symbols.lookup(getID())) {
 			err.format("Error at line %d: symbol \'%s\' has not been declared before this use!", getLine(), getID());
 			err.println();
 		}
 	}
+
 
 	/**
 	 * Helper method

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestVisitor" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-10-04T17:52:36" hostname="KevsMonsterPC" time="0.032">
-  <properties/>
-  <testcase name="runTest[1.in]" classname="lang.TestVisitor" time="0.012"/>
-  <testcase name="runTest[2.in]" classname="lang.TestVisitor" time="0.01"/>
-  <testcase name="runTest[3.in]" classname="lang.TestVisitor" time="0.01"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

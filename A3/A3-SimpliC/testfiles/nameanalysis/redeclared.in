@@ -1,0 +1,14 @@
+int fun() {
+  int k;
+  int y;
+  while (k) {
+    int k;
+    y = 2;
+    while (k) {
+      int k;
+      y = 3;
+      int x = 2;
+    }
+  }
+  int k = 2;
+}

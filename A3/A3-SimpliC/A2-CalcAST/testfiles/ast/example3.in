@@ -1,6 +1,0 @@
-let
-        x = ask user [2.0]
-        y = 4.0
-in
-        x * y * 3.0
-end
