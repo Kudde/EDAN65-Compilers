@@ -1,0 +1,15 @@
+int expr() {
+
+  int x;
+  int y;
+  int k;
+  int ans;
+
+  x = 2;
+  y = 3;
+  k = 5;
+
+  ans = (x + (2 + 3)*2 - 4/2)%2;
+
+
+}

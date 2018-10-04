@@ -1,0 +1,16 @@
+Program
+  Let
+    List
+      Binding
+        IdDecl ID="x"
+        Ask
+          Opt
+            Numeral NUMERAL="2.0"
+      Binding
+        IdDecl ID="y"
+        Numeral NUMERAL="4.0"
+    Mul
+      Mul
+        IdUse ID="x"
+        IdUse ID="y"
+      Numeral NUMERAL="3.0"

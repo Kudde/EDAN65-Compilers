@@ -1,0 +1,10 @@
+int print3(int i, int j) {
+	while (i < j) {
+		if (i == j) {
+			int x = 3;
+		}
+		else {
+			int k = 2;
+		}
+	}
+}

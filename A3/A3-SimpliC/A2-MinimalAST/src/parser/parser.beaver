@@ -1,0 +1,182 @@
+%class "LangParser";
+%package "lang.ast";
+
+%embed {:
+	static public class SyntaxError extends RuntimeException { public SyntaxError(String msg) {super(msg);}}
+	// Disable syntax error recovery
+	protected void recoverFromError(Symbol token, TokenStream in) {
+		throw new SyntaxError("Cannot recover from the syntax error");
+	}
+:};
+
+%terminals SEMMIC, LP, RP, LCARET, RCARET, COMMA;
+%terminals SUB, PLUS, DIV, MUL, MOD, ID, INT, NUMERAL, ASSIGN;
+%terminals EQUAL, NEQUAL, LESS, GREATER, LEQUAL, GEQUAL;
+%terminals IF, ELSE, WHILE, RETURN;
+
+%typeof program = "Program";
+%typeof fun = "Fun";
+%typeof fun_list = "List";
+
+//BLOCK
+
+%typeof block = "Block";
+%typeof stmt_list = "List";
+%typeof stmt = "Stmt";
+%typeof assign = "AssignStmt";
+%typeof decl = "DeclStmt";
+
+%typeof param = "Param";
+%typeof param_list = "List";
+%typeof param_stmt = "ParamStmt";
+%typeof param_decl = "ParamDecl";
+
+%typeof expr_list ="List";
+%typeof expr = "Expr";
+%typeof term = "Expr";
+%typeof factor = "Expr";
+%typeof bin_expr = "Expr";
+%typeof comp_expr = "Expr";
+
+%typeof literal = "Literal";
+%typeof id_decl = "IdDecl";
+%typeof id = "ID";
+%typeof type_decl = "TypeDecl";
+
+%nonassoc ELSE;
+%nonassoc IF;
+
+%goal program;
+
+// ----------------------------------------------------------------------------
+// PROGRAM---------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+program = fun_list.a {: return new Program(a); :}
+	;
+
+// ----------------------------------------------------------------------------
+// FUNCTION--------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+fun_list =
+	fun.a 											{: return new List().add(a); :}
+	| fun_list.a fun.b 					{: return a.add(b); :}
+	;
+
+fun = type_decl.a id_decl.b param.c block.d {: return new Fun(a, b, c, d); :}
+	;
+
+// ----------------------------------------------------------------------------
+// STATEMENTS------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+block =
+	LCARET RCARET									{: return new Block(); :}
+	| LCARET stmt_list.a RCARET	 	{: return new Block(a); :}
+	;
+
+stmt_list =
+	stmt.a 												{: return new List().add(a); :}
+	| stmt_list.a stmt.b 					{: return a.add(b); :}
+	;
+
+stmt =
+	decl
+	| assign
+	| expr.a SEMMIC 						 				  	{: return new ExprStmt(a); :}
+	| WHILE LP expr.a RP block.b 				  	{: return new WhileStmt(a, b); :}
+	| IF LP expr.a RP block.b 						  {: return new IfStmt(a, b, new Opt()); :}
+	| IF LP expr.a RP block.b ELSE block.c  {: return new IfStmt(a, b, new Opt(c)); :}
+	| RETURN expr.a	SEMMIC									{: return new ReturnStmt(a); :}
+	;
+
+decl =
+	type_decl.a id_decl.b SEMMIC 									{: return new DeclStmt(a, b, new Opt()); :}
+	| type_decl.a id_decl.b ASSIGN expr.c SEMMIC 	{: return new DeclStmt(a, b, new Opt(c)); :}
+	;
+
+assign = id.a ASSIGN expr.b SEMMIC 							{: return new AssignStmt(a, b); :}
+	;
+
+// ----------------------------------------------------------------------------
+// PARAMETERS------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+param =
+	LP RP 							 							{: return new Param(); :}
+	| LP param_list.a RP 							{: return new Param(a); :}
+	;
+
+param_list =
+	param_stmt.a 											{: return new List().add(a); :}
+	| param_list.a COMMA param_stmt.b {: return a.add(b); :}
+	;
+
+param_stmt =
+	param_decl
+	;
+
+param_decl =
+	type_decl.a id_decl.b 			  {: return new ParamDecl(a, b); :}
+	;
+
+// ----------------------------------------------------------------------------
+// EXPRESSIONS-----------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+expr_list =
+	expr.a 															 		{: return new List().add(a); :}
+	| expr_list.a COMMA expr.b						  		{: return a.add(b); :}
+	;
+
+
+expr =
+	expr.a NEQUAL  comp_expr.b				 		{: return new NotEqual(a, b); :}
+	| expr.a EQUAL comp_expr.b 						{: return new Equal(a, b); :}
+	| comp_expr.a													{: return a; :}
+	;
+
+  comp_expr =
+  comp_expr.a LESS      bin_expr.b 			  {: return new Less(a, b); :}
+	| comp_expr.a GREATER bin_expr.b 				{: return new Greater(a, b); :}
+	| comp_expr.a LEQUAL  bin_expr.b 				{: return new LessEqual(a, b); :}
+	| comp_expr.a GEQUAL  bin_expr.b				{: return new GreaterEqual(a, b); :}
+	| bin_expr.a								 						{: return a; :}
+	;
+
+bin_expr =
+	| bin_expr.a PLUS    term.b 						{: return new Plus(a, b); :}
+	| bin_expr.a SUB     term.b 						{: return new Sub(a, b); :}
+	| term.a																{: return a; :}
+	;
+
+term =
+	term.a MUL factor.b	  									{: return new Mul(a, b); :}
+	| term.a DIV factor.b 									{: return new Div(a, b); :}
+	| term.a MOD factor.b 									{: return new Mod(a, b); :}
+	| factor.b					 									  {: return b; :}
+	;
+
+factor =
+	LP expr.a RP														{: return a; :}
+	| id
+	| fun_call
+	| literal
+	;
+
+fun_call =
+	ID.id LP RP {: return new FunCall(id, new List()); :}
+	| ID.id LP expr_list.a RP {: return new FunCall(id, a); :}
+	;
+
+// ----------------------------------------------------------------------------
+// FINALS----------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
+literal = NUMERAL.i 						{: return new Literal(i); :} ;
+
+type_decl = INT.i 							{: return new TypeDecl(i); :} ;
+
+id = ID.id         							{: return new ID(id); :} ;
+id_decl = ID.id 								{: return new IdDecl(id); :} ;
