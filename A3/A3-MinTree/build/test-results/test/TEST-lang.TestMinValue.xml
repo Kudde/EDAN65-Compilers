@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="lang.TestMinValue" tests="5" skipped="0" failures="0" errors="0" timestamp="2018-10-05T06:47:32" hostname="taco.local" time="0.003">
+  <properties/>
+  <testcase name="nbrOfMinValues" classname="lang.TestMinValue" time="0.002"/>
+  <testcase name="globalMin" classname="lang.TestMinValue" time="0.0"/>
+  <testcase name="nbrOfMinValues2" classname="lang.TestMinValue" time="0.0"/>
+  <testcase name="localMin" classname="lang.TestMinValue" time="0.0"/>
+  <testcase name="isMinValue" classname="lang.TestMinValue" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
