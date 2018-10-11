@@ -1,21 +1,28 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\lang.ast:3
+ * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/lang.ast:3
  * @astdecl Fun : ASTNode ::= TypeDecl IdDecl Param Block;
  * @production Fun : {@link ASTNode} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span> <span class="component">{@link Param}</span> <span class="component">{@link Block}</span>;
 
  */
 public class Fun extends ASTNode<ASTNode> implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/Visitor.jrag:57
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\PrettyPrint.jrag:16
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/PrettyPrint.jrag:16
    */
   public void prettyPrint(PrintStream out, String ind) {
 		getTypeDecl().prettyPrint(out, ind);
@@ -24,13 +31,6 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
 		getParam().prettyPrint(out, ind);
 		getBlock().prettyPrint(out, ind + "\t");
 		out.print(ind + "}\n\n");
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\Visitor.jrag:57
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1

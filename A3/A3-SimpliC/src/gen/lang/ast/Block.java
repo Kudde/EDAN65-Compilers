@@ -1,34 +1,34 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\lang.ast:5
+ * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/lang.ast:5
  * @astdecl Block : ASTNode ::= Stmt*;
  * @production Block : {@link ASTNode} ::= <span class="component">{@link Stmt}*</span>;
 
  */
 public class Block extends ASTNode<ASTNode> implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/Visitor.jrag:63
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\PrettyPrint.jrag:42
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/PrettyPrint.jrag:42
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(" {\n");
 		for (int i = 0; i < getNumStmt(); i++) {
 			getStmt(i).prettyPrint(out, ind);
 		}
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\Visitor.jrag:63
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1

@@ -1,31 +1,28 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\lang.ast:14
+ * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/lang.ast:14
  * @astdecl IfStmt : Stmt ::= Expr If:Block [Else:Block];
  * @production IfStmt : {@link Stmt} ::= <span class="component">{@link Expr}</span> <span class="component">If:{@link Block}</span> <span class="component">[Else:{@link Block}]</span>;
 
  */
 public class IfStmt extends Stmt implements Cloneable {
   /**
-   * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\NameAnalysis.jrag:76
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/Visitor.jrag:117
    */
-  public void checkNames(PrintStream err, SymbolTable symbols) {
-		getExpr().checkNames(err, symbols);
-		getIf().checkNames(err, symbols.push());
-		if (hasElse())
-			getElse().checkNames(err, symbols.push());
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
 	}
   /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\PrettyPrint.jrag:75
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/PrettyPrint.jrag:75
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + "if (");
@@ -40,11 +37,14 @@ public class IfStmt extends Stmt implements Cloneable {
 		}
 	}
   /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\Visitor.jrag:117
+   * @aspect NameAnalysis
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/NameAnalysis.jrag:76
    */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
+  public void checkNames(PrintStream err, SymbolTable symbols) {
+		getExpr().checkNames(err, symbols);
+		getIf().checkNames(err, symbols.push());
+		if (hasElse())
+			getElse().checkNames(err, symbols.push());
 	}
   /**
    * @declaredat ASTNode:1

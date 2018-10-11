@@ -1,7 +1,7 @@
 package lang.ast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;

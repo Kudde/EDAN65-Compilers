@@ -1,7 +1,7 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;
@@ -13,13 +13,37 @@ import java.util.HashSet;
  */
 public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/Visitor.jrag:51
+   */
+  public Object accept(Visitor visitor, Object data) {
+		throw new Error("Visitor: accept method not available for " + getClass().getName());
+	}
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/PrettyPrint.jrag:4
+   */
+  public void prettyPrint(PrintStream out) {
+		prettyPrint(out, "");
+		out.println();
+	}
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/PrettyPrint.jrag:9
+   */
+  public void prettyPrint(PrintStream out, String ind) {
+		for (int i = 0; i < getNumChild(); ++i) {
+			getChild(i).prettyPrint(out, ind);
+		}
+	}
+  /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\DumpTree.jrag:9
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/DumpTree.jrag:9
    */
   private static final String DUMP_TREE_INDENT = "  ";
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\DumpTree.jrag:11
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/DumpTree.jrag:11
    */
   public String dumpTree() {
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -28,7 +52,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\DumpTree.jrag:17
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/DumpTree.jrag:17
    */
   public void dumpTree(PrintStream out) {
 		dumpTree(out, "");
@@ -36,7 +60,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\DumpTree.jrag:22
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/DumpTree.jrag:22
    */
   public void dumpTree(PrintStream out, String indent) {
 		out.print(indent + getClass().getSimpleName());
@@ -52,7 +76,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\DumpTree.jrag:35
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/DumpTree.jrag:35
    */
   public String getTokens() {
 		java.util.TreeSet<java.lang.reflect.Method> methods = new java.util.TreeSet<>(
@@ -81,7 +105,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    * @param err where to write error messages
    * @param symbols symbol table
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\NameAnalysis.jrag:65
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/NameAnalysis.jrag:65
    */
   public void checkNames(PrintStream err, SymbolTable symbols) {
 		for (int i = 0; i < getNumChild(); ++i) {
@@ -92,34 +116,10 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    * Helper method
    * @return line number of this token
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\NameAnalysis.jrag:111
+   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/NameAnalysis.jrag:111
    */
   public int getLine() {
 		return getLine(getStart());
-	}
-  /**
-   * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\PrettyPrint.jrag:4
-   */
-  public void prettyPrint(PrintStream out) {
-		prettyPrint(out, "");
-		out.println();
-	}
-  /**
-   * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\PrettyPrint.jrag:9
-   */
-  public void prettyPrint(PrintStream out, String ind) {
-		for (int i = 0; i < getNumChild(); ++i) {
-			getChild(i).prettyPrint(out, ind);
-		}
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\Visitor.jrag:51
-   */
-  public Object accept(Visitor visitor, Object data) {
-		throw new Error("Visitor: accept method not available for " + getClass().getName());
 	}
   /**
    * @declaredat ASTNode:1
