@@ -22,7 +22,6 @@ public class Compiler {
     public static Object DrAST_root_node; //Enable debugging with DrAST
 
 	public static void main(String[] args) {
-    System.out.println("HEHEHEHEHEHHEE");
 		try {
 			if (args.length != 1) {
 				System.err.println(

@@ -1,6 +1,64 @@
 aspect NameAnalysis {
 
+
+	// IdUse
 	syn IdDecl IdUse.decl() = lookup(getID());
 	inh IdDecl IdUse.lookup(String name);
-	eq Program.getChild().lookup(String name) = unknownDecl();
+
+
+	// IdDecl
+  syn boolean IdDecl.isMultiDeclared() = lookup(getID()) != this;
+	inh IdDecl  IdDecl.lookup(String name);
+
+  // Block
+	inh IdDecl Block.lookup(String name);
+	syn IdDecl Block.localLookup(String name) {
+		for (int i = 0; i < getNumStmt(); i++) {
+			IdDecl decl = getStmt(i).localLookup(name);
+			if (!decl.isUnknown()) return decl;
+		}
+		return unknownDecl();
+	}
+  // Stmt
+	syn IdDecl Stmt.localLookup(String name) = unknownDecl();
+	syn IdDecl DeclStmt.localLookup(String name) {
+		return getIdDecl().getID().equals(name) ? getIdDecl() : unknownDecl();
+	}
+
+	// Function
+	inh IdDecl Fun.lookup(String name);
+	syn IdDecl Fun.localLookup(String name) {
+		for (int i = 0; i < getParam().getNumParamDecl(); i++) {
+			if (getParam().getParamDecl(i).getIdDecl().getID().equals(name))
+				return getParam().getParamDecl(i).getIdDecl();
+		}
+		return unknownDecl();
+	}
+
+	// Equations
+	eq Block.getStmt().lookup(String name) {
+		IdDecl decl = localLookup(name);
+		return !decl.isUnknown() ? decl : lookup(name);
+	}
+
+	eq Fun.getParam().lookup(String name) {
+		IdDecl decl = localLookup(name);
+		return !decl.isUnknown() ? decl : lookup(name);
+	}
+
+	eq Fun.getBlock().lookup(String name) {
+		IdDecl decl = localLookup(name);
+		return !decl.isUnknown() ? decl : lookup(name);
+	}
+
+	eq Program.getFun().lookup(String name) {
+		for (int i = 0; i < getNumFun(); i++) {
+			if (getFun(i).getIdDecl().getID().equals(name))
+				return getFun(i).getIdDecl();
+		}
+	return unknownDecl();
+	}
+
+	eq Program.getChild(int index).lookup(String name)
+		= unknownDecl();
 }

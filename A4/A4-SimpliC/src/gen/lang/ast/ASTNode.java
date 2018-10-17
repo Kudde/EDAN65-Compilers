@@ -625,7 +625,7 @@ protected boolean unknownDecl_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:5
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:39
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute lookup
    */

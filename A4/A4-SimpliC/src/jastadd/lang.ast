@@ -1,11 +1,10 @@
 Program ::= Fun*;
 
 Fun ::= TypeDecl IdDecl Param Block;
-Param ::= ParamStmt*;
+Param ::= ParamDecl*;
 Block : Stmt ::= Stmt*;
 
-abstract ParamStmt;
-ParamDecl: ParamStmt ::= TypeDecl IdDecl;
+ParamDecl ::= TypeDecl IdDecl;
 
 abstract Stmt;
 AssignStmt: Stmt ::= IdUse Expr;

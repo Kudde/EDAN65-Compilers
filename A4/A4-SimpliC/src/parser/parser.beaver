@@ -28,7 +28,6 @@
 
 %typeof param = "Param";
 %typeof param_list = "List";
-%typeof param_stmt = "ParamStmt";
 %typeof param_decl = "ParamDecl";
 
 %typeof expr_list ="List";
@@ -109,12 +108,8 @@ param =
 	;
 
 param_list =
-	param_stmt.a 											{: return new List().add(a); :}
-	| param_list.a COMMA param_stmt.b {: return a.add(b); :}
-	;
-
-param_stmt =
-	param_decl
+	param_decl.a 											{: return new List().add(a); :}
+	| param_list.a COMMA param_decl.b {: return a.add(b); :}
 	;
 
 param_decl =

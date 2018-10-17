@@ -2,7 +2,7 @@ int fun() {
   int k;
   int y;
   while (k) {
-    int k;
+    k = 2;
     y = 2;
     while (k) {
       int k;

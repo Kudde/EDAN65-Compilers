@@ -7,12 +7,12 @@ import java.util.Set;
 import java.util.TreeSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:8
- * @astdecl ParamDecl : ParamStmt ::= TypeDecl IdDecl;
- * @production ParamDecl : {@link ParamStmt} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span>;
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:7
+ * @astdecl ParamDecl : ASTNode ::= TypeDecl IdDecl;
+ * @production ParamDecl : {@link ASTNode} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span>;
 
  */
-public class ParamDecl extends ParamStmt implements Cloneable {
+public class ParamDecl extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect PrettyPrint
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:35

@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.TreeSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:12
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:11
  * @astdecl DeclStmt : Stmt ::= TypeDecl IdDecl [Expr];
  * @production DeclStmt : {@link Stmt} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span> <span class="component">[{@link Expr}]</span>;
 
@@ -75,22 +75,23 @@ public class DeclStmt extends Stmt implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    localLookup_String_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:33
+   * @declaredat ASTNode:34
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:37
+   * @declaredat ASTNode:38
    */
   public DeclStmt clone() throws CloneNotSupportedException {
     DeclStmt node = (DeclStmt) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:42
+   * @declaredat ASTNode:43
    */
   public DeclStmt copy() {
     try {
@@ -110,7 +111,7 @@ public class DeclStmt extends Stmt implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:61
+   * @declaredat ASTNode:62
    */
   @Deprecated
   public DeclStmt fullCopy() {
@@ -121,7 +122,7 @@ public class DeclStmt extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:71
+   * @declaredat ASTNode:72
    */
   public DeclStmt treeCopyNoTransform() {
     DeclStmt tree = (DeclStmt) copy();
@@ -142,7 +143,7 @@ public class DeclStmt extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:91
+   * @declaredat ASTNode:92
    */
   public DeclStmt treeCopy() {
     DeclStmt tree = (DeclStmt) copy();
@@ -158,7 +159,7 @@ public class DeclStmt extends Stmt implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:105
+   * @declaredat ASTNode:106
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -266,4 +267,44 @@ public class DeclStmt extends Stmt implements Cloneable {
   public Opt<Expr> getExprOptNoTransform() {
     return (Opt<Expr>) getChildNoTransform(2);
   }
+/** @apilevel internal */
+protected java.util.Set localLookup_String_visited;
+  /** @apilevel internal */
+  private void localLookup_String_reset() {
+    localLookup_String_values = null;
+    localLookup_String_visited = null;
+  }
+  /** @apilevel internal */
+  protected java.util.Map localLookup_String_values;
+
+  /**
+   * @attribute syn
+   * @aspect NameAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:24
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:24")
+  public IdDecl localLookup(String name) {
+    Object _parameters = name;
+    if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
+    if (localLookup_String_values == null) localLookup_String_values = new java.util.HashMap(4);
+    ASTState state = state();
+    if (localLookup_String_values.containsKey(_parameters)) {
+      return (IdDecl) localLookup_String_values.get(_parameters);
+    }
+    if (localLookup_String_visited.contains(_parameters)) {
+      throw new RuntimeException("Circular definition of attribute DeclStmt.localLookup(String).");
+    }
+    localLookup_String_visited.add(_parameters);
+    state().enterLazyAttribute();
+    IdDecl localLookup_String_value = localLookup_compute(name);
+    localLookup_String_values.put(_parameters, localLookup_String_value);
+    state().leaveLazyAttribute();
+    localLookup_String_visited.remove(_parameters);
+    return localLookup_String_value;
+  }
+  /** @apilevel internal */
+  private IdDecl localLookup_compute(String name) {
+  		return getIdDecl().getID().equals(name) ? getIdDecl() : unknownDecl();
+  	}
 }

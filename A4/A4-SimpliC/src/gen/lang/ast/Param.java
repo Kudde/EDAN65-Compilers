@@ -8,8 +8,8 @@ import java.util.TreeSet;
 /**
  * @ast node
  * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:4
- * @astdecl Param : ASTNode ::= ParamStmt*;
- * @production Param : {@link ASTNode} ::= <span class="component">{@link ParamStmt}*</span>;
+ * @astdecl Param : ASTNode ::= ParamDecl*;
+ * @production Param : {@link ASTNode} ::= <span class="component">{@link ParamDecl}*</span>;
 
  */
 public class Param extends ASTNode<ASTNode> implements Cloneable {
@@ -19,9 +19,9 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print("(");
-		for(int i = 0; i < getNumParamStmt(); i++) {
-			getParamStmt(i).prettyPrint(out, ind);
-				if(i != getNumParamStmt() - 1)
+		for(int i = 0; i < getNumParamDecl(); i++) {
+			getParamDecl(i).prettyPrint(out, ind);
+				if(i != getNumParamDecl() - 1)
 					out.print(", ");
 		}
 		out.print(")");
@@ -54,11 +54,11 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:14
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"ParamStmt"},
-    type = {"List<ParamStmt>"},
+    name = {"ParamDecl"},
+    type = {"List<ParamDecl>"},
     kind = {"List"}
   )
-  public Param(List<ParamStmt> p0) {
+  public Param(List<ParamDecl> p0) {
     setChild(p0, 0);
   }
   /** @apilevel low-level 
@@ -161,113 +161,113 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the ParamStmt list.
-   * @param list The new list node to be used as the ParamStmt list.
+   * Replaces the ParamDecl list.
+   * @param list The new list node to be used as the ParamDecl list.
    * @apilevel high-level
    */
-  public void setParamStmtList(List<ParamStmt> list) {
+  public void setParamDeclList(List<ParamDecl> list) {
     setChild(list, 0);
   }
   /**
-   * Retrieves the number of children in the ParamStmt list.
-   * @return Number of children in the ParamStmt list.
+   * Retrieves the number of children in the ParamDecl list.
+   * @return Number of children in the ParamDecl list.
    * @apilevel high-level
    */
-  public int getNumParamStmt() {
-    return getParamStmtList().getNumChild();
+  public int getNumParamDecl() {
+    return getParamDeclList().getNumChild();
   }
   /**
-   * Retrieves the number of children in the ParamStmt list.
+   * Retrieves the number of children in the ParamDecl list.
    * Calling this method will not trigger rewrites.
-   * @return Number of children in the ParamStmt list.
+   * @return Number of children in the ParamDecl list.
    * @apilevel low-level
    */
-  public int getNumParamStmtNoTransform() {
-    return getParamStmtListNoTransform().getNumChildNoTransform();
+  public int getNumParamDeclNoTransform() {
+    return getParamDeclListNoTransform().getNumChildNoTransform();
   }
   /**
-   * Retrieves the element at index {@code i} in the ParamStmt list.
+   * Retrieves the element at index {@code i} in the ParamDecl list.
    * @param i Index of the element to return.
-   * @return The element at position {@code i} in the ParamStmt list.
+   * @return The element at position {@code i} in the ParamDecl list.
    * @apilevel high-level
    */
-  public ParamStmt getParamStmt(int i) {
-    return (ParamStmt) getParamStmtList().getChild(i);
+  public ParamDecl getParamDecl(int i) {
+    return (ParamDecl) getParamDeclList().getChild(i);
   }
   /**
-   * Check whether the ParamStmt list has any children.
+   * Check whether the ParamDecl list has any children.
    * @return {@code true} if it has at least one child, {@code false} otherwise.
    * @apilevel high-level
    */
-  public boolean hasParamStmt() {
-    return getParamStmtList().getNumChild() != 0;
+  public boolean hasParamDecl() {
+    return getParamDeclList().getNumChild() != 0;
   }
   /**
-   * Append an element to the ParamStmt list.
-   * @param node The element to append to the ParamStmt list.
+   * Append an element to the ParamDecl list.
+   * @param node The element to append to the ParamDecl list.
    * @apilevel high-level
    */
-  public void addParamStmt(ParamStmt node) {
-    List<ParamStmt> list = (parent == null) ? getParamStmtListNoTransform() : getParamStmtList();
+  public void addParamDecl(ParamDecl node) {
+    List<ParamDecl> list = (parent == null) ? getParamDeclListNoTransform() : getParamDeclList();
     list.addChild(node);
   }
   /** @apilevel low-level 
    */
-  public void addParamStmtNoTransform(ParamStmt node) {
-    List<ParamStmt> list = getParamStmtListNoTransform();
+  public void addParamDeclNoTransform(ParamDecl node) {
+    List<ParamDecl> list = getParamDeclListNoTransform();
     list.addChild(node);
   }
   /**
-   * Replaces the ParamStmt list element at index {@code i} with the new node {@code node}.
+   * Replaces the ParamDecl list element at index {@code i} with the new node {@code node}.
    * @param node The new node to replace the old list element.
    * @param i The list index of the node to be replaced.
    * @apilevel high-level
    */
-  public void setParamStmt(ParamStmt node, int i) {
-    List<ParamStmt> list = getParamStmtList();
+  public void setParamDecl(ParamDecl node, int i) {
+    List<ParamDecl> list = getParamDeclList();
     list.setChild(node, i);
   }
   /**
-   * Retrieves the ParamStmt list.
-   * @return The node representing the ParamStmt list.
+   * Retrieves the ParamDecl list.
+   * @return The node representing the ParamDecl list.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.ListChild(name="ParamStmt")
-  public List<ParamStmt> getParamStmtList() {
-    List<ParamStmt> list = (List<ParamStmt>) getChild(0);
+  @ASTNodeAnnotation.ListChild(name="ParamDecl")
+  public List<ParamDecl> getParamDeclList() {
+    List<ParamDecl> list = (List<ParamDecl>) getChild(0);
     return list;
   }
   /**
-   * Retrieves the ParamStmt list.
+   * Retrieves the ParamDecl list.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the ParamStmt list.
+   * @return The node representing the ParamDecl list.
    * @apilevel low-level
    */
-  public List<ParamStmt> getParamStmtListNoTransform() {
-    return (List<ParamStmt>) getChildNoTransform(0);
+  public List<ParamDecl> getParamDeclListNoTransform() {
+    return (List<ParamDecl>) getChildNoTransform(0);
   }
   /**
-   * @return the element at index {@code i} in the ParamStmt list without
+   * @return the element at index {@code i} in the ParamDecl list without
    * triggering rewrites.
    */
-  public ParamStmt getParamStmtNoTransform(int i) {
-    return (ParamStmt) getParamStmtListNoTransform().getChildNoTransform(i);
+  public ParamDecl getParamDeclNoTransform(int i) {
+    return (ParamDecl) getParamDeclListNoTransform().getChildNoTransform(i);
   }
   /**
-   * Retrieves the ParamStmt list.
-   * @return The node representing the ParamStmt list.
+   * Retrieves the ParamDecl list.
+   * @return The node representing the ParamDecl list.
    * @apilevel high-level
    */
-  public List<ParamStmt> getParamStmts() {
-    return getParamStmtList();
+  public List<ParamDecl> getParamDecls() {
+    return getParamDeclList();
   }
   /**
-   * Retrieves the ParamStmt list.
+   * Retrieves the ParamDecl list.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The node representing the ParamStmt list.
+   * @return The node representing the ParamDecl list.
    * @apilevel low-level
    */
-  public List<ParamStmt> getParamStmtsNoTransform() {
-    return getParamStmtListNoTransform();
+  public List<ParamDecl> getParamDeclsNoTransform() {
+    return getParamDeclListNoTransform();
   }
 }

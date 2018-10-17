@@ -334,15 +334,28 @@ protected boolean unknownDecl_visited = false;
     return true;
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:4
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:11
    * @apilevel internal
    */
   public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
-    int childIndex = this.getIndexOfChild(_callerNode);
-    return unknownDecl();
+    if (_callerNode == getFunListNoTransform()) {
+      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:54
+      int childIndex = _callerNode.getIndexOfChild(_childNode);
+      {
+      		for (int i = 0; i < getNumFun(); i++) {
+      			if (getFun(i).getIdDecl().getID().equals(name))
+      				return getFun(i).getIdDecl();
+      		}
+      	return unknownDecl();
+      	}
+    }
+    else {
+      int index = this.getIndexOfChild(_callerNode);
+      return unknownDecl();
+    }
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:4
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:11
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute lookup
    */

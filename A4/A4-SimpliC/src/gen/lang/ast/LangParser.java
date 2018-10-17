@@ -22,8 +22,8 @@ public class LangParser extends Parser {
 		static public final short SUB = 9;
 		static public final short RP = 10;
 		static public final short LP = 11;
-		static public final short COMMA = 12;
-		static public final short ID = 13;
+		static public final short ID = 12;
+		static public final short COMMA = 13;
 		static public final short NUMERAL = 14;
 		static public final short INT = 15;
 		static public final short IF = 16;
@@ -50,8 +50,8 @@ public class LangParser extends Parser {
 			"SUB",
 			"RP",
 			"LP",
-			"COMMA",
 			"ID",
+			"COMMA",
 			"NUMERAL",
 			"INT",
 			"IF",
@@ -68,32 +68,32 @@ public class LangParser extends Parser {
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9pDbqbm5KKOnx#PUO4O4Xz4881XoHu28I28kACeRg2okA2YuiNI0sNfGJseuU15o$90QLc" +
-		"UBBrWMMMLUh3KAhrObajaXx2PW20eg0W2KRRsr$qwBpFTyv8O8kNxrt##$hxltylqTC$h4S" +
-		"aiLATyo59uXnEhaPbIAtKo6k#a3oc2TpknxZgJyFvq8KDWiHEhaJ6cnb2vGVtWGcwJiNAbr" +
-		"CibibIkbIla0fcVeYf6jI2c6eRgBnTo3PphHBjSCBukcUT4JxX0TK9kTAB7NJ2Zn#LM9thC" +
-		"mrhucnCxwk5NTPIdb8mTSK6FH#H19$g72v4S4pZi0eLX0h#xG66OmDykK1WcyBqFQO3TQwX" +
-		"5PakvZGjNxxdpvCT2ddklkLq#Q6zNefzAgP0gcQws#q2xFQOTgNs3WOvdfm$Qt1dhOuA87S" +
-		"ys7sYtnRJJj6#msGUvpJ7jfTetsEI3t2QqrKOxGYwMuJQpqGVQZMXdvBKtsym67vA1OoKo#" +
-		"rDhRxUPtkPeXm$wt44xaczdYPsZTXzes$FQovII9fjPvuDTjGxjFKOhweps3RQcu8pQcczt" +
-		"6VO#6#$jNjRxaELS3zBRGRcVwsbvm6QsfE0q$4NzR7X8dOKcBdV6rkzKoSejj7IMCTq5o#H" +
-		"2F3sAaiIO6kChDAT86N7AEl9xivbIMQHxIsylDrFdadCoSiwv7#EGKJAHgr3U4uU9xo6#H#" +
-		"sEmyHt4z#jEkCmyKxYdQeZ3XFl8DwXVjAGYsIyDCiinY9uKEtJICJt6TOavdkEsgkHqEtDK" +
-		"IOxsd6EFyNnhtBywnp$9iTVwFYBLPjaz0ZaORqFLPi6NcX6jLzzf$QR$RaShyte7g9qW3L#" +
-		"mCJlDLTD$RlSNA#6ryE0LY9QBv8Xd0YA#R$FyczUPjPpLePJgvmv64VTIcPYWdcgVfrQwWp" +
-		"hfOvVOmhwYW8rQb9hH2bz#AeAD6FwLDNqkwsQGLALeQhjbygTbVGUiuFJ8s$gOV1$fv8IHb" +
-		"yQMqCJPH8dWL6SZHNFjv1Uj$elSxINsaz$jFW5jOCrdjxwE2$QN7vGj9nrIhdtkjYz3sZ#J" +
-		"9$TgwW$u#lMbl3sAksbpwmPNudvVrLeitrfkzirlGniBUWvoTLlC7qszT5d2IWrjkTUakkt" +
-		"IgffAGlhOQDCvgfRQouyAXJz735AhpSxYdfs9hsbjzVpj0QQA$WU6RISVGxdDQxuzH5tvxk" +
-		"03hPusl$QZ$HQe#SwCogpRl2cvaObq#rTwVKuniGQJBp9ngUPgtdkkRkmzwBNzefMVRfHwX" +
-		"G7dMVXgoOhvXJJYFyDTe58ztc7aOay2L#4Rv0VWNsFmmhd$UXJx6FOvuctK7uQkmJx2h4ca" +
-		"GodeU0TobzXFy2#H1vzy0Ns1UmMU8Xo02iepyCUWyrm9NfEOfawBDzC8RdeTUmY#1fy53u7" +
-		"LyDtoRqDtwVyCNLcOFdMviGdqHpykPGNmy$XKyJc4zEdj6VWJFWot41yAVKQA7DobJMGUv4" +
-		"kueyGr$V2$6Nufes6moU8hI0s7irdsEdugoX$X7qJ#oLSIvav2jTJvXGUqaV8DqZOsMgcLn" +
-		"y#mz6jal#LwsUGyyDlSpOAj4qZVSwsjjK#qvEshMPRTvtDFsxjXpO$qlh7qjkDFecLssFzV" +
-		"TrJ3akSiNGK7cTaxrUMnM87R6objQji$72FHbR7z5qfxIe$bYbF#k5RiVRQaZdpcyLk2lWQ" +
-		"q0pPRnbEdI6CUAy7CEJz6rZgSf7bK1YnOpIBU3jdE7k7C3AxRngs0Tj4h0NRWb#LPy0UZnm" +
-		"6x7o1aMN0ko2ACM27HZ38inA$adxr#Q0QZeErSCO$SlgQsG==");
+		"U9p5brji5bKGnsTtlrheXGeMMg7S#fLoAr2eW7T4H5HGGUe5KT4depwG61DzCV4INpG#QQA" +
+		"F9lfYV3AQg8cH5r#yLEvtiEMEADuGKRIilpDx#dLtptxzlhO4Tp8pvypyvypisNFETpwHt8" +
+		"Rm7vSafp98sFBI8IqoJSRHE##ITAgyEs7hYvb2xqoQf4BbVGbRNXeruZAv9Vm#JJ92hfHMg" +
+		"PG5qYbBv5ePARTceAvJr8W2gXhKNscI6rNUbB2UIvECKBaiOVqpJQ2CN9wmdaqJSsFa7Gdh" +
+		"7mvjLdawOVlTeP#CPCxZjj$IH4OZ7qvOVqsJIByiq2zfmb#G1VevJVWBia1$fqbMgfI4zJk" +
+		"NPBgiGlQjedbIR#s2TBuxNvxlZbmmeE#WIyA3xCypIHfaghI7#rnIxBuOTgxr3BMU0ovfZW" +
+		"En70jjFNjTKknUiCq66uPXh$NiT8drqelCotp5$XjUi9uT6MIyEsIqJ93BLTvcxTjTqXgsw" +
+		"wvRpAuJcMKzsroI#y5kKsodOiLw1fgZ$Ivfv7uTPvsEyw2TepqkoKDWzoXslSqPURQufDuj" +
+		"clcKmOQdh6UtIuhThRDpbygrrZFGkspDe1$27oCfzh7sNIwfTvV47cjVNLWjYwHDwkHswxu" +
+		"NhfLHMaDLeg8PyVN9EDdrkgj8t5pMKoDh2haonYEoQAvoV2cF3Djt94uoLYOZpOmU2G$7IJ" +
+		"s7rNCuF1GdzHnIpw6m9qxgwL5FJzWT9$LqgwSxF6v8hf29CaUkKjlnI8R732KynwpC9sR$Q" +
+		"cn73IMmHn4paKdi#5H$Tgf$VQg$DDLVaUhVcUhVa#YFIVIQmYvgoka#sK25NQOF#tADiONV" +
+		"uZK#q#uAJwW#4Px4UWEI7Imtwtf#9BRq7u0zHWWOju8xGoM$#YCv2QjPYTDa52lJd5rZc9d" +
+		"nZDp4$4pYssV5r6bCJT4ODw958wep8sPbHZHeH3uHuQAg5TLG0fNFo3xKZEMXQXJLKXQgLF" +
+		"LHnhgBaJ4C3GfvoL3qoa5LWMhaDEnVHPEbdhq$ZiZ68lWQSteEriTlVfYLPxZO$w4UynIlf" +
+		"muQ73RoHB9K3UQDglZjCktYurOLi7K6Isz8ypUedCq5xFHIEGSphiMMDKS3hWL3jOP2#vJA" +
+		"6SOUYuslbYdSuvgjjnMU8JDrhBRYDO4girwGJYvRGolxqkRA6azt$31yHS#QY#PBVTDBx55" +
+		"RQKzgzh5bOcMkYxt4$MGleAPchNMQgL2gzMrcqpAsUVOz33TQMws#XzaRpONtdnvR#NCumH" +
+		"vz8Rh9ZELISW8szvq9y49u2VrUz2fxs#7MH4qYJyElm6#B#AFG7u1RBn9yWNu2$JnsSDwpw" +
+		"7RqwzXcSlLQJFjTsj#WFqI$Yh#JzYRqasXkzXx$G7mFRg2z37q6fawVypR0dbkAvhxhumlU" +
+		"Gg#1UGN$STZaVGD#7zzxC3dyJuXPZkwARcu1DUHMs7ybr2lFOCEVMqdxERW3VWtUYdqjSQD" +
+		"fcxiiOth4oZdiZs5$XtuLSVn32#hWZTXuDy$yBdoEvhtzkRG$HlEFKxw4DzD#6SrDtlyK$W" +
+		"pSXMZ#SsFv82Vjjp0tnAdmegZlVntfG8pEOk9h8#qjDfgnpjknvjZOdHPNRt5FMNzV$wliS" +
+		"ODDiVR1$hRtOgpTdOpnFYfUPt3CvbqNivssjerMlsJjP$inycOCt#kEcwl8iCrFzltLTgok" +
+		"f5sV3luZUEmcm#mmJeCyEi#ajs5hezsAZjYqAonNmW6djk4ApkuSTsyV3jXT7Xpmc#bpbdX" +
+		"mm5VjOy$iw1Hxx7E10yiUEp#8iSVE362lm4tqcyWvaROv6yR3BN3xVy2SlDi=");
 
 	static public class SyntaxError extends RuntimeException { public SyntaxError(String msg) {super(msg);}}
 	// Disable syntax error recovery
@@ -237,21 +237,21 @@ public class LangParser extends Parser {
 					final List a = (List) _symbol_a.value;
 					 return new Param(a);
 			}
-			case 20: // param_list = param_stmt.a
+			case 20: // param_list = param_decl.a
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
-					final ParamStmt a = (ParamStmt) _symbol_a.value;
+					final ParamDecl a = (ParamDecl) _symbol_a.value;
 					 return new List().add(a);
 			}
-			case 21: // param_list = param_list.a COMMA param_stmt.b
+			case 21: // param_list = param_list.a COMMA param_decl.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final List a = (List) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 3];
-					final ParamStmt b = (ParamStmt) _symbol_b.value;
+					final ParamDecl b = (ParamDecl) _symbol_b.value;
 					 return a.add(b);
 			}
-			case 23: // param_decl = type_decl.a id_decl.b
+			case 22: // param_decl = type_decl.a id_decl.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final TypeDecl a = (TypeDecl) _symbol_a.value;
@@ -259,13 +259,13 @@ public class LangParser extends Parser {
 					final IdDecl b = (IdDecl) _symbol_b.value;
 					 return new ParamDecl(a, b);
 			}
-			case 24: // expr_list = expr.a
+			case 23: // expr_list = expr.a
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
 					 return new List().add(a);
 			}
-			case 25: // expr_list = expr_list.a COMMA expr.b
+			case 24: // expr_list = expr_list.a COMMA expr.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final List a = (List) _symbol_a.value;
@@ -273,7 +273,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return a.add(b);
 			}
-			case 26: // expr = expr.a NEQUAL comp_expr.b
+			case 25: // expr = expr.a NEQUAL comp_expr.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -281,7 +281,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new NotEqual(a, b);
 			}
-			case 27: // expr = expr.a EQUAL comp_expr.b
+			case 26: // expr = expr.a EQUAL comp_expr.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -289,13 +289,13 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Equal(a, b);
 			}
-			case 28: // expr = comp_expr.a
+			case 27: // expr = comp_expr.a
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
 					 return a;
 			}
-			case 29: // comp_expr = comp_expr.a LESS bin_expr.b
+			case 28: // comp_expr = comp_expr.a LESS bin_expr.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -303,7 +303,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Less(a, b);
 			}
-			case 30: // comp_expr = comp_expr.a GREATER bin_expr.b
+			case 29: // comp_expr = comp_expr.a GREATER bin_expr.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -311,7 +311,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Greater(a, b);
 			}
-			case 31: // comp_expr = comp_expr.a LEQUAL bin_expr.b
+			case 30: // comp_expr = comp_expr.a LEQUAL bin_expr.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -319,7 +319,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new LessEqual(a, b);
 			}
-			case 32: // comp_expr = comp_expr.a GEQUAL bin_expr.b
+			case 31: // comp_expr = comp_expr.a GEQUAL bin_expr.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -327,13 +327,13 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new GreaterEqual(a, b);
 			}
-			case 33: // comp_expr = bin_expr.a
+			case 32: // comp_expr = bin_expr.a
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
 					 return a;
 			}
-			case 35: // bin_expr = bin_expr.a PLUS term.b
+			case 34: // bin_expr = bin_expr.a PLUS term.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -341,7 +341,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Plus(a, b);
 			}
-			case 36: // bin_expr = bin_expr.a SUB term.b
+			case 35: // bin_expr = bin_expr.a SUB term.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -349,13 +349,13 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Sub(a, b);
 			}
-			case 37: // bin_expr = term.a
+			case 36: // bin_expr = term.a
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
 					 return a;
 			}
-			case 38: // term = term.a MUL factor.b
+			case 37: // term = term.a MUL factor.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -363,7 +363,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Mul(a, b);
 			}
-			case 39: // term = term.a DIV factor.b
+			case 38: // term = term.a DIV factor.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -371,7 +371,7 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Div(a, b);
 			}
-			case 40: // term = term.a MOD factor.b
+			case 39: // term = term.a MOD factor.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
 					final Expr a = (Expr) _symbol_a.value;
@@ -379,60 +379,59 @@ public class LangParser extends Parser {
 					final Expr b = (Expr) _symbol_b.value;
 					 return new Mod(a, b);
 			}
-			case 41: // term = factor.b
+			case 40: // term = factor.b
 			{
 					final Symbol _symbol_b = _symbols[offset + 1];
 					final Expr b = (Expr) _symbol_b.value;
 					 return b;
 			}
-			case 42: // factor = LP expr.a RP
+			case 41: // factor = LP expr.a RP
 			{
 					final Symbol _symbol_a = _symbols[offset + 2];
 					final Expr a = (Expr) _symbol_a.value;
 					 return a;
 			}
-			case 46: // fun_call = ID.id LP RP
+			case 45: // fun_call = ID.id LP RP
 			{
 					final Symbol id = _symbols[offset + 1];
 					 return new FunCall(new IdUse(id), new List());
 			}
-			case 47: // fun_call = ID.id LP expr_list.a RP
+			case 46: // fun_call = ID.id LP expr_list.a RP
 			{
 					final Symbol id = _symbols[offset + 1];
 					final Symbol _symbol_a = _symbols[offset + 3];
 					final List a = (List) _symbol_a.value;
 					 return new FunCall(new IdUse(id), a);
 			}
-			case 48: // literal = NUMERAL.i
+			case 47: // literal = NUMERAL.i
 			{
 					final Symbol i = _symbols[offset + 1];
 					 return new Literal(i);
 			}
-			case 49: // type_decl = INT.i
+			case 48: // type_decl = INT.i
 			{
 					final Symbol i = _symbols[offset + 1];
 					 return new TypeDecl(i);
 			}
-			case 50: // id_use = ID.id
+			case 49: // id_use = ID.id
 			{
 					final Symbol id = _symbols[offset + 1];
 					 return new IdUse(id);
 			}
-			case 51: // id_decl = ID.id
+			case 50: // id_decl = ID.id
 			{
 					final Symbol id = _symbols[offset + 1];
 					 return new IdDecl(id);
 			}
-			case 34: // bin_expr = 
+			case 33: // bin_expr = 
 			{
 				return new Symbol(null);
 			}
 			case 8: // stmt = decl
 			case 9: // stmt = assign
-			case 22: // param_stmt = param_decl
-			case 43: // factor = id_use
-			case 44: // factor = fun_call
-			case 45: // factor = literal
+			case 42: // factor = id_use
+			case 43: // factor = fun_call
+			case 44: // factor = literal
 			{
 				return _symbols[offset + 1];
 			}

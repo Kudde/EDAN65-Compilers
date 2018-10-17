@@ -24,9 +24,9 @@ aspect PrettyPrint {
 
 	public void Param.prettyPrint(PrintStream out, String ind) {
 		out.print("(");
-		for(int i = 0; i < getNumParamStmt(); i++) {
-			getParamStmt(i).prettyPrint(out, ind);
-				if(i != getNumParamStmt() - 1)
+		for(int i = 0; i < getNumParamDecl(); i++) {
+			getParamDecl(i).prettyPrint(out, ind);
+				if(i != getNumParamDecl() - 1)
 					out.print(", ");
 		}
 		out.print(")");

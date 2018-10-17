@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.TreeSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:20
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:19
  * @astdecl IdDecl : Expr ::= <ID:String>;
  * @production IdDecl : {@link Expr} ::= <span class="component">&lt;ID:String&gt;</span>;
 
@@ -70,23 +70,25 @@ public class IdDecl extends Expr implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    isMultiDeclared_reset();
     isUnknown_reset();
+    lookup_String_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:33
+   * @declaredat ASTNode:35
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:37
+   * @declaredat ASTNode:39
    */
   public IdDecl clone() throws CloneNotSupportedException {
     IdDecl node = (IdDecl) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:42
+   * @declaredat ASTNode:44
    */
   public IdDecl copy() {
     try {
@@ -106,7 +108,7 @@ public class IdDecl extends Expr implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:61
+   * @declaredat ASTNode:63
    */
   @Deprecated
   public IdDecl fullCopy() {
@@ -117,7 +119,7 @@ public class IdDecl extends Expr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:71
+   * @declaredat ASTNode:73
    */
   public IdDecl treeCopyNoTransform() {
     IdDecl tree = (IdDecl) copy();
@@ -138,7 +140,7 @@ public class IdDecl extends Expr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:91
+   * @declaredat ASTNode:93
    */
   public IdDecl treeCopy() {
     IdDecl tree = (IdDecl) copy();
@@ -154,7 +156,7 @@ public class IdDecl extends Expr implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:105
+   * @declaredat ASTNode:107
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node) && (tokenString_ID == ((IdDecl) node).tokenString_ID);    
@@ -198,6 +200,42 @@ public class IdDecl extends Expr implements Cloneable {
     return tokenString_ID != null ? tokenString_ID : "";
   }
 /** @apilevel internal */
+protected boolean isMultiDeclared_visited = false;
+  /** @apilevel internal */
+  private void isMultiDeclared_reset() {
+    isMultiDeclared_computed = false;
+    isMultiDeclared_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean isMultiDeclared_computed = false;
+
+  /** @apilevel internal */
+  protected boolean isMultiDeclared_value;
+
+  /**
+   * @attribute syn
+   * @aspect NameAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:10
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:10")
+  public boolean isMultiDeclared() {
+    ASTState state = state();
+    if (isMultiDeclared_computed) {
+      return isMultiDeclared_value;
+    }
+    if (isMultiDeclared_visited) {
+      throw new RuntimeException("Circular definition of attribute IdDecl.isMultiDeclared().");
+    }
+    isMultiDeclared_visited = true;
+    state().enterLazyAttribute();
+    isMultiDeclared_value = lookup(getID()) != this;
+    isMultiDeclared_computed = true;
+    state().leaveLazyAttribute();
+    isMultiDeclared_visited = false;
+    return isMultiDeclared_value;
+  }
+/** @apilevel internal */
 protected boolean isUnknown_visited = false;
   /** @apilevel internal */
   private void isUnknown_reset() {
@@ -232,5 +270,64 @@ protected boolean isUnknown_visited = false;
     state().leaveLazyAttribute();
     isUnknown_visited = false;
     return isUnknown_value;
+  }
+  /**
+   * @attribute inh
+   * @aspect NameAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:11
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:11")
+  public IdDecl lookup(String name) {
+    Object _parameters = name;
+    if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
+    if (lookup_String_values == null) lookup_String_values = new java.util.HashMap(4);
+    ASTState state = state();
+    if (lookup_String_values.containsKey(_parameters)) {
+      return (IdDecl) lookup_String_values.get(_parameters);
+    }
+    if (lookup_String_visited.contains(_parameters)) {
+      throw new RuntimeException("Circular definition of attribute IdDecl.lookup(String).");
+    }
+    lookup_String_visited.add(_parameters);
+    state().enterLazyAttribute();
+    IdDecl lookup_String_value = getParent().Define_lookup(this, null, name);
+    lookup_String_values.put(_parameters, lookup_String_value);
+    state().leaveLazyAttribute();
+    lookup_String_visited.remove(_parameters);
+    return lookup_String_value;
+  }
+/** @apilevel internal */
+protected java.util.Set lookup_String_visited;
+  /** @apilevel internal */
+  private void lookup_String_reset() {
+    lookup_String_values = null;
+    lookup_String_visited = null;
+  }
+  /** @apilevel internal */
+  protected java.util.Map lookup_String_values;
+
+  /** @apilevel internal */
+  protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
+    // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\Errors.jrag:38
+    if (isMultiDeclared()) {
+      {
+        Program target = (Program) (program());
+        java.util.Set<ASTNode> contributors = _map.get(target);
+        if (contributors == null) {
+          contributors = new java.util.LinkedHashSet<ASTNode>();
+          _map.put((ASTNode) target, contributors);
+        }
+        contributors.add(this);
+      }
+    }
+    super.collect_contributors_Program_errors(_root, _map);
+  }
+  /** @apilevel internal */
+  protected void contributeTo_Program_errors(Set<ErrorMessage> collection) {
+    super.contributeTo_Program_errors(collection);
+    if (isMultiDeclared()) {
+      collection.add(error("symbol '" + getID() + "' is already declared!"));
+    }
   }
 }
