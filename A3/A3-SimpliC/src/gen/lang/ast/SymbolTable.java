@@ -1,14 +1,14 @@
 package lang.ast;
 
-import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;
 /**
  * @ast class
  * @aspect NameAnalysis
- * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/NameAnalysis.jrag:5
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\NameAnalysis.jrag:5
  */
 public class SymbolTable extends java.lang.Object {
   

@@ -1,33 +1,33 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/lang.ast:1
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\lang.ast:1
  * @astdecl Program : ASTNode ::= Fun*;
  * @production Program : {@link ASTNode} ::= <span class="component">{@link Fun}*</span>;
 
  */
 public class Program extends ASTNode<ASTNode> implements Cloneable {
   /**
-   * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/Visitor.jrag:54
-   */
-  public Object accept(Visitor visitor, Object data) {
-	return visitor.visit(this, data);
-	}
-  /**
    * @param err where to write error messages
    * @aspect NameAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/NameAnalysis.jrag:56
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\NameAnalysis.jrag:56
    */
   public void checkNames(PrintStream err) {
 		SymbolTable symbols = new SymbolTable();
 		checkNames(err, symbols);
+	}
+  /**
+   * @aspect Visitor
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\Visitor.jrag:54
+   */
+  public Object accept(Visitor visitor, Object data) {
+	return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1

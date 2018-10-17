@@ -1,41 +1,41 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/lang.ast:36
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\lang.ast:36
  * @astdecl IdDecl : ASTNode ::= <Decl:String>;
  * @production IdDecl : {@link ASTNode} ::= <span class="component">&lt;Decl:String&gt;</span>;
 
  */
 public class IdDecl extends ASTNode<ASTNode> implements Cloneable {
   /**
-   * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/Visitor.jrag:130
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
-  /**
-   * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/PrettyPrint.jrag:163
-   */
-  public void prettyPrint(PrintStream out, String ind) {
-		out.print(getDecl());
-	}
-  /**
    * @aspect NameAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A3/A3-SimpliC/src/jastadd/NameAnalysis.jrag:92
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\NameAnalysis.jrag:92
    */
   public void checkNames(PrintStream err, SymbolTable symbols) {
 		if (!symbols.declare(getDecl())) {
 			err.format("Error at line %d: symbol \'%s\' is already declared!", getLine(), getDecl());
 			err.println();
 		}
+	}
+  /**
+   * @aspect PrettyPrint
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\PrettyPrint.jrag:163
+   */
+  public void prettyPrint(PrintStream out, String ind) {
+		out.print(getDecl());
+	}
+  /**
+   * @aspect Visitor
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A3\\A3-SimpliC\\src\\jastadd\\Visitor.jrag:130
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1

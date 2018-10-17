@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestPrettyPrinting" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-10-11T14:19:27" hostname="taco.local" time="0.005">
+<testsuite name="lang.TestPrettyPrinting" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-10-11T15:37:01" hostname="KevsMonsterPC" time="0.043">
   <properties/>
-  <testcase name="runTest[print4.in]" classname="lang.TestPrettyPrinting" time="0.002"/>
-  <testcase name="runTest[print1.in]" classname="lang.TestPrettyPrinting" time="0.001"/>
-  <testcase name="runTest[print2.in]" classname="lang.TestPrettyPrinting" time="0.001"/>
-  <testcase name="runTest[print3.in]" classname="lang.TestPrettyPrinting" time="0.001"/>
+  <testcase name="runTest[print1.in]" classname="lang.TestPrettyPrinting" time="0.011"/>
+  <testcase name="runTest[print2.in]" classname="lang.TestPrettyPrinting" time="0.007"/>
+  <testcase name="runTest[print3.in]" classname="lang.TestPrettyPrinting" time="0.012"/>
+  <testcase name="runTest[print4.in]" classname="lang.TestPrettyPrinting" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestVisitor" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-10-11T14:19:27" hostname="taco.local" time="0.004">
+<testsuite name="lang.TestVisitor" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-10-11T15:37:01" hostname="KevsMonsterPC" time="0.043">
   <properties/>
-  <testcase name="runTest[2.in]" classname="lang.TestVisitor" time="0.002"/>
-  <testcase name="runTest[3.in]" classname="lang.TestVisitor" time="0.001"/>
-  <testcase name="runTest[1.in]" classname="lang.TestVisitor" time="0.001"/>
+  <testcase name="runTest[1.in]" classname="lang.TestVisitor" time="0.013"/>
+  <testcase name="runTest[2.in]" classname="lang.TestVisitor" time="0.019"/>
+  <testcase name="runTest[3.in]" classname="lang.TestVisitor" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

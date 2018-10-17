@@ -1,0 +1,8 @@
+int print2(int i) {
+	while (1) {
+		int x = y;
+	}
+	int k = 2;
+}
+
+
