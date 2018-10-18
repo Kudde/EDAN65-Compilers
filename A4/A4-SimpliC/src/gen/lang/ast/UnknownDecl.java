@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.TreeSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:20
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:25
  * @astdecl UnknownDecl : IdDecl ::= <ID:String>;
  * @production UnknownDecl : {@link IdDecl};
 
@@ -190,10 +190,10 @@ protected boolean isUnknown_visited = false;
   /**
    * @attribute syn
    * @aspect UnknownDecl
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\UnknownDecl.jrag:8
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:27
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\UnknownDecl.jrag:7")
+  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:26")
   public boolean isUnknown() {
     ASTState state = state();
     if (isUnknown_computed) {

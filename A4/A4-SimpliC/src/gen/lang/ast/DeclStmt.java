@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.TreeSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:11
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:16
  * @astdecl DeclStmt : Stmt ::= TypeDecl IdDecl [Expr];
  * @production DeclStmt : {@link Stmt} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span> <span class="component">[{@link Expr}]</span>;
 
@@ -280,10 +280,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:24
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:23
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:24")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:23")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);

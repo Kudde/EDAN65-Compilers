@@ -1,6 +1,7 @@
-int fun() {
+int fun(int x, int f) {
   int k;
   int y;
+  x = 2;
   while (k) {
     int k;
     y = 2;
@@ -8,6 +9,7 @@ int fun() {
       int k;
       y = 3;
       int x = 2;
+      f = 1337;
     }
   }
   int k = 2;

@@ -6,6 +6,11 @@ Block : Stmt ::= Stmt*;
 
 ParamDecl ::= TypeDecl IdDecl;
 
+abstract Type;
+IntType : Type;
+BoolType : Type;
+UnknownType : Type;
+
 abstract Stmt;
 AssignStmt: Stmt ::= IdUse Expr;
 DeclStmt: Stmt ::= TypeDecl IdDecl [Expr];

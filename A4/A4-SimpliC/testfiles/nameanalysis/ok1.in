@@ -1,6 +1,6 @@
 int fun() {
+funuse();
 }
 
 int funuse() {
-fun();
 }

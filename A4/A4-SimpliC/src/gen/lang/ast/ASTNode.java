@@ -381,15 +381,16 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    */
   public void flushAttrCache() {
     program_reset();
+    predefinedFunctions_reset();
     unknownDecl_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:301
+   * @declaredat ASTNode:302
    */
   public void flushCollectionCache() {
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:304
+   * @declaredat ASTNode:305
    */
   public ASTNode<T> clone() throws CloneNotSupportedException {
     ASTNode node = (ASTNode) super.clone();
@@ -397,7 +398,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:310
+   * @declaredat ASTNode:311
    */
   public ASTNode<T> copy() {
     try {
@@ -417,7 +418,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:329
+   * @declaredat ASTNode:330
    */
   @Deprecated
   public ASTNode<T> fullCopy() {
@@ -428,7 +429,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:339
+   * @declaredat ASTNode:340
    */
   public ASTNode<T> treeCopyNoTransform() {
     ASTNode tree = (ASTNode) copy();
@@ -449,7 +450,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:359
+   * @declaredat ASTNode:360
    */
   public ASTNode<T> treeCopy() {
     ASTNode tree = (ASTNode) copy();
@@ -467,7 +468,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
   /**
    * Performs a full traversal of the tree using getChild to trigger rewrites
    * @apilevel low-level
-   * @declaredat ASTNode:376
+   * @declaredat ASTNode:377
    */
   public void doFullTraversal() {
     for (int i = 0; i < getNumChild(); i++) {
@@ -475,7 +476,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
     }
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:382
+   * @declaredat ASTNode:383
    */
   protected boolean is$Equal(ASTNode n1, ASTNode n2) {
     if (n1 == null && n2 == null) return true;
@@ -483,7 +484,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
     return n1.is$Equal(n2);
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:388
+   * @declaredat ASTNode:389
    */
   protected boolean is$Equal(ASTNode node) {
     if (getClass() != node.getClass()) {
@@ -556,11 +557,49 @@ protected boolean program_visited = false;
 
   /**
    * @attribute inh
-   * @aspect UnknownDecl
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\UnknownDecl.jrag:4
+   * @aspect predefinedFunctions
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:16
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\UnknownDecl.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="predefinedFunctions", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:16")
+  public List<Fun> predefinedFunctions() {
+    ASTState state = state();
+    if (predefinedFunctions_computed) {
+      return predefinedFunctions_value;
+    }
+    if (predefinedFunctions_visited) {
+      throw new RuntimeException("Circular definition of attribute ASTNode.predefinedFunctions().");
+    }
+    predefinedFunctions_visited = true;
+    state().enterLazyAttribute();
+    predefinedFunctions_value = getParent().Define_predefinedFunctions(this, null);
+    predefinedFunctions_computed = true;
+    state().leaveLazyAttribute();
+    predefinedFunctions_visited = false;
+    return predefinedFunctions_value;
+  }
+/** @apilevel internal */
+protected boolean predefinedFunctions_visited = false;
+  /** @apilevel internal */
+  private void predefinedFunctions_reset() {
+    predefinedFunctions_computed = false;
+    
+    predefinedFunctions_value = null;
+    predefinedFunctions_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean predefinedFunctions_computed = false;
+
+  /** @apilevel internal */
+  protected List<Fun> predefinedFunctions_value;
+
+  /**
+   * @attribute inh
+   * @aspect UnknownDecl
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:23
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:23")
   public UnknownDecl unknownDecl() {
     ASTState state = state();
     if (unknownDecl_computed) {
@@ -625,11 +664,31 @@ protected boolean unknownDecl_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:39
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:38
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute lookup
    */
   protected boolean canDefine_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
+    return false;
+  }
+  /** @apilevel internal */
+  public List<Fun> Define_predefinedFunctions(ASTNode _callerNode, ASTNode _childNode) {
+    ASTNode self = this;
+    ASTNode parent = getParent();
+    while (parent != null && !parent.canDefine_predefinedFunctions(self, _callerNode)) {
+      _callerNode = self;
+      self = parent;
+      parent = self.getParent();
+    }
+    return parent.Define_predefinedFunctions(self, _callerNode);
+  }
+
+  /**
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:17
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute predefinedFunctions
+   */
+  protected boolean canDefine_predefinedFunctions(ASTNode _callerNode, ASTNode _childNode) {
     return false;
   }
   /** @apilevel internal */
@@ -645,7 +704,7 @@ protected boolean unknownDecl_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\UnknownDecl.jrag:5
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\predefinedFunctions.jrag:24
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute unknownDecl
    */

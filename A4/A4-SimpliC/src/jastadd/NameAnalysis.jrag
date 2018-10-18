@@ -1,10 +1,8 @@
 aspect NameAnalysis {
 
-
 	// IdUse
 	syn IdDecl IdUse.decl() = lookup(getID());
 	inh IdDecl IdUse.lookup(String name);
-
 
 	// IdDecl
   syn boolean IdDecl.isMultiDeclared() = lookup(getID()) != this;
@@ -19,6 +17,7 @@ aspect NameAnalysis {
 		}
 		return unknownDecl();
 	}
+
   // Stmt
 	syn IdDecl Stmt.localLookup(String name) = unknownDecl();
 	syn IdDecl DeclStmt.localLookup(String name) {
@@ -52,6 +51,10 @@ aspect NameAnalysis {
 	}
 
 	eq Program.getFun().lookup(String name) {
+		for (Fun f : predefinedFunctions()) {
+			if (f.getIdDecl().getID().equals(name))
+				return f.getIdDecl();
+		}
 		for (int i = 0; i < getNumFun(); i++) {
 			if (getFun(i).getIdDecl().getID().equals(name))
 				return getFun(i).getIdDecl();

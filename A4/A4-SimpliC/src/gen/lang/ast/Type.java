@@ -7,16 +7,16 @@ import java.util.Set;
 import java.util.TreeSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:7
- * @astdecl ParamStmt : ASTNode;
- * @production ParamStmt : {@link ASTNode};
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:9
+ * @astdecl Type : ASTNode;
+ * @production Type : {@link ASTNode};
 
  */
-public abstract class ParamStmt extends ASTNode<ASTNode> implements Cloneable {
+public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public ParamStmt() {
+  public Type() {
     super();
   }
   /**
@@ -49,8 +49,8 @@ public abstract class ParamStmt extends ASTNode<ASTNode> implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:25
    */
-  public ParamStmt clone() throws CloneNotSupportedException {
-    ParamStmt node = (ParamStmt) super.clone();
+  public Type clone() throws CloneNotSupportedException {
+    Type node = (Type) super.clone();
     return node;
   }
   /**
@@ -62,7 +62,7 @@ public abstract class ParamStmt extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:36
    */
   @Deprecated
-  public abstract ParamStmt fullCopy();
+  public abstract Type fullCopy();
   /**
    * Create a deep copy of the AST subtree at this node.
    * The copy is dangling, i.e. has no parent.
@@ -70,7 +70,7 @@ public abstract class ParamStmt extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:44
    */
-  public abstract ParamStmt treeCopyNoTransform();
+  public abstract Type treeCopyNoTransform();
   /**
    * Create a deep copy of the AST subtree at this node.
    * The subtree of this node is traversed to trigger rewrites before copy.
@@ -79,5 +79,5 @@ public abstract class ParamStmt extends ASTNode<ASTNode> implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:52
    */
-  public abstract ParamStmt treeCopy();
+  public abstract Type treeCopy();
 }

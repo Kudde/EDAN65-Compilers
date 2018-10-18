@@ -29,7 +29,7 @@ import lang.ast.LangParser.SyntaxError;
 // macros
 WhiteSpace = [ ] | \t | \f | \n | \r
 ID = [a-zA-Z0-9]+
-NUMERAL = [0-9]
+NUMERAL = [0-9]+
 COMMENT = "//" .*
 %%
 

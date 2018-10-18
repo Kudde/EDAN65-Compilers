@@ -280,10 +280,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:30
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:29
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:30")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:29")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -314,10 +314,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute inh
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:29
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:28
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:29")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:28")
   public IdDecl lookup(String name) {
     Object _parameters = name;
     if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
@@ -348,19 +348,19 @@ protected java.util.Set lookup_String_visited;
   protected java.util.Map lookup_String_values;
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:11
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:9
    * @apilevel internal
    */
   public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
     if (_callerNode == getBlockNoTransform()) {
-      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:49
+      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:48
       {
       		IdDecl decl = localLookup(name);
       		return !decl.isUnknown() ? decl : lookup(name);
       	}
     }
     else if (_callerNode == getParamNoTransform()) {
-      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:44
+      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:43
       {
       		IdDecl decl = localLookup(name);
       		return !decl.isUnknown() ? decl : lookup(name);
@@ -371,7 +371,7 @@ protected java.util.Set lookup_String_visited;
     }
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:11
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:9
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute lookup
    */
