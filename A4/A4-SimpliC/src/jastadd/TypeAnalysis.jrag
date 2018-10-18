@@ -1,0 +1,20 @@
+aspect TypeAnalysis {
+
+	eq Program.getChild().typeLookup() = unknownType();
+	eq Program.getChild().argLookup() = 0;
+
+
+	inh Type Expr.typeLookup();
+	eq  Expr.getChild().typeLookup() {
+		Type t = type();
+		return !t.isUnknownType() ? t : typeLookup();
+	}
+
+	syn Type Expr.type() = unknownType();
+	syn Type Literal.type() = new IntType();
+	syn Type BoolLiteral.type() = new BoolType();
+	syn Type IdUse.type() = decl().type();
+	syn Type FunCall.type() = decl().type();
+
+	
+}

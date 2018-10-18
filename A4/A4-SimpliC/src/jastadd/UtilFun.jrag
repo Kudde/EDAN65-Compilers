@@ -1,0 +1,40 @@
+aspect predefinedFunctions {
+
+syn nta List<Fun> Program.predefinedFunctions() {
+  List<Fun> list = new List<Fun>();
+  IdDecl d = new IdDecl("print");
+  Fun f = new Fun();
+  f.setIdDecl(d);
+  list.add(f);
+  d = new IdDecl("read");
+  f = new Fun();
+  f.setIdDecl(d);
+  list.add(f);
+  return list;
+}
+
+inh List<Fun> ASTNode.predefinedFunctions();
+eq Program.getChild().predefinedFunctions() = predefinedFunctions();
+}
+
+aspect UnknownDecl {
+	syn nta UnknownDecl Program.unknownDecl() = new UnknownDecl("<unknown>");
+
+	inh UnknownDecl ASTNode.unknownDecl();
+	eq Program.getChild().unknownDecl() = unknownDecl();
+
+	syn boolean IdDecl.isUnknown() = false;
+	eq UnknownDecl.isUnknown() = true;
+}
+
+aspect UnknownType {
+	syn nta UnknownType Program.unknownType() = new UnknownType("<unknown>");
+
+	inh UnknownType ASTNode.unknownType();
+	eq Program.getChild().unknownType() = unknownType();
+
+	syn boolean Type.isUnknownType() = false;
+	eq UnknownType.isUnknownType() = true;
+
+        syn Type UnknownDecl.type() = unknownType();
+}

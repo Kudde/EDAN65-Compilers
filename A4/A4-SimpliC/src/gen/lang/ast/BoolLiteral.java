@@ -7,30 +7,16 @@ import java.io.ByteArrayOutputStream;
 import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:26
- * @astdecl Literal : Expr ::= <NUMERAL:String>;
- * @production Literal : {@link Expr} ::= <span class="component">&lt;NUMERAL:String&gt;</span>;
+ * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:27
+ * @astdecl BoolLiteral : Expr ::= <BOOLEAN:String>;
+ * @production BoolLiteral : {@link Expr} ::= <span class="component">&lt;BOOLEAN:String&gt;</span>;
 
  */
-public class Literal extends Expr implements Cloneable {
-  /**
-   * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:127
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
-  /**
-   * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:155
-   */
-  public void prettyPrint(PrintStream out, String ind) {
-		out.print(getNUMERAL());
-	}
+public class BoolLiteral extends Expr implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
-  public Literal() {
+  public BoolLiteral() {
     super();
   }
   /**
@@ -46,18 +32,18 @@ public class Literal extends Expr implements Cloneable {
    * @declaredat ASTNode:12
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"NUMERAL"},
+    name = {"BOOLEAN"},
     type = {"String"},
     kind = {"Token"}
   )
-  public Literal(String p0) {
-    setNUMERAL(p0);
+  public BoolLiteral(String p0) {
+    setBOOLEAN(p0);
   }
   /**
    * @declaredat ASTNode:20
    */
-  public Literal(beaver.Symbol p0) {
-    setNUMERAL(p0);
+  public BoolLiteral(beaver.Symbol p0) {
+    setBOOLEAN(p0);
   }
   /** @apilevel low-level 
    * @declaredat ASTNode:24
@@ -81,16 +67,16 @@ public class Literal extends Expr implements Cloneable {
   /** @apilevel internal 
    * @declaredat ASTNode:37
    */
-  public Literal clone() throws CloneNotSupportedException {
-    Literal node = (Literal) super.clone();
+  public BoolLiteral clone() throws CloneNotSupportedException {
+    BoolLiteral node = (BoolLiteral) super.clone();
     return node;
   }
   /** @apilevel internal 
    * @declaredat ASTNode:42
    */
-  public Literal copy() {
+  public BoolLiteral copy() {
     try {
-      Literal node = (Literal) clone();
+      BoolLiteral node = (BoolLiteral) clone();
       node.parent = null;
       if (children != null) {
         node.children = (ASTNode[]) children.clone();
@@ -109,7 +95,7 @@ public class Literal extends Expr implements Cloneable {
    * @declaredat ASTNode:61
    */
   @Deprecated
-  public Literal fullCopy() {
+  public BoolLiteral fullCopy() {
     return treeCopyNoTransform();
   }
   /**
@@ -119,8 +105,8 @@ public class Literal extends Expr implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:71
    */
-  public Literal treeCopyNoTransform() {
-    Literal tree = (Literal) copy();
+  public BoolLiteral treeCopyNoTransform() {
+    BoolLiteral tree = (BoolLiteral) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) children[i];
@@ -140,8 +126,8 @@ public class Literal extends Expr implements Cloneable {
    * @apilevel low-level
    * @declaredat ASTNode:91
    */
-  public Literal treeCopy() {
-    Literal tree = (Literal) copy();
+  public BoolLiteral treeCopy() {
+    BoolLiteral tree = (BoolLiteral) copy();
     if (children != null) {
       for (int i = 0; i < children.length; ++i) {
         ASTNode child = (ASTNode) getChild(i);
@@ -157,45 +143,45 @@ public class Literal extends Expr implements Cloneable {
    * @declaredat ASTNode:105
    */
   protected boolean is$Equal(ASTNode node) {
-    return super.is$Equal(node) && (tokenString_NUMERAL == ((Literal) node).tokenString_NUMERAL);    
+    return super.is$Equal(node) && (tokenString_BOOLEAN == ((BoolLiteral) node).tokenString_BOOLEAN);    
   }
   /**
-   * Replaces the lexeme NUMERAL.
-   * @param value The new value for the lexeme NUMERAL.
+   * Replaces the lexeme BOOLEAN.
+   * @param value The new value for the lexeme BOOLEAN.
    * @apilevel high-level
    */
-  public void setNUMERAL(String value) {
-    tokenString_NUMERAL = value;
+  public void setBOOLEAN(String value) {
+    tokenString_BOOLEAN = value;
   }
   /** @apilevel internal 
    */
-  protected String tokenString_NUMERAL;
+  protected String tokenString_BOOLEAN;
   /**
    */
-  public int NUMERALstart;
+  public int BOOLEANstart;
   /**
    */
-  public int NUMERALend;
+  public int BOOLEANend;
   /**
-   * JastAdd-internal setter for lexeme NUMERAL using the Beaver parser.
-   * @param symbol Symbol containing the new value for the lexeme NUMERAL
+   * JastAdd-internal setter for lexeme BOOLEAN using the Beaver parser.
+   * @param symbol Symbol containing the new value for the lexeme BOOLEAN
    * @apilevel internal
    */
-  public void setNUMERAL(beaver.Symbol symbol) {
+  public void setBOOLEAN(beaver.Symbol symbol) {
     if (symbol.value != null && !(symbol.value instanceof String))
-    throw new UnsupportedOperationException("setNUMERAL is only valid for String lexemes");
-    tokenString_NUMERAL = (String)symbol.value;
-    NUMERALstart = symbol.getStart();
-    NUMERALend = symbol.getEnd();
+    throw new UnsupportedOperationException("setBOOLEAN is only valid for String lexemes");
+    tokenString_BOOLEAN = (String)symbol.value;
+    BOOLEANstart = symbol.getStart();
+    BOOLEANend = symbol.getEnd();
   }
   /**
-   * Retrieves the value for the lexeme NUMERAL.
-   * @return The value for the lexeme NUMERAL.
+   * Retrieves the value for the lexeme BOOLEAN.
+   * @return The value for the lexeme BOOLEAN.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Token(name="NUMERAL")
-  public String getNUMERAL() {
-    return tokenString_NUMERAL != null ? tokenString_NUMERAL : "";
+  @ASTNodeAnnotation.Token(name="BOOLEAN")
+  public String getBOOLEAN() {
+    return tokenString_BOOLEAN != null ? tokenString_BOOLEAN : "";
   }
 /** @apilevel internal */
 protected boolean type_visited = false;
@@ -215,21 +201,21 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:14
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:15
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:14")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:15")
   public Type type() {
     ASTState state = state();
     if (type_computed) {
       return type_value;
     }
     if (type_visited) {
-      throw new RuntimeException("Circular definition of attribute Literal.type().");
+      throw new RuntimeException("Circular definition of attribute BoolLiteral.type().");
     }
     type_visited = true;
     state().enterLazyAttribute();
-    type_value = new IntType();
+    type_value = new BoolType();
     type_computed = true;
     state().leaveLazyAttribute();
     type_visited = false;

@@ -10,9 +10,10 @@
 :};
 
 %terminals SEMMIC, LP, RP, LCARET, RCARET, COMMA;
-%terminals SUB, PLUS, DIV, MUL, MOD, ID, INT, NUMERAL, ASSIGN;
+%terminals SUB, PLUS, DIV, MUL, MOD, ID, INT, NUMERAL, BOOLEAN, ASSIGN;
 %terminals EQUAL, NEQUAL, LESS, GREATER, LEQUAL, GEQUAL;
 %terminals IF, ELSE, WHILE, RETURN;
+
 
 %typeof program = "Program";
 %typeof fun = "Fun";
@@ -38,6 +39,7 @@
 %typeof comp_expr = "Expr";
 
 %typeof literal = "Literal";
+%typeof bool_literal = "BoolLiteral";
 %typeof id_decl = "IdDecl";
 %typeof id_use = "IdUse";
 %typeof type_decl = "TypeDecl";
@@ -158,6 +160,7 @@ factor =
 	| id_use
 	| fun_call
 	| literal
+	| bool_literal
 	;
 
 fun_call =
@@ -169,7 +172,8 @@ fun_call =
 // FINALS----------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-literal = NUMERAL.i 								{: return new Literal(i); :} ;
-type_decl = INT.i 									{: return new TypeDecl(i); :} ;
-id_use = ID.id         							{: return new IdUse(id); :} ;
-id_decl = ID.id 										{: return new IdDecl(id); :} ;
+literal = NUMERAL.i 					{: return new Literal(i); :} ;
+bool_literal = BOOLEAN.i 				{: return new BoolLiteral(i); :} ;
+type_decl = INT.i 					{: return new TypeDecl(i); :} ;
+id_use = ID.id         					{: return new IdUse(id); :} ;
+id_decl = ID.id 					{: return new IdDecl(id); :} ;

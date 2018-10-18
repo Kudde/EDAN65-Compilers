@@ -30,6 +30,7 @@ import lang.ast.LangParser.SyntaxError;
 WhiteSpace = [ ] | \t | \f | \n | \r
 ID = [a-zA-Z0-9]+
 NUMERAL = [0-9]+
+BOOLEAN = "ture" | "false"
 COMMENT = "//" .*
 %%
 
@@ -62,6 +63,7 @@ COMMENT = "//" .*
 "int"         { return sym(Terminals.INT);}
 ","           { return sym(Terminals.COMMA);}
 {NUMERAL}     { return sym(Terminals.NUMERAL);}
+{BOOLEAN}     { return sym(Terminals.BOOLEAN);}
 {ID}          { return sym(Terminals.ID);}
 <<EOF>>       { return sym(Terminals.EOF);}
 

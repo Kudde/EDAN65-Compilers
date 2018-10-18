@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.ASTTests" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-10-18T11:49:41" hostname="KevsMonsterPC" time="0.045">
+<testsuite name="lang.ASTTests" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-10-18T12:57:20" hostname="taco.local" time="0.006">
   <properties/>
-  <testcase name="whiletest" classname="lang.ASTTests" time="0.035"/>
+  <testcase name="whiletest" classname="lang.ASTTests" time="0.0"/>
   <testcase name="subtest" classname="lang.ASTTests" time="0.001"/>
-  <testcase name="allexprtest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="allexprtest" classname="lang.ASTTests" time="0.0"/>
   <testcase name="funcalltest" classname="lang.ASTTests" time="0.0"/>
-  <testcase name="addtest" classname="lang.ASTTests" time="0.001"/>
-  <testcase name="funtest" classname="lang.ASTTests" time="0.0"/>
-  <testcase name="gcdtest" classname="lang.ASTTests" time="0.002"/>
-  <testcase name="decltest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="addtest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="funtest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="gcdtest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="decltest" classname="lang.ASTTests" time="0.001"/>
   <testcase name="multest" classname="lang.ASTTests" time="0.0"/>
-  <testcase name="addmultest" classname="lang.ASTTests" time="0.0"/>
-  <testcase name="divtest" classname="lang.ASTTests" time="0.001"/>
-  <testcase name="paramtest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="addmultest" classname="lang.ASTTests" time="0.001"/>
+  <testcase name="divtest" classname="lang.ASTTests" time="0.0"/>
+  <testcase name="paramtest" classname="lang.ASTTests" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

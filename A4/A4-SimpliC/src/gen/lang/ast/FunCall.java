@@ -1,21 +1,28 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:27
+ * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:28
  * @astdecl FunCall : Expr ::= IdUse Expr*;
  * @production FunCall : {@link Expr} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}*</span>;
 
  */
 public class FunCall extends Expr implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:142
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:170
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:170
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + getIdUse().getID());
@@ -26,13 +33,6 @@ public class FunCall extends Expr implements Cloneable {
 				out.print(", ");
 		}
 		out.print(")");
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:142
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1
@@ -74,22 +74,24 @@ public class FunCall extends Expr implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    type_reset();
+    args_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:32
+   * @declaredat ASTNode:34
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:36
+   * @declaredat ASTNode:38
    */
   public FunCall clone() throws CloneNotSupportedException {
     FunCall node = (FunCall) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:41
+   * @declaredat ASTNode:43
    */
   public FunCall copy() {
     try {
@@ -109,7 +111,7 @@ public class FunCall extends Expr implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:60
+   * @declaredat ASTNode:62
    */
   @Deprecated
   public FunCall fullCopy() {
@@ -120,7 +122,7 @@ public class FunCall extends Expr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:70
+   * @declaredat ASTNode:72
    */
   public FunCall treeCopyNoTransform() {
     FunCall tree = (FunCall) copy();
@@ -141,7 +143,7 @@ public class FunCall extends Expr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:90
+   * @declaredat ASTNode:92
    */
   public FunCall treeCopy() {
     FunCall tree = (FunCall) copy();
@@ -157,7 +159,7 @@ public class FunCall extends Expr implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:104
+   * @declaredat ASTNode:106
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -297,5 +299,79 @@ public class FunCall extends Expr implements Cloneable {
    */
   public List<Expr> getExprsNoTransform() {
     return getExprListNoTransform();
+  }
+/** @apilevel internal */
+protected boolean type_visited = false;
+  /** @apilevel internal */
+  private void type_reset() {
+    type_computed = false;
+    
+    type_value = null;
+    type_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean type_computed = false;
+
+  /** @apilevel internal */
+  protected Type type_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:17
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:17")
+  public Type type() {
+    ASTState state = state();
+    if (type_computed) {
+      return type_value;
+    }
+    if (type_visited) {
+      throw new RuntimeException("Circular definition of attribute FunCall.type().");
+    }
+    type_visited = true;
+    state().enterLazyAttribute();
+    type_value = decl().type();
+    type_computed = true;
+    state().leaveLazyAttribute();
+    type_visited = false;
+    return type_value;
+  }
+/** @apilevel internal */
+protected boolean args_visited = false;
+  /** @apilevel internal */
+  private void args_reset() {
+    args_computed = false;
+    args_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean args_computed = false;
+
+  /** @apilevel internal */
+  protected int args_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:34
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:34")
+  public int args() {
+    ASTState state = state();
+    if (args_computed) {
+      return args_value;
+    }
+    if (args_visited) {
+      throw new RuntimeException("Circular definition of attribute FunCall.args().");
+    }
+    args_visited = true;
+    state().enterLazyAttribute();
+    args_value = getNumExpr();
+    args_computed = true;
+    state().leaveLazyAttribute();
+    args_visited = false;
+    return args_value;
   }
 }

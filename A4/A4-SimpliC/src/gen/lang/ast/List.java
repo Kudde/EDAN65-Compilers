@@ -1,10 +1,10 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
  * @astdecl List : ASTNode;
@@ -14,7 +14,7 @@ import java.util.TreeSet;
 public class List<T extends ASTNode> extends ASTNode<T> implements Cloneable, Iterable<T> {
   /**
    * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:66
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:66
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);

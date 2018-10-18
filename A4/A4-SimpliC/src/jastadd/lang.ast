@@ -24,6 +24,7 @@ IdUse: Expr ::= <ID>;
 IdDecl : Expr ::= <ID>;
 UnknownDecl : IdDecl;
 Literal: Expr ::= <NUMERAL>;
+BoolLiteral: Expr ::= <BOOLEAN>;
 FunCall: Expr ::= IdUse Expr*;
 BinExpr: Expr ::= Left:Expr Right:Expr;
 Mul: BinExpr;
