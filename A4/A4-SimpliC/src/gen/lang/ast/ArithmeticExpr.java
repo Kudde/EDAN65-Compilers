@@ -1,18 +1,18 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:30
- * @astdecl ArithmeticExpr : BinExpr ::= Left:Expr Right:Expr;
- * @production ArithmeticExpr : {@link BinExpr};
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:28
+ * @astdecl ArithmeticExpr : Expr ::= Left:Expr Right:Expr;
+ * @production ArithmeticExpr : {@link Expr} ::= <span class="component">Left:{@link Expr}</span> <span class="component">Right:{@link Expr}</span>;
 
  */
-public class ArithmeticExpr extends BinExpr implements Cloneable {
+public class ArithmeticExpr extends Expr implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
@@ -52,22 +52,24 @@ public class ArithmeticExpr extends BinExpr implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    type_reset();
+    expectedType_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:31
+   * @declaredat ASTNode:33
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:35
+   * @declaredat ASTNode:37
    */
   public ArithmeticExpr clone() throws CloneNotSupportedException {
     ArithmeticExpr node = (ArithmeticExpr) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:40
+   * @declaredat ASTNode:42
    */
   public ArithmeticExpr copy() {
     try {
@@ -87,7 +89,7 @@ public class ArithmeticExpr extends BinExpr implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:59
+   * @declaredat ASTNode:61
    */
   @Deprecated
   public ArithmeticExpr fullCopy() {
@@ -98,7 +100,7 @@ public class ArithmeticExpr extends BinExpr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:69
+   * @declaredat ASTNode:71
    */
   public ArithmeticExpr treeCopyNoTransform() {
     ArithmeticExpr tree = (ArithmeticExpr) copy();
@@ -119,7 +121,7 @@ public class ArithmeticExpr extends BinExpr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:89
+   * @declaredat ASTNode:91
    */
   public ArithmeticExpr treeCopy() {
     ArithmeticExpr tree = (ArithmeticExpr) copy();
@@ -135,7 +137,7 @@ public class ArithmeticExpr extends BinExpr implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:103
+   * @declaredat ASTNode:105
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -191,5 +193,91 @@ public class ArithmeticExpr extends BinExpr implements Cloneable {
    */
   public Expr getRightNoTransform() {
     return (Expr) getChildNoTransform(1);
+  }
+/** @apilevel internal */
+protected boolean type_visited = false;
+  /** @apilevel internal */
+  private void type_reset() {
+    type_computed = false;
+    
+    type_value = null;
+    type_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean type_computed = false;
+
+  /** @apilevel internal */
+  protected Type type_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:11
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:4")
+  public Type type() {
+    ASTState state = state();
+    if (type_computed) {
+      return type_value;
+    }
+    if (type_visited) {
+      throw new RuntimeException("Circular definition of attribute Expr.type().");
+    }
+    type_visited = true;
+    state().enterLazyAttribute();
+    type_value = type_compute();
+    type_computed = true;
+    state().leaveLazyAttribute();
+    type_visited = false;
+    return type_value;
+  }
+  /** @apilevel internal */
+  private Type type_compute() {
+      Type left = getLeft().type();
+      Type right = getLeft().type();
+      if ((left.isIntType() && right.isIntType())
+      ||(left.isBoolType() && right.isBoolType()))
+        return intType();
+      else
+        return unknownType();
+    }
+/** @apilevel internal */
+protected boolean expectedType_visited = false;
+  /** @apilevel internal */
+  private void expectedType_reset() {
+    expectedType_computed = false;
+    
+    expectedType_value = null;
+    expectedType_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean expectedType_computed = false;
+
+  /** @apilevel internal */
+  protected Type expectedType_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:32
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:30")
+  public Type expectedType() {
+    ASTState state = state();
+    if (expectedType_computed) {
+      return expectedType_value;
+    }
+    if (expectedType_visited) {
+      throw new RuntimeException("Circular definition of attribute Expr.expectedType().");
+    }
+    expectedType_visited = true;
+    state().enterLazyAttribute();
+    expectedType_value = intType();
+    expectedType_computed = true;
+    state().leaveLazyAttribute();
+    expectedType_visited = false;
+    return expectedType_value;
   }
 }

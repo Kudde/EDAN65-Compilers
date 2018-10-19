@@ -14,7 +14,7 @@ aspect PrettyPrint {
 
 
 	public void Fun.prettyPrint(PrintStream out, String ind) {
-		getTypeDecl().prettyPrint(out, ind);
+		getType().prettyPrint(out, ind);
 		out.print(" ");
 		getIdDecl().prettyPrint(out, ind);
 		getParam().prettyPrint(out, ind);
@@ -33,7 +33,7 @@ aspect PrettyPrint {
 	}
 
 	public void ParamDecl.prettyPrint(PrintStream out, String ind) {
-		getTypeDecl().prettyPrint(out, ind);
+		getType().prettyPrint(out, ind);
 		out.print(" ");
 		getIdDecl().prettyPrint(out, ind);
 	}
@@ -54,7 +54,7 @@ aspect PrettyPrint {
 		out.print(";\n");
 	}
 	public void DeclStmt.prettyPrint(PrintStream out, String ind) {
-		getTypeDecl().prettyPrint(out, ind);
+		getType().prettyPrint(out, ind);
 		out.print(" ");
 		getIdDecl().prettyPrint(out, ind);
 		if(hasExpr()) {
@@ -163,8 +163,8 @@ aspect PrettyPrint {
 	public void IdDecl.prettyPrint(PrintStream out, String ind) {
 		out.print(getID());
 	}
-	public void TypeDecl.prettyPrint(PrintStream out, String ind) {
-		out.print(ind + getType());
+	public void IntType.prettyPrint(PrintStream out, String ind) {
+		out.print(ind + getID());
 	}
 
 	public void FunCall.prettyPrint(PrintStream out, String ind) {

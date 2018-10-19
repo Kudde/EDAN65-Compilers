@@ -63,7 +63,6 @@ COMMENT = "//" .*
 "int"         { return sym(Terminals.INT);}
 ","           { return sym(Terminals.COMMA);}
 {NUMERAL}     { return sym(Terminals.NUMERAL);}
-{BOOLEAN}     { return sym(Terminals.BOOLEAN);}
 {ID}          { return sym(Terminals.ID);}
 <<EOF>>       { return sym(Terminals.EOF);}
 

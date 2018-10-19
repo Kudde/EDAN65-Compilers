@@ -1,18 +1,18 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:37
- * @astdecl BoolExpr : BinExpr ::= Left:Expr Right:Expr;
- * @production BoolExpr : {@link BinExpr};
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:34
+ * @astdecl BoolExpr : Expr ::= Left:Expr Right:Expr;
+ * @production BoolExpr : {@link Expr} ::= <span class="component">Left:{@link Expr}</span> <span class="component">Right:{@link Expr}</span>;
 
  */
-public class BoolExpr extends BinExpr implements Cloneable {
+public class BoolExpr extends Expr implements Cloneable {
   /**
    * @declaredat ASTNode:1
    */
@@ -54,23 +54,22 @@ public class BoolExpr extends BinExpr implements Cloneable {
     super.flushAttrCache();
     type_reset();
     expectedType_reset();
-    compTypes_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:34
+   * @declaredat ASTNode:33
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:38
+   * @declaredat ASTNode:37
    */
   public BoolExpr clone() throws CloneNotSupportedException {
     BoolExpr node = (BoolExpr) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:43
+   * @declaredat ASTNode:42
    */
   public BoolExpr copy() {
     try {
@@ -90,7 +89,7 @@ public class BoolExpr extends BinExpr implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:62
+   * @declaredat ASTNode:61
    */
   @Deprecated
   public BoolExpr fullCopy() {
@@ -101,7 +100,7 @@ public class BoolExpr extends BinExpr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:72
+   * @declaredat ASTNode:71
    */
   public BoolExpr treeCopyNoTransform() {
     BoolExpr tree = (BoolExpr) copy();
@@ -122,7 +121,7 @@ public class BoolExpr extends BinExpr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:92
+   * @declaredat ASTNode:91
    */
   public BoolExpr treeCopy() {
     BoolExpr tree = (BoolExpr) copy();
@@ -138,7 +137,7 @@ public class BoolExpr extends BinExpr implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:106
+   * @declaredat ASTNode:105
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -213,10 +212,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:20
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:20
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:4")
   public Type type() {
     ASTState state = state();
     if (type_computed) {
@@ -235,14 +234,13 @@ protected boolean type_visited = false;
   }
   /** @apilevel internal */
   private Type type_compute() {
-  		Type left = getLeft().type();
+      Type left = getLeft().type();
   		Type right = getRight().type();
-  		if (left.isIntType() && right.isIntType()) {
+  		if (left.isIntType() && right.isIntType())
   			return boolType();
-  		} else {
+  		else
   			return unknownType();
-  		}
-  	}
+    }
 /** @apilevel internal */
 protected boolean expectedType_visited = false;
   /** @apilevel internal */
@@ -261,10 +259,10 @@ protected boolean expectedType_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:40
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:33
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:39")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:30")
   public Type expectedType() {
     ASTState state = state();
     if (expectedType_computed) {
@@ -280,43 +278,5 @@ protected boolean expectedType_visited = false;
     state().leaveLazyAttribute();
     expectedType_visited = false;
     return expectedType_value;
-  }
-/** @apilevel internal */
-protected boolean compTypes_visited = false;
-  /** @apilevel internal */
-  private void compTypes_reset() {
-    compTypes_computed = false;
-    compTypes_visited = false;
-  }
-  /** @apilevel internal */
-  protected boolean compTypes_computed = false;
-
-  /** @apilevel internal */
-  protected boolean compTypes_value;
-
-  /**
-   * @attribute syn
-   * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:57
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:51")
-  public boolean compTypes() {
-    ASTState state = state();
-    if (compTypes_computed) {
-      return compTypes_value;
-    }
-    if (compTypes_visited) {
-      throw new RuntimeException("Circular definition of attribute Expr.compTypes().");
-    }
-    compTypes_visited = true;
-    state().enterLazyAttribute();
-    compTypes_value = getLeft().type().isUnknownType() ||
-    		getRight().type().isUnknownType() ||
-    		type().equals(expectedType());
-    compTypes_computed = true;
-    state().leaveLazyAttribute();
-    compTypes_visited = false;
-    return compTypes_value;
   }
 }

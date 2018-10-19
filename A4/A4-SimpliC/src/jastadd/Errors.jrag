@@ -39,7 +39,21 @@ aspect ErrorContributions {
 		when isMultiDeclared()
 		to Program.errors() for program();
 
-	// IdUse contributes error("the definition of symbol '" + getID() + "' is circular")
-	// 	when isCircular()
+	// FunCall contributes error("symbol '" + getIdUse().getID() + "' is not a function!")
+	// 	when getIdUse().isVariable()
 	// 	to Program.errors() for program();
+	//
+	// Fun contributes error("symbol '" + getIdDecl().getID() + "' is a variable!")
+	// 	when getIdDecl().isVariable()
+	// 	to Program.errors() for program();
+
+
+	Expr contributes error("type " + type().print() + " should be " + expectedType().print() + "!")
+		when !type().equals(expectedType())
+		to Program.errors() for program();
+
+	Stmt contributes error("Incompatible types!")
+			when isIncompatible()
+			to Program.errors() for program();
+
 }

@@ -1,0 +1,30 @@
+int fun(int k) {
+k = 2;
+return (1 == 1);
+}
+
+int fun2() {
+int k = 1;
+if (k == 1) {
+print();
+return 1;
+}
+}
+
+int fun3() {
+int x = 0;
+int k;
+k = (x == 1);
+if (1 + 2) {
+  while(k) {
+    int k = 3;
+    return k == 1;
+  }
+}
+}
+
+int fun4() {
+int x;
+fun3 = 1;
+x();
+}

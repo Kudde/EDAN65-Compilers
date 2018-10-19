@@ -1,33 +1,33 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:33
- * @astdecl Sub : BinExpr ::= Left:Expr Right:Expr;
- * @production Sub : {@link BinExpr};
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:32
+ * @astdecl Sub : ArithmeticExpr ::= Left:Expr Right:Expr;
+ * @production Sub : {@link ArithmeticExpr};
 
  */
-public class Sub extends BinExpr implements Cloneable {
-  /**
-   * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:82
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
+public class Sub extends ArithmeticExpr implements Cloneable {
   /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:113
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:113
    */
   public void prettyPrint(PrintStream out, String ind) {
 		getLeft().prettyPrint(out, ind);
 		out.print(" - ");
 		getRight().prettyPrint(out, ind);
+	}
+  /**
+   * @aspect Visitor
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:82
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1

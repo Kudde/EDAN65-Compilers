@@ -1,22 +1,22 @@
 Program
   List
     Fun
-      TypeDecl Type="int"
+      IntType ID="int"
       IdDecl ID="addmul"
       Param
         List
       Block
         List
           DeclStmt
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="x"
             Opt
           DeclStmt
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="y"
             Opt
           DeclStmt
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="k"
             Opt
           AssignStmt

@@ -10,7 +10,7 @@
 :};
 
 %terminals SEMMIC, LP, RP, LCARET, RCARET, COMMA;
-%terminals SUB, PLUS, DIV, MUL, MOD, ID, INT, NUMERAL, BOOLEAN, ASSIGN;
+%terminals SUB, PLUS, DIV, MUL, MOD, ID, INT, NUMERAL, ASSIGN;
 %terminals EQUAL, NEQUAL, LESS, GREATER, LEQUAL, GEQUAL;
 %terminals IF, ELSE, WHILE, RETURN;
 
@@ -39,11 +39,9 @@
 %typeof comp_expr = "Expr";
 
 %typeof literal = "Literal";
-%typeof bool_literal = "BoolLiteral";
 %typeof id_decl = "IdDecl";
 %typeof id_use = "IdUse";
-%typeof type_decl = "TypeDecl";
-
+%typeof type_decl = "Type";
 %nonassoc ELSE;
 %nonassoc IF;
 
@@ -93,8 +91,8 @@ stmt =
 	;
 
 decl =
-	type_decl.a id_decl.b SEMMIC 									{: return new DeclStmt(a, b, new Opt()); :}
-	| type_decl.a id_decl.b ASSIGN expr.c SEMMIC 	{: return new DeclStmt(a, b, new Opt(c)); :}
+	type_decl.a id_decl.b SEMMIC 											{: return new DeclStmt(a, b, new Opt()); :}
+	| type_decl.a id_decl.b ASSIGN expr.c SEMMIC		 	{: return new DeclStmt(a, b, new Opt(c)); :}
 	;
 
 assign = id_use.a ASSIGN expr.b SEMMIC 							{: return new AssignStmt(a, b); :}
@@ -160,7 +158,6 @@ factor =
 	| id_use
 	| fun_call
 	| literal
-	| bool_literal
 	;
 
 fun_call =
@@ -172,8 +169,7 @@ fun_call =
 // FINALS----------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-literal = NUMERAL.i 					{: return new Literal(i); :} ;
-bool_literal = BOOLEAN.i 				{: return new BoolLiteral(i); :} ;
-type_decl = INT.i 					{: return new TypeDecl(i); :} ;
+literal = NUMERAL.i 						{: return new Literal(i); :} ;
+type_decl = INT.i 							{: return new IntType(i); :} ;
 id_use = ID.id         					{: return new IdUse(id); :} ;
-id_decl = ID.id 					{: return new IdDecl(id); :} ;
+id_decl = ID.id 								{: return new IdDecl(id); :} ;

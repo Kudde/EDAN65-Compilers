@@ -37,7 +37,7 @@ aspect Visitor {
 
 		//Finals
 		public Object visit(Literal node, Object data);
-		public Object visit(TypeDecl node, Object data);
+		public Object visit(Type node, Object data);
 		public Object visit(ParamDecl node, Object data);
 		public Object visit(IdDecl node, Object data);
 		public Object visit(IdUse node, Object data);
@@ -133,7 +133,7 @@ aspect Visitor {
 	public Object ParamDecl.accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
-	public Object TypeDecl.accept(Visitor visitor, Object data) {
+	public Object Type.accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
 	public Object IdUse.accept(Visitor visitor, Object data) {

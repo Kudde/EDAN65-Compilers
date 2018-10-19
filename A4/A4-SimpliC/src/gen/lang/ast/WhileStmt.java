@@ -1,28 +1,21 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:17
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:17
  * @astdecl WhileStmt : Stmt ::= Expr Block;
  * @production WhileStmt : {@link Stmt} ::= <span class="component">{@link Expr}</span> <span class="component">{@link Block}</span>;
 
  */
 public class WhileStmt extends Stmt implements Cloneable {
   /**
-   * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:114
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
-  /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:67
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:67
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + "while (");
@@ -30,6 +23,13 @@ public class WhileStmt extends Stmt implements Cloneable {
 		out.print(")");
 		getBlock().prettyPrint(out, ind+"\t");
 		out.print(ind + "}\n");
+	}
+  /**
+   * @aspect Visitor
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:114
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1
@@ -70,22 +70,23 @@ public class WhileStmt extends Stmt implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    compatibleTypes_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:31
+   * @declaredat ASTNode:32
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:35
+   * @declaredat ASTNode:36
    */
   public WhileStmt clone() throws CloneNotSupportedException {
     WhileStmt node = (WhileStmt) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:40
+   * @declaredat ASTNode:41
    */
   public WhileStmt copy() {
     try {
@@ -105,7 +106,7 @@ public class WhileStmt extends Stmt implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:59
+   * @declaredat ASTNode:60
    */
   @Deprecated
   public WhileStmt fullCopy() {
@@ -116,7 +117,7 @@ public class WhileStmt extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:69
+   * @declaredat ASTNode:70
    */
   public WhileStmt treeCopyNoTransform() {
     WhileStmt tree = (WhileStmt) copy();
@@ -137,7 +138,7 @@ public class WhileStmt extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:89
+   * @declaredat ASTNode:90
    */
   public WhileStmt treeCopy() {
     WhileStmt tree = (WhileStmt) copy();
@@ -153,7 +154,7 @@ public class WhileStmt extends Stmt implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:103
+   * @declaredat ASTNode:104
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -209,5 +210,41 @@ public class WhileStmt extends Stmt implements Cloneable {
    */
   public Block getBlockNoTransform() {
     return (Block) getChildNoTransform(1);
+  }
+/** @apilevel internal */
+protected boolean compatibleTypes_visited = false;
+  /** @apilevel internal */
+  private void compatibleTypes_reset() {
+    compatibleTypes_computed = false;
+    compatibleTypes_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean compatibleTypes_computed = false;
+
+  /** @apilevel internal */
+  protected boolean compatibleTypes_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:45
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42")
+  public boolean compatibleTypes() {
+    ASTState state = state();
+    if (compatibleTypes_computed) {
+      return compatibleTypes_value;
+    }
+    if (compatibleTypes_visited) {
+      throw new RuntimeException("Circular definition of attribute Stmt.compatibleTypes().");
+    }
+    compatibleTypes_visited = true;
+    state().enterLazyAttribute();
+    compatibleTypes_value = getExpr().type().compatibleType(boolType());
+    compatibleTypes_computed = true;
+    state().leaveLazyAttribute();
+    compatibleTypes_visited = false;
+    return compatibleTypes_value;
   }
 }

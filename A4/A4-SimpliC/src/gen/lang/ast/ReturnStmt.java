@@ -1,33 +1,33 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:19
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:19
  * @astdecl ReturnStmt : Stmt ::= Expr;
  * @production ReturnStmt : {@link Stmt} ::= <span class="component">{@link Expr}</span>;
 
  */
 public class ReturnStmt extends Stmt implements Cloneable {
   /**
-   * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:120
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
-  /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:87
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:87
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + "return ");
 		getExpr().prettyPrint(out, "");
 		out.print(";\n");
+	}
+  /**
+   * @aspect Visitor
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:120
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1
@@ -67,22 +67,23 @@ public class ReturnStmt extends Stmt implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    compatibleTypes_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:30
+   * @declaredat ASTNode:31
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:34
+   * @declaredat ASTNode:35
    */
   public ReturnStmt clone() throws CloneNotSupportedException {
     ReturnStmt node = (ReturnStmt) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:39
+   * @declaredat ASTNode:40
    */
   public ReturnStmt copy() {
     try {
@@ -102,7 +103,7 @@ public class ReturnStmt extends Stmt implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:58
+   * @declaredat ASTNode:59
    */
   @Deprecated
   public ReturnStmt fullCopy() {
@@ -113,7 +114,7 @@ public class ReturnStmt extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:68
+   * @declaredat ASTNode:69
    */
   public ReturnStmt treeCopyNoTransform() {
     ReturnStmt tree = (ReturnStmt) copy();
@@ -134,7 +135,7 @@ public class ReturnStmt extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:88
+   * @declaredat ASTNode:89
    */
   public ReturnStmt treeCopy() {
     ReturnStmt tree = (ReturnStmt) copy();
@@ -150,7 +151,7 @@ public class ReturnStmt extends Stmt implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:102
+   * @declaredat ASTNode:103
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -180,5 +181,41 @@ public class ReturnStmt extends Stmt implements Cloneable {
    */
   public Expr getExprNoTransform() {
     return (Expr) getChildNoTransform(0);
+  }
+/** @apilevel internal */
+protected boolean compatibleTypes_visited = false;
+  /** @apilevel internal */
+  private void compatibleTypes_reset() {
+    compatibleTypes_computed = false;
+    compatibleTypes_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean compatibleTypes_computed = false;
+
+  /** @apilevel internal */
+  protected boolean compatibleTypes_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:46
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42")
+  public boolean compatibleTypes() {
+    ASTState state = state();
+    if (compatibleTypes_computed) {
+      return compatibleTypes_value;
+    }
+    if (compatibleTypes_visited) {
+      throw new RuntimeException("Circular definition of attribute Stmt.compatibleTypes().");
+    }
+    compatibleTypes_visited = true;
+    state().enterLazyAttribute();
+    compatibleTypes_value = getExpr().type().compatibleType(intType());
+    compatibleTypes_computed = true;
+    state().leaveLazyAttribute();
+    compatibleTypes_visited = false;
+    return compatibleTypes_value;
   }
 }
