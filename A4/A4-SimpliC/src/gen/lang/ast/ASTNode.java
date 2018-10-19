@@ -1,10 +1,10 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
  * @astdecl ASTNode;
@@ -13,13 +13,44 @@ import java.util.TreeSet;
  */
 public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:51
+   */
+  public Object accept(Visitor visitor, Object data) {
+		throw new Error("Visitor: accept method not available for " + getClass().getName());
+	}
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:4
+   */
+  public void prettyPrint(PrintStream out) {
+		prettyPrint(out, "");
+		out.println();
+	}
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:9
+   */
+  public void prettyPrint(PrintStream out, String ind) {
+		for (int i = 0; i < getNumChild(); ++i) {
+			getChild(i).prettyPrint(out, ind);
+		}
+	}
+  /**
+   * @aspect Errors
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Errors.jrag:22
+   */
+  protected ErrorMessage error(String message) {
+		return new ErrorMessage(message, getLine(getStart()));
+	}
+  /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\DumpTree.jrag:9
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/DumpTree.jrag:9
    */
   private static final String DUMP_TREE_INDENT = "  ";
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\DumpTree.jrag:11
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/DumpTree.jrag:11
    */
   public String dumpTree() {
 		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
@@ -28,7 +59,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\DumpTree.jrag:17
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/DumpTree.jrag:17
    */
   public void dumpTree(PrintStream out) {
 		dumpTree(out, "");
@@ -36,7 +67,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\DumpTree.jrag:22
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/DumpTree.jrag:22
    */
   public void dumpTree(PrintStream out, String indent) {
 		out.print(indent + getClass().getSimpleName());
@@ -52,7 +83,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect DumpTree
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\DumpTree.jrag:35
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/DumpTree.jrag:35
    */
   public String getTokens() {
 		java.util.TreeSet<java.lang.reflect.Method> methods = new java.util.TreeSet<>(
@@ -76,37 +107,6 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 			}
 		}
 		return result;
-	}
-  /**
-   * @aspect Errors
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Errors.jrag:22
-   */
-  protected ErrorMessage error(String message) {
-		return new ErrorMessage(message, getLine(getStart()));
-	}
-  /**
-   * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:4
-   */
-  public void prettyPrint(PrintStream out) {
-		prettyPrint(out, "");
-		out.println();
-	}
-  /**
-   * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:9
-   */
-  public void prettyPrint(PrintStream out, String ind) {
-		for (int i = 0; i < getNumChild(); ++i) {
-			getChild(i).prettyPrint(out, ind);
-		}
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:51
-   */
-  public Object accept(Visitor visitor, Object data) {
-		throw new Error("Visitor: accept method not available for " + getClass().getName());
 	}
   /**
    * @declaredat ASTNode:1
@@ -380,12 +380,12 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
    * @declaredat ASTNode:296
    */
   public void flushAttrCache() {
-    program_reset();
     predefinedFunctions_reset();
     unknownDecl_reset();
     unknownType_reset();
     intType_reset();
     boolType_reset();
+    program_reset();
   }
   /** @apilevel internal 
    * @declaredat ASTNode:305
@@ -508,7 +508,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
   }
   /**
    * @aspect <NoAspect>
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Errors.jrag:26
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Errors.jrag:26
    */
     /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
@@ -522,49 +522,11 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 
   /**
    * @attribute inh
-   * @aspect Errors
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Errors.jrag:28
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Errors", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Errors.jrag:28")
-  public Program program() {
-    ASTState state = state();
-    if (program_computed) {
-      return program_value;
-    }
-    if (program_visited) {
-      throw new RuntimeException("Circular definition of attribute ASTNode.program().");
-    }
-    program_visited = true;
-    state().enterLazyAttribute();
-    program_value = getParent().Define_program(this, null);
-    program_computed = true;
-    state().leaveLazyAttribute();
-    program_visited = false;
-    return program_value;
-  }
-/** @apilevel internal */
-protected boolean program_visited = false;
-  /** @apilevel internal */
-  private void program_reset() {
-    program_computed = false;
-    
-    program_value = null;
-    program_visited = false;
-  }
-  /** @apilevel internal */
-  protected boolean program_computed = false;
-
-  /** @apilevel internal */
-  protected Program program_value;
-
-  /**
-   * @attribute inh
    * @aspect predefinedFunctions
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:16
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:24
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="predefinedFunctions", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:16")
+  @ASTNodeAnnotation.Source(aspect="predefinedFunctions", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:24")
   public List<Fun> predefinedFunctions() {
     ASTState state = state();
     if (predefinedFunctions_computed) {
@@ -599,10 +561,10 @@ protected boolean predefinedFunctions_visited = false;
   /**
    * @attribute inh
    * @aspect UnknownDecl
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:23
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:31
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:23")
+  @ASTNodeAnnotation.Source(aspect="UnknownDecl", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:31")
   public UnknownDecl unknownDecl() {
     ASTState state = state();
     if (unknownDecl_computed) {
@@ -637,10 +599,10 @@ protected boolean unknownDecl_visited = false;
   /**
    * @attribute inh
    * @aspect Types
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:32
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:40
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:32")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:40")
   public UnknownType unknownType() {
     ASTState state = state();
     if (unknownType_computed) {
@@ -675,10 +637,10 @@ protected boolean unknownType_visited = false;
   /**
    * @attribute inh
    * @aspect Types
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:38
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:46
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:38")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:46")
   public IntType intType() {
     ASTState state = state();
     if (intType_computed) {
@@ -713,10 +675,10 @@ protected boolean intType_visited = false;
   /**
    * @attribute inh
    * @aspect Types
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:44
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:52
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:44")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:52")
   public BoolType boolType() {
     ASTState state = state();
     if (boolType_computed) {
@@ -748,46 +710,44 @@ protected boolean boolType_visited = false;
   /** @apilevel internal */
   protected BoolType boolType_value;
 
-  /** @apilevel internal */
-  public Program Define_program(ASTNode _callerNode, ASTNode _childNode) {
-    ASTNode self = this;
-    ASTNode parent = getParent();
-    while (parent != null && !parent.canDefine_program(self, _callerNode)) {
-      _callerNode = self;
-      self = parent;
-      parent = self.getParent();
-    }
-    return parent.Define_program(self, _callerNode);
-  }
-
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Errors.jrag:29
-   * @apilevel internal
-   * @return {@code true} if this node has an equation for the inherited attribute program
+   * @attribute inh
+   * @aspect Errors
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Errors.jrag:28
    */
-  protected boolean canDefine_program(ASTNode _callerNode, ASTNode _childNode) {
-    return false;
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="Errors", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Errors.jrag:28")
+  public Program program() {
+    ASTState state = state();
+    if (program_computed) {
+      return program_value;
+    }
+    if (program_visited) {
+      throw new RuntimeException("Circular definition of attribute ASTNode.program().");
+    }
+    program_visited = true;
+    state().enterLazyAttribute();
+    program_value = getParent().Define_program(this, null);
+    program_computed = true;
+    state().leaveLazyAttribute();
+    program_visited = false;
+    return program_value;
+  }
+/** @apilevel internal */
+protected boolean program_visited = false;
+  /** @apilevel internal */
+  private void program_reset() {
+    program_computed = false;
+    
+    program_value = null;
+    program_visited = false;
   }
   /** @apilevel internal */
-  public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
-    ASTNode self = this;
-    ASTNode parent = getParent();
-    while (parent != null && !parent.canDefine_lookup(self, _callerNode, name)) {
-      _callerNode = self;
-      self = parent;
-      parent = self.getParent();
-    }
-    return parent.Define_lookup(self, _callerNode, name);
-  }
+  protected boolean program_computed = false;
 
-  /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NameAnalysis.jrag:38
-   * @apilevel internal
-   * @return {@code true} if this node has an equation for the inherited attribute lookup
-   */
-  protected boolean canDefine_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
-    return false;
-  }
+  /** @apilevel internal */
+  protected Program program_value;
+
   /** @apilevel internal */
   public List<Fun> Define_predefinedFunctions(ASTNode _callerNode, ASTNode _childNode) {
     ASTNode self = this;
@@ -801,7 +761,7 @@ protected boolean boolType_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:17
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:25
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute predefinedFunctions
    */
@@ -821,7 +781,7 @@ protected boolean boolType_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:24
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:32
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute unknownDecl
    */
@@ -841,7 +801,7 @@ protected boolean boolType_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:35
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:43
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute unknownType
    */
@@ -861,7 +821,7 @@ protected boolean boolType_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:41
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:49
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute intType
    */
@@ -881,11 +841,111 @@ protected boolean boolType_visited = false;
   }
 
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:47
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:55
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute boolType
    */
   protected boolean canDefine_boolType(ASTNode _callerNode, ASTNode _childNode) {
+    return false;
+  }
+  /** @apilevel internal */
+  public Program Define_program(ASTNode _callerNode, ASTNode _childNode) {
+    ASTNode self = this;
+    ASTNode parent = getParent();
+    while (parent != null && !parent.canDefine_program(self, _callerNode)) {
+      _callerNode = self;
+      self = parent;
+      parent = self.getParent();
+    }
+    return parent.Define_program(self, _callerNode);
+  }
+
+  /**
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Errors.jrag:29
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute program
+   */
+  protected boolean canDefine_program(ASTNode _callerNode, ASTNode _childNode) {
+    return false;
+  }
+  /** @apilevel internal */
+  public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
+    ASTNode self = this;
+    ASTNode parent = getParent();
+    while (parent != null && !parent.canDefine_isVariable(self, _callerNode)) {
+      _callerNode = self;
+      self = parent;
+      parent = self.getParent();
+    }
+    return parent.Define_isVariable(self, _callerNode);
+  }
+
+  /**
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:52
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute isVariable
+   */
+  protected boolean canDefine_isVariable(ASTNode _callerNode, ASTNode _childNode) {
+    return false;
+  }
+  /** @apilevel internal */
+  public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {
+    ASTNode self = this;
+    ASTNode parent = getParent();
+    while (parent != null && !parent.canDefine_isFunction(self, _callerNode)) {
+      _callerNode = self;
+      self = parent;
+      parent = self.getParent();
+    }
+    return parent.Define_isFunction(self, _callerNode);
+  }
+
+  /**
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:53
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute isFunction
+   */
+  protected boolean canDefine_isFunction(ASTNode _callerNode, ASTNode _childNode) {
+    return false;
+  }
+  /** @apilevel internal */
+  public Fun Define_function(ASTNode _callerNode, ASTNode _childNode) {
+    ASTNode self = this;
+    ASTNode parent = getParent();
+    while (parent != null && !parent.canDefine_function(self, _callerNode)) {
+      _callerNode = self;
+      self = parent;
+      parent = self.getParent();
+    }
+    return parent.Define_function(self, _callerNode);
+  }
+
+  /**
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:67
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute function
+   */
+  protected boolean canDefine_function(ASTNode _callerNode, ASTNode _childNode) {
+    return false;
+  }
+  /** @apilevel internal */
+  public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
+    ASTNode self = this;
+    ASTNode parent = getParent();
+    while (parent != null && !parent.canDefine_lookup(self, _callerNode, name)) {
+      _callerNode = self;
+      self = parent;
+      parent = self.getParent();
+    }
+    return parent.Define_lookup(self, _callerNode, name);
+  }
+
+  /**
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NameAnalysis.jrag:38
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute lookup
+   */
+  protected boolean canDefine_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
     return false;
   }
 public ASTNode rewrittenNode() { throw new Error("rewrittenNode is undefined for ASTNode"); }

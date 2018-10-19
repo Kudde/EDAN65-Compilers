@@ -46,7 +46,40 @@ aspect TypeAnalysis {
   eq ReturnStmt.compatibleTypes() = getExpr().type().compatibleType(intType());
 
 
-  // inh boolean IdDecl.isVariable();
-  // inh boolean IdDecl.isFunction();
+  // variable | function
+  inh boolean IdDecl.isVariable();
+  inh boolean IdDecl.isFunction();
+  eq DeclStmt.getIdDecl().isVariable() = true;
+  eq DeclStmt.getIdDecl().isFunction() = false;
+  eq Fun.getIdDecl().isVariable() = false;
+  eq Fun.getIdDecl().isFunction() = true;
+  eq Fun.getParam().isVariable() = true;
+  eq Fun.getParam().isFunction() = false;
+  eq Program.unknownDecl().isVariable() = false;
+  eq Program.unknownDecl().isFunction() = false;
+
+
+
+
+  // // number
+  inh Fun IdDecl.function();
+  eq Program.getChild().function() = null;
+  eq Fun.getIdDecl().function() = this;
+  syn boolean FunCall.incorrectNumberOfParams() {
+	if(getIdUse().decl().isVariable())	//Quick fix. - not LUdde
+		return false;
+	
+  	if (getIdUse().decl().isUnknown())
+  		return false;
+
+  	int params = getIdUse().decl().function().getParam().getNumParamDecl();
+  	if (params != getNumExpr())
+  		return true;
+  	else
+  		return false;
+
+
+  }
+
 
 }

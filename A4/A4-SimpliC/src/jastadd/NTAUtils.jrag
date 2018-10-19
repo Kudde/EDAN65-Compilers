@@ -3,12 +3,20 @@ aspect predefinedFunctions {
 syn nta List<Fun> Program.predefinedFunctions() {
   List<Fun> list = new List<Fun>();
   IdDecl d = new IdDecl("print");
+  ParamDecl pd = new ParamDecl();
+  pd.setIdDecl(new IdDecl("a"));
+  List<ParamDecl> l = new List<ParamDecl>();
+  l.add(pd);
+  Param p = new Param(l);
   Fun f = new Fun();
   f.setIdDecl(d);
+  f.setParam(p);
   list.add(f);
+
   d = new IdDecl("read");
   f = new Fun();
   f.setIdDecl(d);
+  f.setParam(new Param(new List<ParamDecl>()));
   list.add(f);
   return list;
 }
@@ -30,26 +38,26 @@ aspect Types {
 
 	syn nta UnknownType Program.unknownType() = new UnknownType("<unknown>");
 	inh UnknownType ASTNode.unknownType();
-  syn boolean Type.isUnknownType() = false;
-  eq UnknownType.isUnknownType() = true;
-  eq Program.getChild().unknownType() = unknownType();
+        syn boolean Type.isUnknownType() = false;
+        eq UnknownType.isUnknownType() = true;
+        eq Program.getChild().unknownType() = unknownType();
 
 	syn nta IntType Program.intType() = new IntType("<int>");
 	inh IntType ASTNode.intType();
 	syn boolean Type.isIntType() = false;
 	eq IntType.isIntType() = true;
-  eq Program.getChild().intType() = intType();
+        eq Program.getChild().intType() = intType();
 
-  syn nta BoolType Program.boolType() = new BoolType("<bool>");
+        syn nta BoolType Program.boolType() = new BoolType("<bool>");
 	inh BoolType ASTNode.boolType();
 	syn boolean Type.isBoolType() = false;
 	eq BoolType.isBoolType() = true;
-  eq Program.getChild().boolType() = boolType();
+        eq Program.getChild().boolType() = boolType();
 
-  syn String Type.print();
-  eq IntType.print() = "intType";
-  eq BoolType.print() = "boolType";
-  eq UnknownType.print() = "unknownType";
+        syn String Type.print();
+        eq IntType.print() = "intType";
+        eq BoolType.print() = "boolType";
+        eq UnknownType.print() = "unknownType";
 
-  syn Type UnknownDecl.type() = unknownType();
+        syn Type UnknownDecl.type() = unknownType();
 }

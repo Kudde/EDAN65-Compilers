@@ -1,13 +1,13 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:9
+ * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:9
  * @astdecl Type : ASTNode;
  * @production Type : {@link ASTNode};
 
@@ -15,7 +15,7 @@ import java.util.TreeSet;
 public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:136
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:136
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
@@ -94,10 +94,10 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:49
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:57
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:49")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:57")
   public abstract String print();
 /** @apilevel internal */
 protected boolean isUnknownType_visited = false;
@@ -115,10 +115,10 @@ protected boolean isUnknownType_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:33
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:41
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:33")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:41")
   public boolean isUnknownType() {
     ASTState state = state();
     if (isUnknownType_computed) {
@@ -151,10 +151,10 @@ protected boolean isIntType_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:39
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:47
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:39")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:47")
   public boolean isIntType() {
     ASTState state = state();
     if (isIntType_computed) {
@@ -187,10 +187,10 @@ protected boolean isBoolType_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:45
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:53
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:45")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/NTAUtils.jrag:53")
   public boolean isBoolType() {
     ASTState state = state();
     if (isBoolType_computed) {
@@ -220,10 +220,10 @@ protected java.util.Set compatibleType_Type_visited;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:40
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:40
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:40")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:40")
   public boolean compatibleType(Type type) {
     Object _parameters = type;
     if (compatibleType_Type_visited == null) compatibleType_Type_visited = new java.util.HashSet(4);

@@ -3,5 +3,5 @@ int fun(int a, int b) {
 }
 
 int main() {
-  fun(3);
+  fun(3,4,5);
 }

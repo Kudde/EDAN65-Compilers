@@ -39,13 +39,22 @@ aspect ErrorContributions {
 		when isMultiDeclared()
 		to Program.errors() for program();
 
-	// FunCall contributes error("symbol '" + getIdUse().getID() + "' is not a function!")
-	// 	when getIdUse().isVariable()
-	// 	to Program.errors() for program();
-	//
-	// Fun contributes error("symbol '" + getIdDecl().getID() + "' is a variable!")
-	// 	when getIdDecl().isVariable()
-	// 	to Program.errors() for program();
+	FunCall contributes error("symbol '" + getIdUse().getID() + "' is not a function!")
+		when getIdUse().decl().isVariable()
+		to Program.errors() for program();
+
+	Fun contributes error("symbol '" + getIdDecl().getID() + "' is a variable!")
+		when getIdDecl().isVariable()
+		to Program.errors() for program();
+
+	AssignStmt contributes error("symbol '" + getIdUse().getID() + "' is a function!")
+		when getIdUse().decl().isFunction()
+		to Program.errors() for program();
+
+	DeclStmt contributes error("symbol '" + getIdDecl().getID() + "' is a function!")
+		when getIdDecl().isFunction()
+		to Program.errors() for program();
+
 
 
 	Expr contributes error("type " + type().print() + " should be " + expectedType().print() + "!")
@@ -53,7 +62,12 @@ aspect ErrorContributions {
 		to Program.errors() for program();
 
 	Stmt contributes error("Incompatible types!")
-			when isIncompatible()
-			to Program.errors() for program();
+		when isIncompatible()
+		to Program.errors() for program();
+
+
+	FunCall contributes error("incorrect number of arguments")
+		when incorrectNumberOfParams()
+		to Program.errors() for program();
 
 }

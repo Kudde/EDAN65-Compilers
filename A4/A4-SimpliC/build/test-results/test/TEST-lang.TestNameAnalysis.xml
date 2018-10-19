@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestNameAnalysis" tests="7" skipped="0" failures="1" errors="0" timestamp="2018-10-19T14:28:08" hostname="KevsMonsterPC" time="0.038">
+<testsuite name="lang.TestNameAnalysis" tests="6" skipped="0" failures="1" errors="0" timestamp="2018-10-19T19:04:44" hostname="taco.local" time="0.016">
   <properties/>
-  <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.002"/>
-  <testcase name="runTest[ok2.in]" classname="lang.TestNameAnalysis" time="0.003"/>
-  <testcase name="runTest[ok3.in]" classname="lang.TestNameAnalysis" time="0.002"/>
-  <testcase name="runTest[predefinedfuntest.in]" classname="lang.TestNameAnalysis" time="0.005"/>
-  <testcase name="runTest[redeclared.in]" classname="lang.TestNameAnalysis" time="0.005"/>
-  <testcase name="runTest[type.in]" classname="lang.TestNameAnalysis" time="0.008">
-    <failure message="org.junit.ComparisonFailure: Output differs expected:&lt;... Incompatible types![&#10;And other stuff, should fail atm.]&gt; but was:&lt;... Incompatible types![]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Output differs expected:&lt;... Incompatible types![
-And other stuff, should fail atm.]&gt; but was:&lt;... Incompatible types![]&gt;
+  <testcase name="runTest[ok3.in]" classname="lang.TestNameAnalysis" time="0.004"/>
+  <testcase name="runTest[ok2.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[redeclared.in]" classname="lang.TestNameAnalysis" time="0.003"/>
+  <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.001"/>
+  <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.004">
+    <failure message="org.junit.ComparisonFailure: Output differs expected:&lt;...e should be intType![]&gt; but was:&lt;...e should be intType![&#10;Error at line 11: symbol 'x' is not a function!]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Output differs expected:&lt;...e should be intType![]&gt; but was:&lt;...e should be intType![
+Error at line 11: symbol 'x' is not a function!]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at lang.Util.compareOutput(Util.java:46)
 	at lang.TestNameAnalysis.runTest(TestNameAnalysis.java:34)
@@ -68,7 +67,7 @@ And other stuff, should fail atm.]&gt; but was:&lt;... Incompatible types![]&gt;
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.01"/>
+  <testcase name="runTest[predefinedfuntest.in]" classname="lang.TestNameAnalysis" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
