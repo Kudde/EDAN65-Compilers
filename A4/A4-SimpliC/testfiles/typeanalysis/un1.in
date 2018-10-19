@@ -1,0 +1,5 @@
+int fun() {
+  if (3 * 4) {
+    return 2;
+  }
+}

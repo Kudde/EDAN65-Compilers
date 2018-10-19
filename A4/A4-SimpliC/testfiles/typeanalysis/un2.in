@@ -1,0 +1,7 @@
+int fun() {
+  int k = 3 == 1;
+  int y = 3;
+  if (true < y) {
+        y = 4;
+  }
+}

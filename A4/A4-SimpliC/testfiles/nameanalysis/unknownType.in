@@ -1,5 +1,0 @@
-int fun() {
-  into k;
-  int y;
-  y = k + 3;
-}
