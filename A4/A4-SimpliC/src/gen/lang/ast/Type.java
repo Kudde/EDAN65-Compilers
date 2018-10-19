@@ -1,13 +1,13 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:9
+ * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:9
  * @astdecl Type : ASTNode;
  * @production Type : {@link ASTNode};
 
@@ -47,18 +47,28 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
   public void flushAttrCache() {
     super.flushAttrCache();
     isUnknownType_reset();
+<<<<<<< HEAD
     isIntType_reset();
     isBoolType_reset();
     compatibleType_Type_reset();
   }
   /** @apilevel internal 
    * @declaredat ASTNode:25
+=======
+  }
+  /** @apilevel internal 
+   * @declaredat ASTNode:22
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
+<<<<<<< HEAD
    * @declaredat ASTNode:29
+=======
+   * @declaredat ASTNode:26
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
    */
   public Type clone() throws CloneNotSupportedException {
     Type node = (Type) super.clone();
@@ -70,7 +80,11 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
+<<<<<<< HEAD
    * @declaredat ASTNode:40
+=======
+   * @declaredat ASTNode:37
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
    */
   @Deprecated
   public abstract Type fullCopy();
@@ -79,7 +93,11 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
+<<<<<<< HEAD
    * @declaredat ASTNode:48
+=======
+   * @declaredat ASTNode:45
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
    */
   public abstract Type treeCopyNoTransform();
   /**
@@ -88,6 +106,7 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
+<<<<<<< HEAD
    * @declaredat ASTNode:56
    */
   public abstract Type treeCopy();
@@ -99,6 +118,11 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
   @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:49")
   public abstract String print();
+=======
+   * @declaredat ASTNode:53
+   */
+  public abstract Type treeCopy();
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
 /** @apilevel internal */
 protected boolean isUnknownType_visited = false;
   /** @apilevel internal */
@@ -114,11 +138,19 @@ protected boolean isUnknownType_visited = false;
 
   /**
    * @attribute syn
+<<<<<<< HEAD
    * @aspect Types
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:33
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
   @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\NTAUtils.jrag:33")
+=======
+   * @aspect UnknownType
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/UtilFun.jrag:36
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="UnknownType", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/UtilFun.jrag:36")
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
   public boolean isUnknownType() {
     ASTState state = state();
     if (isUnknownType_computed) {
@@ -135,6 +167,7 @@ protected boolean isUnknownType_visited = false;
     isUnknownType_visited = false;
     return isUnknownType_value;
   }
+<<<<<<< HEAD
 /** @apilevel internal */
 protected boolean isIntType_visited = false;
   /** @apilevel internal */
@@ -243,4 +276,6 @@ protected java.util.Set compatibleType_Type_visited;
     compatibleType_Type_visited.remove(_parameters);
     return compatibleType_Type_value;
   }
+=======
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
 }

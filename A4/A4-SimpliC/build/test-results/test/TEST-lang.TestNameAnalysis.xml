@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testsuite name="lang.TestNameAnalysis" tests="7" skipped="0" failures="1" errors="0" timestamp="2018-10-19T14:14:44" hostname="KevsMonsterPC" time="0.027">
   <properties/>
   <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.002"/>
@@ -12,6 +13,19 @@ And other stuff, should fail atm.]&gt; but was:&lt;... Incompatible types![]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at lang.Util.compareOutput(Util.java:46)
 	at lang.TestNameAnalysis.runTest(TestNameAnalysis.java:34)
+=======
+<testsuite name="lang.TestNameAnalysis" tests="7" skipped="0" failures="1" errors="0" timestamp="2018-10-18T12:57:20" hostname="taco.local" time="0.014">
+  <properties/>
+  <testcase name="runTest[ok3.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[ok2.in]" classname="lang.TestNameAnalysis" time="0.001"/>
+  <testcase name="runTest[unknownType.in]" classname="lang.TestNameAnalysis" time="0.003">
+    <failure message="lang.ast.LangParser$SyntaxError: Cannot recover from the syntax error" type="lang.ast.LangParser$SyntaxError">lang.ast.LangParser$SyntaxError: Cannot recover from the syntax error
+	at lang.ast.LangParser.recoverFromError(LangParser.java:103)
+	at beaver.Parser.parse(Parser.java:487)
+	at beaver.Parser.parse(Parser.java:428)
+	at lang.Util.parse(Util.java:33)
+	at lang.TestNameAnalysis.runTest(TestNameAnalysis.java:28)
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -68,7 +82,15 @@ And other stuff, should fail atm.]&gt; but was:&lt;... Incompatible types![]&gt;
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
+<<<<<<< HEAD
   <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.005"/>
+=======
+  <testcase name="runTest[redeclared.in]" classname="lang.TestNameAnalysis" time="0.003"/>
+  <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.001"/>
+  <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.001"/>
+  <testcase name="runTest[predefinedfuntest.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[2,8-2,8: Syntax Error: unexpected token "k"
+]]></system-err>
 </testsuite>

@@ -1,21 +1,28 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:27
+ * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/lang.ast:28
  * @astdecl FunCall : Expr ::= IdUse Expr*;
  * @production FunCall : {@link Expr} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}*</span>;
 
  */
 public class FunCall extends Expr implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/Visitor.jrag:142
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:170
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/PrettyPrint.jrag:170
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + getIdUse().getID());
@@ -26,13 +33,6 @@ public class FunCall extends Expr implements Cloneable {
 				out.print(", ");
 		}
 		out.print(")");
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\Visitor.jrag:142
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1
@@ -75,7 +75,11 @@ public class FunCall extends Expr implements Cloneable {
   public void flushAttrCache() {
     super.flushAttrCache();
     type_reset();
+<<<<<<< HEAD
     expectedType_reset();
+=======
+    args_reset();
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
   }
   /** @apilevel internal 
    * @declaredat ASTNode:34
@@ -318,27 +322,43 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
+<<<<<<< HEAD
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:6
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
   @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:4")
+=======
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:17
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:17")
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
   public Type type() {
     ASTState state = state();
     if (type_computed) {
       return type_value;
     }
     if (type_visited) {
+<<<<<<< HEAD
       throw new RuntimeException("Circular definition of attribute Expr.type().");
     }
     type_visited = true;
     state().enterLazyAttribute();
     type_value = getIdUse().type();
+=======
+      throw new RuntimeException("Circular definition of attribute FunCall.type().");
+    }
+    type_visited = true;
+    state().enterLazyAttribute();
+    type_value = decl().type();
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
     type_computed = true;
     state().leaveLazyAttribute();
     type_visited = false;
     return type_value;
   }
 /** @apilevel internal */
+<<<<<<< HEAD
 protected boolean expectedType_visited = false;
   /** @apilevel internal */
   private void expectedType_reset() {
@@ -352,10 +372,24 @@ protected boolean expectedType_visited = false;
 
   /** @apilevel internal */
   protected Type expectedType_value;
+=======
+protected boolean args_visited = false;
+  /** @apilevel internal */
+  private void args_reset() {
+    args_computed = false;
+    args_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean args_computed = false;
+
+  /** @apilevel internal */
+  protected int args_value;
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
 
   /**
    * @attribute syn
    * @aspect TypeAnalysis
+<<<<<<< HEAD
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:34
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
@@ -375,5 +409,26 @@ protected boolean expectedType_visited = false;
     state().leaveLazyAttribute();
     expectedType_visited = false;
     return expectedType_value;
+=======
+   * @declaredat /Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:34
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A4/A4-SimpliC/src/jastadd/TypeAnalysis.jrag:34")
+  public int args() {
+    ASTState state = state();
+    if (args_computed) {
+      return args_value;
+    }
+    if (args_visited) {
+      throw new RuntimeException("Circular definition of attribute FunCall.args().");
+    }
+    args_visited = true;
+    state().enterLazyAttribute();
+    args_value = getNumExpr();
+    args_computed = true;
+    state().leaveLazyAttribute();
+    args_visited = false;
+    return args_value;
+>>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
   }
 }

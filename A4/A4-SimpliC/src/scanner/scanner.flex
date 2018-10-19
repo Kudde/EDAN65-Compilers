@@ -30,6 +30,7 @@ import lang.ast.LangParser.SyntaxError;
 WhiteSpace = [ ] | \t | \f | \n | \r
 ID = [a-zA-Z0-9]+
 NUMERAL = [0-9]+
+BOOLEAN = "ture" | "false"
 COMMENT = "//" .*
 %%
 
