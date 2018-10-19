@@ -21,22 +21,21 @@ public class LangParser extends Parser {
 		static public final short PLUS = 8;
 		static public final short SUB = 9;
 		static public final short RP = 10;
-		static public final short COMMA = 11;
-		static public final short LP = 12;
-		static public final short ID = 13;
+		static public final short LP = 11;
+		static public final short ID = 12;
+		static public final short COMMA = 13;
 		static public final short NUMERAL = 14;
-		static public final short BOOLEAN = 15;
-		static public final short INT = 16;
-		static public final short MUL = 17;
-		static public final short DIV = 18;
-		static public final short MOD = 19;
-		static public final short IF = 20;
-		static public final short WHILE = 21;
-		static public final short RCARET = 22;
-		static public final short RETURN = 23;
-		static public final short LCARET = 24;
-		static public final short ASSIGN = 25;
-		static public final short ELSE = 26;
+		static public final short INT = 15;
+		static public final short IF = 16;
+		static public final short WHILE = 17;
+		static public final short RCARET = 18;
+		static public final short RETURN = 19;
+		static public final short MUL = 20;
+		static public final short DIV = 21;
+		static public final short MOD = 22;
+		static public final short LCARET = 23;
+		static public final short ASSIGN = 24;
+		static public final short ELSE = 25;
 
 		static public final String[] NAMES = {
 			"EOF",
@@ -50,19 +49,18 @@ public class LangParser extends Parser {
 			"PLUS",
 			"SUB",
 			"RP",
-			"COMMA",
 			"LP",
 			"ID",
+			"COMMA",
 			"NUMERAL",
-			"BOOLEAN",
 			"INT",
-			"MUL",
-			"DIV",
-			"MOD",
 			"IF",
 			"WHILE",
 			"RCARET",
 			"RETURN",
+			"MUL",
+			"DIV",
+			"MOD",
 			"LCARET",
 			"ASSIGN",
 			"ELSE"
@@ -70,32 +68,32 @@ public class LangParser extends Parser {
 	}
 
 	static final ParsingTables PARSING_TABLES = new ParsingTables(
-		"U9pTM5bi5LKO$kRExM9jeTXQIw4jSkzjRrdQWbQKJHGLKHP1hMXTG19VV32Hn4IDfW#AJoO" +
-		"cweF69#E3mHUDyKaVZ54IABWXk86x0iMbOaL5xF4xovqvCtDwUvkcINN#VFdFzv$l$3DdcN" +
-		"FFN23zZlWxQUZ59elDm2pK1kmIpAS$dJIfirWPRiQoWFLY2$rlSLDjGjQ7Mt5fm0V58AuIN" +
-		"yHDFSzCjEC2N8XU8SG$k0ANOJdEmjKETI$h0xLgUurIdqtrdt53ETPRJAgl2$WVSSC6L5fC" +
-		"gcyC#AcueG8hB7v67ASLsEy9EyFS8JiXJc1Lm8RZXikf3la8hhJuoOIDO4t8i0dhnFw0$vg" +
-		"mdyIF8PDh0tS4V2Xku1Lb5lybRgesmYp#SznKROHP$A#ugTe8i$W#bo5VM2c6Pz28B79e8q" +
-		"kiBBMw2lefMOlDwD7FZsvSZ8MOZciv26dSZflWemRJS1jvbJZYClP#hcbz7ix78l6PowXQR" +
-		"CP8HmwxZ7SfF9FEzQdBGfM977IPfTAHZrncgNJaWCiGN2RoeSiibOx8CKPan3kiEVd0PLOE" +
-		"7KdaYCphvouBSvXH$CHbrfrqv3sNMIeTUTTbbaf7FdQPfTAHzrrcgNJaaCiibURkDIolQe9" +
-		"hs3MIrknFi3PHLsfjSjrch9xK1skvS5q$HhvlRSEvQ5MbRsnJKLdwsZOLbQMlR5DHMVhIDX" +
-		"MLFXCRzQNY1sceGpCwSP6Q7yc1UGbja$XUMaGhULotG7mdBQAJFAvRcOYiJaJM9Y8R4v4RO" +
-		"f5pOdnsXBT4M5U4BR5OWrMU8mQukyfpm3RLcm5fI8cZuYZPNbK3xhvwVGzWgpWcZfdvluNm" +
-		"aEA#dERPgPodXKgUQ6gvmglLJZsTPLrVprbgu0vGnJDCaxELZ8IjsgYi2bhLigPfp3OoTrN" +
-		"iJcEraLVOnjMNsb7xabGl82zTFPE$rAMhSzJQpotxL#ov6sCZaokYheweGMrZqTmvIrt3kQ" +
-		"efecwCvDRwKTKy6OjGBTJrNr2h4GxdPmRVqpg#DxEvIxIWbJCzMWkjdvgruVFFuI$tNEuPM" +
-		"Ov1bfRd$ZuFytc24Dm5tLd2rdeq9g2oPcAAgGhNU5KiZsjE9Yl7$rxbNCEgFa$8DUmOIMls" +
-		"9rXRP4yPPssi9wftLcyTEymO#UHwcQneSjGZElLa#YthBbKx0TraHOhpKfbTzhctobwr1xs" +
-		"fvXbGZzGYizgomOntX2kUPptWpdvvGXFYDDrMOXlB8$HvuZ7Y3MAZERdTHSXptKF4KyHBXF" +
-		"pbVuj7ioVvkLr7$ppWyslJUn18UGJpfEePaxcpZBz2NGVzcupnt9zQHhGJ6uYbn7g2sjGEO" +
-		"YTr3z0$Gxp8zjFeNsTxbjChMCTlE$yuOti9daDJHuWXndoYWVNCxmyJWk0zqw$HBsUUNVJt" +
-		"qAya68Fy7kUtdVym$HPY7z53o6zhcUzn#lkOhuAU#V0eoosCFySowpngqo#GSppyjnbZsLj" +
-		"7Vuf#Ets6aF$Bo7jpdBrA#jNqyhlkLM8FCTYlXZZz2EC7TPah5EWZdj3SEw2ztoEz2spVPp" +
-		"JF6jvlskumlDpuxSRVRVnEepivUcv$oBfFarM#DoodoXpFT7#Hv#qqVNtPYYqniTt67pBnL" +
-		"Q46XotzMaVUpOxOqr7kcRmOZiRLrQFUdOKAVBUuO#JeStpRvDcba#KylOOibnbK43v$8oJA" +
-		"#4kHvla#fSxuNTHsqNUGTxFSpN8cWCUzm8$1uriFmZVmrDiUmkCku1DU1CsCDVE#BIot4d9" +
-		"tc4Mq4Ol$1L3$HAe=");
+		"U9p5brji5bKGnsTtlrheXGeMMg7S#fLoAr2eW7T4H5HGGUe5KT4depwG61DzCV4INpG#QQA" +
+		"F9lfYV3AQg8cH5r#yLEvtiEMEADuGKRIilpDx#dLtptxzlhO4Tp8pvypyvypisNFETpwHt8" +
+		"Rm7vSafp98sFBI8IqoJSRHE##ITAgyEs7hYvb2xqoQf4BbVGbRNXeruZAv9Vm#JJ92hfHMg" +
+		"PG5qYbBv5ePARTceAvJr8W2gXhKNscI6rNUbB2UIvECKBaiOVqpJQ2CN9wmdaqJSsFa7Gdh" +
+		"7mvjLdawOVlTeP#CPCxZjj$IH4OZ7qvOVqsJIByiq2zfmb#G1VevJVWBia1$fqbMgfI4zJk" +
+		"NPBgiGlQjedbIR#s2TBuxNvxlZbmmeE#WIyA3xCypIHfaghI7#rnIxBuOTgxr3BMU0ovfZW" +
+		"En70jjFNjTKknUiCq66uPXh$NiT8drqelCotp5$XjUi9uT6MIyEsIqJ93BLTvcxTjTqXgsw" +
+		"wvRpAuJcMKzsroI#y5kKsodOiLw1fgZ$Ivfv7uTPvsEyw2TepqkoKDWzoXslSqPURQufDuj" +
+		"clcKmOQdh6UtIuhThRDpbygrrZFGkspDe1$27oCfzh7sNIwfTvV47cjVNLWjYwHDwkHswxu" +
+		"NhfLHMaDLeg8PyVN9EDdrkgj8t5pMKoDh2haonYEoQAvoV2cF3Djt94uoLYOZpOmU2G$7IJ" +
+		"s7rNCuF1GdzHnIpw6m9qxgwL5FJzWT9$LqgwSxF6v8hf29CaUkKjlnI8R732KynwpC9sR$Q" +
+		"cn73IMmHn4paKdi#5H$Tgf$VQg$DDLVaUhVcUhVa#YFIVIQmYvgoka#sK25NQOF#tADiONV" +
+		"uZK#q#uAJwW#4Px4UWEI7Imtwtf#9BRq7u0zHWWOju8xGoM$#YCv2QjPYTDa52lJd5rZc9d" +
+		"nZDp4$4pYssV5r6bCJT4ODw958wep8sPbHZHeH3uHuQAg5TLG0fNFo3xKZEMXQXJLKXQgLF" +
+		"LHnhgBaJ4C3GfvoL3qoa5LWMhaDEnVHPEbdhq$ZiZ68lWQSteEriTlVfYLPxZO$w4UynIlf" +
+		"muQ73RoHB9K3UQDglZjCktYurOLi7K6Isz8ypUedCq5xFHIEGSphiMMDKS3hWL3jOP2#vJA" +
+		"6SOUYuslbYdSuvgjjnMU8JDrhBRYDO4girwGJYvRGolxqkRA6azt$31yHS#QY#PBVTDBx55" +
+		"RQKzgzh5bOcMkYxt4$MGleAPchNMQgL2gzMrcqpAsUVOz33TQMws#XzaRpONtdnvR#NCumH" +
+		"vz8Rh9ZELISW8szvq9y49u2VrUz2fxs#7MH4qYJyElm6#B#AFG7u1RBn9yWNu2$JnsSDwpw" +
+		"7RqwzXcSlLQJFjTsj#WFqI$Yh#JzYRqasXkzXx$G7mFRg2z37q6fawVypR0dbkAvhxhumlU" +
+		"Gg#1UGN$STZaVGD#7zzxC3dyJuXPZkwARcu1DUHMs7ybr2lFOCEVMqdxERW3VWtUYdqjSQD" +
+		"fcxiiOth4oZdiZs5$XtuLSVn32#hWZTXuDy$yBdoEvhtzkRG$HlEFKxw4DzD#6SrDtlyK$W" +
+		"pSXMZ#SsFv82Vjjp0tnAdmegZlVntfG8pEOk9h8#qjDfgnpjknvjZOdHPNRt5FMNzV$wliS" +
+		"ODDiVR1$hRtOgpTdOpnFYfUPt3CvbqNivssjerMlsJjP$inycOCt#kEcwl8iCrFzltLTgok" +
+		"f5sV3luZUEmcm#mmJeCyEi#ajs5hezsAZjYqAonNmW6djk4ApkuSTsyV3jXT7Xpmc#bpbdX" +
+		"mm5VjOy$iw1Hxx7E10yiUEp#8iSVE362lm4tqcyWvaROv6yR3BN3xVy2SlDi=");
 
 	static public class SyntaxError extends RuntimeException { public SyntaxError(String msg) {super(msg);}}
 	// Disable syntax error recovery
@@ -393,39 +391,34 @@ public class LangParser extends Parser {
 					final Expr a = (Expr) _symbol_a.value;
 					 return a;
 			}
-			case 46: // fun_call = ID.id LP RP
+			case 45: // fun_call = ID.id LP RP
 			{
 					final Symbol id = _symbols[offset + 1];
 					 return new FunCall(new IdUse(id), new List());
 			}
-			case 47: // fun_call = ID.id LP expr_list.a RP
+			case 46: // fun_call = ID.id LP expr_list.a RP
 			{
 					final Symbol id = _symbols[offset + 1];
 					final Symbol _symbol_a = _symbols[offset + 3];
 					final List a = (List) _symbol_a.value;
 					 return new FunCall(new IdUse(id), a);
 			}
-			case 48: // literal = NUMERAL.i
+			case 47: // literal = NUMERAL.i
 			{
 					final Symbol i = _symbols[offset + 1];
 					 return new Literal(i);
 			}
-			case 49: // bool_literal = BOOLEAN.i
-			{
-					final Symbol i = _symbols[offset + 1];
-					 return new BoolLiteral(i);
-			}
-			case 50: // type_decl = INT.i
+			case 48: // type_decl = INT.i
 			{
 					final Symbol i = _symbols[offset + 1];
 					 return new IntType(i);
 			}
-			case 51: // id_use = ID.id
+			case 49: // id_use = ID.id
 			{
 					final Symbol id = _symbols[offset + 1];
 					 return new IdUse(id);
 			}
-			case 52: // id_decl = ID.id
+			case 50: // id_decl = ID.id
 			{
 					final Symbol id = _symbols[offset + 1];
 					 return new IdDecl(id);
@@ -439,7 +432,6 @@ public class LangParser extends Parser {
 			case 42: // factor = id_use
 			case 43: // factor = fun_call
 			case 44: // factor = literal
-			case 45: // factor = bool_literal
 			{
 				return _symbols[offset + 1];
 			}

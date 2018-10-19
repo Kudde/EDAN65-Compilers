@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<testsuite name="lang.TestVisitor" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-10-19T14:14:44" hostname="KevsMonsterPC" time="0.012">
+<testsuite name="lang.TestVisitor" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-10-19T14:28:08" hostname="KevsMonsterPC" time="0.013">
   <properties/>
-  <testcase name="runTest[1.in]" classname="lang.TestVisitor" time="0.004"/>
-  <testcase name="runTest[2.in]" classname="lang.TestVisitor" time="0.003"/>
-  <testcase name="runTest[3.in]" classname="lang.TestVisitor" time="0.003"/>
-=======
-<testsuite name="lang.TestVisitor" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-10-18T12:57:20" hostname="taco.local" time="0.01">
-  <properties/>
-  <testcase name="runTest[2.in]" classname="lang.TestVisitor" time="0.003"/>
-  <testcase name="runTest[3.in]" classname="lang.TestVisitor" time="0.003"/>
-  <testcase name="runTest[1.in]" classname="lang.TestVisitor" time="0.002"/>
->>>>>>> fcd2405ceb385ac2168301b2ce70f79298edb2a2
+  <testcase name="runTest[1.in]" classname="lang.TestVisitor" time="0.005"/>
+  <testcase name="runTest[2.in]" classname="lang.TestVisitor" time="0.004"/>
+  <testcase name="runTest[3.in]" classname="lang.TestVisitor" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
