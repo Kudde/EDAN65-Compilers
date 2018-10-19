@@ -7,12 +7,12 @@ import java.util.Set;
 import java.util.TreeSet;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:39
- * @astdecl GreaterEqual : BinExpr ::= Left:Expr Right:Expr;
- * @production GreaterEqual : {@link BinExpr};
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:40
+ * @astdecl GreaterEqual : BoolExpr ::= Left:Expr Right:Expr;
+ * @production GreaterEqual : {@link BoolExpr};
 
  */
-public class GreaterEqual extends BinExpr implements Cloneable {
+public class GreaterEqual extends BoolExpr implements Cloneable {
   /**
    * @aspect PrettyPrint
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:149

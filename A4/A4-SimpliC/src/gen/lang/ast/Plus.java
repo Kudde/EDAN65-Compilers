@@ -8,11 +8,11 @@ import java.util.TreeSet;
 /**
  * @ast node
  * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:31
- * @astdecl Plus : BinExpr ::= Left:Expr Right:Expr;
- * @production Plus : {@link BinExpr};
+ * @astdecl Plus : ArithmeticExpr ::= Left:Expr Right:Expr;
+ * @production Plus : {@link ArithmeticExpr};
 
  */
-public class Plus extends BinExpr implements Cloneable {
+public class Plus extends ArithmeticExpr implements Cloneable {
   /**
    * @aspect PrettyPrint
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:108

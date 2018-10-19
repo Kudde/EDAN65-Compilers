@@ -1,1 +1,3 @@
+Error at line 10: Incompatible types!
 Error at line 10: symbol 'k' is not declared
+Error at line 10: type unknownType should be intType!

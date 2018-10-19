@@ -1,14 +1,14 @@
 Program
   List
     Fun
-      TypeDecl Type="int"
+      IntType ID="int"
       IdDecl ID="a"
       Param
         List
       Block
         List
     Fun
-      TypeDecl Type="int"
+      IntType ID="int"
       IdDecl ID="b"
       Param
         List

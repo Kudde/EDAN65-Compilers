@@ -8,8 +8,8 @@ import java.util.TreeSet;
 /**
  * @ast node
  * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:7
- * @astdecl ParamDecl : ASTNode ::= TypeDecl IdDecl;
- * @production ParamDecl : {@link ASTNode} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span>;
+ * @astdecl ParamDecl : ASTNode ::= Type IdDecl;
+ * @production ParamDecl : {@link ASTNode} ::= <span class="component">{@link Type}</span> <span class="component">{@link IdDecl}</span>;
 
  */
 public class ParamDecl extends ASTNode<ASTNode> implements Cloneable {
@@ -18,7 +18,7 @@ public class ParamDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:35
    */
   public void prettyPrint(PrintStream out, String ind) {
-		getTypeDecl().prettyPrint(out, ind);
+		getType().prettyPrint(out, ind);
 		out.print(" ");
 		getIdDecl().prettyPrint(out, ind);
 	}
@@ -49,11 +49,11 @@ public class ParamDecl extends ASTNode<ASTNode> implements Cloneable {
    * @declaredat ASTNode:13
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"TypeDecl", "IdDecl"},
-    type = {"TypeDecl", "IdDecl"},
+    name = {"Type", "IdDecl"},
+    type = {"Type", "IdDecl"},
     kind = {"Child", "Child"}
   )
-  public ParamDecl(TypeDecl p0, IdDecl p1) {
+  public ParamDecl(Type p0, IdDecl p1) {
     setChild(p0, 0);
     setChild(p1, 1);
   }
@@ -157,30 +157,30 @@ public class ParamDecl extends ASTNode<ASTNode> implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the TypeDecl child.
-   * @param node The new node to replace the TypeDecl child.
+   * Replaces the Type child.
+   * @param node The new node to replace the Type child.
    * @apilevel high-level
    */
-  public void setTypeDecl(TypeDecl node) {
+  public void setType(Type node) {
     setChild(node, 0);
   }
   /**
-   * Retrieves the TypeDecl child.
-   * @return The current node used as the TypeDecl child.
+   * Retrieves the Type child.
+   * @return The current node used as the Type child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="TypeDecl")
-  public TypeDecl getTypeDecl() {
-    return (TypeDecl) getChild(0);
+  @ASTNodeAnnotation.Child(name="Type")
+  public Type getType() {
+    return (Type) getChild(0);
   }
   /**
-   * Retrieves the TypeDecl child.
+   * Retrieves the Type child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the TypeDecl child.
+   * @return The current node used as the Type child.
    * @apilevel low-level
    */
-  public TypeDecl getTypeDeclNoTransform() {
-    return (TypeDecl) getChildNoTransform(0);
+  public Type getTypeNoTransform() {
+    return (Type) getChildNoTransform(0);
   }
   /**
    * Replaces the IdDecl child.

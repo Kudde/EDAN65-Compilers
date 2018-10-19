@@ -8,8 +8,8 @@ import java.util.TreeSet;
 /**
  * @ast node
  * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\lang.ast:16
- * @astdecl DeclStmt : Stmt ::= TypeDecl IdDecl [Expr];
- * @production DeclStmt : {@link Stmt} ::= <span class="component">{@link TypeDecl}</span> <span class="component">{@link IdDecl}</span> <span class="component">[{@link Expr}]</span>;
+ * @astdecl DeclStmt : Stmt ::= Type IdDecl [Expr];
+ * @production DeclStmt : {@link Stmt} ::= <span class="component">{@link Type}</span> <span class="component">{@link IdDecl}</span> <span class="component">[{@link Expr}]</span>;
 
  */
 public class DeclStmt extends Stmt implements Cloneable {
@@ -18,7 +18,7 @@ public class DeclStmt extends Stmt implements Cloneable {
    * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\PrettyPrint.jrag:56
    */
   public void prettyPrint(PrintStream out, String ind) {
-		getTypeDecl().prettyPrint(out, ind);
+		getType().prettyPrint(out, ind);
 		out.print(" ");
 		getIdDecl().prettyPrint(out, ind);
 		if(hasExpr()) {
@@ -55,11 +55,11 @@ public class DeclStmt extends Stmt implements Cloneable {
    * @declaredat ASTNode:14
    */
   @ASTNodeAnnotation.Constructor(
-    name = {"TypeDecl", "IdDecl", "Expr"},
-    type = {"TypeDecl", "IdDecl", "Opt<Expr>"},
+    name = {"Type", "IdDecl", "Expr"},
+    type = {"Type", "IdDecl", "Opt<Expr>"},
     kind = {"Child", "Child", "Opt"}
   )
-  public DeclStmt(TypeDecl p0, IdDecl p1, Opt<Expr> p2) {
+  public DeclStmt(Type p0, IdDecl p1, Opt<Expr> p2) {
     setChild(p0, 0);
     setChild(p1, 1);
     setChild(p2, 2);
@@ -165,30 +165,30 @@ public class DeclStmt extends Stmt implements Cloneable {
     return super.is$Equal(node);    
   }
   /**
-   * Replaces the TypeDecl child.
-   * @param node The new node to replace the TypeDecl child.
+   * Replaces the Type child.
+   * @param node The new node to replace the Type child.
    * @apilevel high-level
    */
-  public void setTypeDecl(TypeDecl node) {
+  public void setType(Type node) {
     setChild(node, 0);
   }
   /**
-   * Retrieves the TypeDecl child.
-   * @return The current node used as the TypeDecl child.
+   * Retrieves the Type child.
+   * @return The current node used as the Type child.
    * @apilevel high-level
    */
-  @ASTNodeAnnotation.Child(name="TypeDecl")
-  public TypeDecl getTypeDecl() {
-    return (TypeDecl) getChild(0);
+  @ASTNodeAnnotation.Child(name="Type")
+  public Type getType() {
+    return (Type) getChild(0);
   }
   /**
-   * Retrieves the TypeDecl child.
+   * Retrieves the Type child.
    * <p><em>This method does not invoke AST transformations.</em></p>
-   * @return The current node used as the TypeDecl child.
+   * @return The current node used as the Type child.
    * @apilevel low-level
    */
-  public TypeDecl getTypeDeclNoTransform() {
-    return (TypeDecl) getChildNoTransform(0);
+  public Type getTypeNoTransform() {
+    return (Type) getChildNoTransform(0);
   }
   /**
    * Replaces the IdDecl child.

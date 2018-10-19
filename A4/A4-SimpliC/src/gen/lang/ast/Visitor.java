@@ -106,7 +106,7 @@ public interface Visitor {
 		public Object visit(Literal node, Object data);
 
 		 
-		public Object visit(TypeDecl node, Object data);
+		public Object visit(Type node, Object data);
 
 		 
 		public Object visit(ParamDecl node, Object data);

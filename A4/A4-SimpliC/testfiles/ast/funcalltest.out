@@ -1,7 +1,7 @@
 Program
   List
     Fun
-      TypeDecl Type="int"
+      IntType ID="int"
       IdDecl ID="hello"
       Param
         List

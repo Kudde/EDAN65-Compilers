@@ -1,15 +1,15 @@
 Program
   List
     Fun
-      TypeDecl Type="int"
+      IntType ID="int"
       IdDecl ID="gcd1"
       Param
         List
           ParamDecl
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="a"
           ParamDecl
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="b"
       Block
         List
@@ -41,15 +41,15 @@ Program
           ReturnStmt
             IdUse ID="a"
     Fun
-      TypeDecl Type="int"
+      IntType ID="int"
       IdDecl ID="gcd2"
       Param
         List
           ParamDecl
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="a"
           ParamDecl
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="b"
       Block
         List
@@ -71,18 +71,18 @@ Program
                   IdUse ID="a"
                   IdUse ID="b"
     Fun
-      TypeDecl Type="int"
+      IntType ID="int"
       IdDecl ID="main"
       Param
         List
       Block
         List
           DeclStmt
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="a"
             Opt
           DeclStmt
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="b"
             Opt
           AssignStmt
@@ -114,7 +114,7 @@ Program
                     IdUse ID="a"
                     IdUse ID="b"
           DeclStmt
-            TypeDecl Type="int"
+            IntType ID="int"
             IdDecl ID="diff"
             Opt
               Sub

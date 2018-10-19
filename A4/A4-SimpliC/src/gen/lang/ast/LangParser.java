@@ -130,7 +130,7 @@ public class LangParser extends Parser {
 			case 3: // fun = type_decl.a id_decl.b param.c block.d
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
-					final TypeDecl a = (TypeDecl) _symbol_a.value;
+					final Type a = (Type) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 2];
 					final IdDecl b = (IdDecl) _symbol_b.value;
 					final Symbol _symbol_c = _symbols[offset + 3];
@@ -204,7 +204,7 @@ public class LangParser extends Parser {
 			case 15: // decl = type_decl.a id_decl.b SEMMIC
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
-					final TypeDecl a = (TypeDecl) _symbol_a.value;
+					final Type a = (Type) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 2];
 					final IdDecl b = (IdDecl) _symbol_b.value;
 					 return new DeclStmt(a, b, new Opt());
@@ -212,7 +212,7 @@ public class LangParser extends Parser {
 			case 16: // decl = type_decl.a id_decl.b ASSIGN expr.c SEMMIC
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
-					final TypeDecl a = (TypeDecl) _symbol_a.value;
+					final Type a = (Type) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 2];
 					final IdDecl b = (IdDecl) _symbol_b.value;
 					final Symbol _symbol_c = _symbols[offset + 4];
@@ -254,7 +254,7 @@ public class LangParser extends Parser {
 			case 22: // param_decl = type_decl.a id_decl.b
 			{
 					final Symbol _symbol_a = _symbols[offset + 1];
-					final TypeDecl a = (TypeDecl) _symbol_a.value;
+					final Type a = (Type) _symbol_a.value;
 					final Symbol _symbol_b = _symbols[offset + 2];
 					final IdDecl b = (IdDecl) _symbol_b.value;
 					 return new ParamDecl(a, b);
@@ -411,7 +411,7 @@ public class LangParser extends Parser {
 			case 48: // type_decl = INT.i
 			{
 					final Symbol i = _symbols[offset + 1];
-					 return new TypeDecl(i);
+					 return new IntType(i);
 			}
 			case 49: // id_use = ID.id
 			{

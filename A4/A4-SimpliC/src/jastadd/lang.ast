@@ -1,41 +1,40 @@
 Program ::= Fun*;
 
-Fun ::= TypeDecl IdDecl Param Block;
+Fun ::= Type IdDecl Param Block;
 Param ::= ParamDecl*;
 Block : Stmt ::= Stmt*;
 
-ParamDecl ::= TypeDecl IdDecl;
+ParamDecl ::= Type IdDecl;
 
 abstract Type;
-IntType : Type;
-BoolType : Type;
-UnknownType : Type;
+IntType : Type ::= <ID>;
+BoolType : Type ::= <ID>;
+UnknownType : Type ::= <ID>;
 
 abstract Stmt;
 AssignStmt: Stmt ::= IdUse Expr;
-DeclStmt: Stmt ::= TypeDecl IdDecl [Expr];
+DeclStmt: Stmt ::= Type IdDecl [Expr];
 WhileStmt: Stmt ::= Expr Block;
 IfStmt: Stmt ::= Expr If:Block [Else:Block];
 ReturnStmt: Stmt ::= Expr;
 ExprStmt: Stmt ::= Expr;
 
 abstract Expr;
-IdUse: Expr ::= <ID>;
+IdUse : Expr ::= <ID>;
 IdDecl : Expr ::= <ID>;
 UnknownDecl : IdDecl;
 Literal: Expr ::= <NUMERAL>;
 FunCall: Expr ::= IdUse Expr*;
-BinExpr: Expr ::= Left:Expr Right:Expr;
-Mul: BinExpr;
-Div: BinExpr;
-Plus: BinExpr;
-Sub: BinExpr;
-Mod: BinExpr;
-Equal: BinExpr;
-NotEqual: BinExpr;
-Less: BinExpr;
-Greater: BinExpr;
-LessEqual: BinExpr;
-GreaterEqual: BinExpr;
-
-TypeDecl ::= <Type>;
+ArithmeticExpr : Expr ::= Left:Expr Right:Expr;
+Mul: ArithmeticExpr;
+Div: ArithmeticExpr;
+Plus: ArithmeticExpr;
+Sub: ArithmeticExpr;
+Mod: ArithmeticExpr;
+BoolExpr : Expr ::= Left:Expr Right:Expr;
+Equal: BoolExpr;
+NotEqual: BoolExpr;
+Less: BoolExpr;
+Greater: BoolExpr;
+LessEqual: BoolExpr;
+GreaterEqual: BoolExpr;

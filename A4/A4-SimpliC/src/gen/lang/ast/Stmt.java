@@ -40,15 +40,17 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
   public void flushAttrCache() {
     super.flushAttrCache();
     localLookup_String_reset();
+    isIncompatible_reset();
+    compatibleTypes_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:22
+   * @declaredat ASTNode:24
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:26
+   * @declaredat ASTNode:28
    */
   public Stmt clone() throws CloneNotSupportedException {
     Stmt node = (Stmt) super.clone();
@@ -60,7 +62,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:37
+   * @declaredat ASTNode:39
    */
   @Deprecated
   public abstract Stmt fullCopy();
@@ -69,7 +71,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:45
+   * @declaredat ASTNode:47
    */
   public abstract Stmt treeCopyNoTransform();
   /**
@@ -78,7 +80,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:53
+   * @declaredat ASTNode:55
    */
   public abstract Stmt treeCopy();
 /** @apilevel internal */
@@ -116,5 +118,100 @@ protected java.util.Set localLookup_String_visited;
     state().leaveLazyAttribute();
     localLookup_String_visited.remove(_parameters);
     return localLookup_String_value;
+  }
+/** @apilevel internal */
+protected boolean isIncompatible_visited = false;
+  /** @apilevel internal */
+  private void isIncompatible_reset() {
+    isIncompatible_computed = false;
+    isIncompatible_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean isIncompatible_computed = false;
+
+  /** @apilevel internal */
+  protected boolean isIncompatible_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:38
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:38")
+  public boolean isIncompatible() {
+    ASTState state = state();
+    if (isIncompatible_computed) {
+      return isIncompatible_value;
+    }
+    if (isIncompatible_visited) {
+      throw new RuntimeException("Circular definition of attribute Stmt.isIncompatible().");
+    }
+    isIncompatible_visited = true;
+    state().enterLazyAttribute();
+    isIncompatible_value = !compatibleTypes();
+    isIncompatible_computed = true;
+    state().leaveLazyAttribute();
+    isIncompatible_visited = false;
+    return isIncompatible_value;
+  }
+/** @apilevel internal */
+protected boolean compatibleTypes_visited = false;
+  /** @apilevel internal */
+  private void compatibleTypes_reset() {
+    compatibleTypes_computed = false;
+    compatibleTypes_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean compatibleTypes_computed = false;
+
+  /** @apilevel internal */
+  protected boolean compatibleTypes_value;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42")
+  public boolean compatibleTypes() {
+    ASTState state = state();
+    if (compatibleTypes_computed) {
+      return compatibleTypes_value;
+    }
+    if (compatibleTypes_visited) {
+      throw new RuntimeException("Circular definition of attribute Stmt.compatibleTypes().");
+    }
+    compatibleTypes_visited = true;
+    state().enterLazyAttribute();
+    compatibleTypes_value = true;
+    compatibleTypes_computed = true;
+    state().leaveLazyAttribute();
+    compatibleTypes_visited = false;
+    return compatibleTypes_value;
+  }
+  /** @apilevel internal */
+  protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
+    // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\A4\\A4-SimpliC\\src\\jastadd\\Errors.jrag:55
+    if (isIncompatible()) {
+      {
+        Program target = (Program) (program());
+        java.util.Set<ASTNode> contributors = _map.get(target);
+        if (contributors == null) {
+          contributors = new java.util.LinkedHashSet<ASTNode>();
+          _map.put((ASTNode) target, contributors);
+        }
+        contributors.add(this);
+      }
+    }
+    super.collect_contributors_Program_errors(_root, _map);
+  }
+  /** @apilevel internal */
+  protected void contributeTo_Program_errors(Set<ErrorMessage> collection) {
+    super.contributeTo_Program_errors(collection);
+    if (isIncompatible()) {
+      collection.add(error("Incompatible types!"));
+    }
   }
 }

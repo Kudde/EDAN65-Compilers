@@ -40,8 +40,7 @@
 %typeof literal = "Literal";
 %typeof id_decl = "IdDecl";
 %typeof id_use = "IdUse";
-%typeof type_decl = "TypeDecl";
-
+%typeof type_decl = "Type";
 %nonassoc ELSE;
 %nonassoc IF;
 
@@ -170,6 +169,6 @@ fun_call =
 // ----------------------------------------------------------------------------
 
 literal = NUMERAL.i 								{: return new Literal(i); :} ;
-type_decl = INT.i 									{: return new TypeDecl(i); :} ;
+type_decl = INT.i 									{: return new IntType(i); :} ;
 id_use = ID.id         							{: return new IdUse(id); :} ;
 id_decl = ID.id 										{: return new IdDecl(id); :} ;
