@@ -1,0 +1,16 @@
+Program
+  List
+    Fun
+      IntType ID="int"
+      IdDecl ID="whiletest"
+      Param
+        List
+      Block
+        List
+          WhileStmt
+            Literal NUMERAL="1"
+            Block
+              List
+                AssignStmt
+                  IdUse ID="x"
+                  Literal NUMERAL="2"

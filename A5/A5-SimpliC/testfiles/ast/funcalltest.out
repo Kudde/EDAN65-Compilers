@@ -1,0 +1,9 @@
+Program
+  List
+    Fun
+      IntType ID="int"
+      IdDecl ID="hello"
+      Param
+        List
+      Block
+        List

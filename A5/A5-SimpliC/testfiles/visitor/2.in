@@ -1,0 +1,5 @@
+int fun() {
+  while(1) {
+  //Depth 2
+  }
+}

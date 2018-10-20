@@ -1,0 +1,31 @@
+import java.util.HashMap;
+aspect Interpreter {
+  public void Program.eval() {
+    throw new RuntimeException();
+  }
+  public int Fun.eval(ActivationRecord actrec) {
+    throw new RuntimeException();
+  }
+  public void Stmt.eval(ActivationRecord actrec) {
+    throw new RuntimeException();
+  }
+  public int Expr.eval(ActivationRecord actrec) {
+    throw new RuntimeException();
+  }
+
+  public class ActivationRecord {
+    private HashMap<String, Integer> map;
+    public ActivationRecord() {
+      map = new HashMap<String, Integer>();
+    }
+
+    public void put(String name, int value) {
+      map.put(name, value);
+    }
+
+    public int get(String name) {
+      return 0;
+  //    return map.containsKey(name) ? map.get(name) : null;
+    }
+  }
+}

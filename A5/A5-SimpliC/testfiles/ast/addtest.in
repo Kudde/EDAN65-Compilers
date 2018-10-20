@@ -1,0 +1,9 @@
+int add() {
+  int x;
+  int y;
+  x = 3;
+  y = 2;
+  int k;
+  k = x + y;
+  k = 2 + 3;
+  }
