@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestTypeAnalysis" tests="6" skipped="0" failures="2" errors="0" timestamp="2018-10-19T19:04:44" hostname="taco.local" time="0.009">
+<testsuite name="lang.TestTypeAnalysis" tests="6" skipped="0" failures="2" errors="0" timestamp="2018-10-20T14:07:04" hostname="taco.local" time="0.017">
   <properties/>
-  <testcase name="runTest[type.in]" classname="lang.TestTypeAnalysis" time="0.002">
+  <testcase name="runTest[type.in]" classname="lang.TestTypeAnalysis" time="0.003">
     <failure message="org.junit.ComparisonFailure: Output differs expected:&lt;...Incompatible types!&#10;[And other stuff, should fail atm.]&gt; but was:&lt;...Incompatible types!&#10;[Error at line 28: symbol 'fun3' is a function!&#10;Error at line 29: symbol 'x' is not a function!]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Output differs expected:&lt;...Incompatible types!
 [And other stuff, should fail atm.]&gt; but was:&lt;...Incompatible types!
 [Error at line 28: symbol 'fun3' is a function!
@@ -65,10 +65,10 @@ Error at line 29: symbol 'x' is not a function!]&gt;
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="runTest[un1.in]" classname="lang.TestTypeAnalysis" time="0.001"/>
-  <testcase name="runTest[un3.in]" classname="lang.TestTypeAnalysis" time="0.001"/>
-  <testcase name="runTest[un2.in]" classname="lang.TestTypeAnalysis" time="0.001"/>
-  <testcase name="runTest[vafun.in]" classname="lang.TestTypeAnalysis" time="0.001">
+  <testcase name="runTest[un1.in]" classname="lang.TestTypeAnalysis" time="0.004"/>
+  <testcase name="runTest[un3.in]" classname="lang.TestTypeAnalysis" time="0.003"/>
+  <testcase name="runTest[un2.in]" classname="lang.TestTypeAnalysis" time="0.002"/>
+  <testcase name="runTest[vafun.in]" classname="lang.TestTypeAnalysis" time="0.002">
     <failure message="org.junit.ComparisonFailure: Output differs expected:&lt;[]&gt; but was:&lt;[Error at line 8: symbol 'a' is a function!&#10;Error at line 9: symbol 'c' is not a function!]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Output differs expected:&lt;[]&gt; but was:&lt;[Error at line 8: symbol 'a' is a function!
 Error at line 9: symbol 'c' is not a function!]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
@@ -130,7 +130,7 @@ Error at line 9: symbol 'c' is not a function!]&gt;
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="runTest[var.in]" classname="lang.TestTypeAnalysis" time="0.001"/>
+  <testcase name="runTest[var.in]" classname="lang.TestTypeAnalysis" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,22 +1,29 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.HashMap;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:19
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:19
  * @astdecl ReturnStmt : Stmt ::= Expr;
  * @production ReturnStmt : {@link Stmt} ::= <span class="component">{@link Expr}</span>;
 
  */
 public class ReturnStmt extends Stmt implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:120
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:87
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:87
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + "return ");
@@ -24,12 +31,12 @@ public class ReturnStmt extends Stmt implements Cloneable {
 		out.print(";\n");
 	}
   /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:120
+   * @aspect Interpreter
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:73
    */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
+  public void eval(ActivationRecord actrec) throws ReturnException {
+                throw new ReturnException(getExpr().eval(actrec));
+        }
   /**
    * @declaredat ASTNode:1
    */
@@ -199,10 +206,10 @@ protected boolean compatibleTypes_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:46
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:46
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:42")
   public boolean compatibleTypes() {
     ASTState state = state();
     if (compatibleTypes_computed) {

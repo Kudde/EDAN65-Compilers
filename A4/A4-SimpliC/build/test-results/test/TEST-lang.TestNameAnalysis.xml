@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestNameAnalysis" tests="6" skipped="0" failures="1" errors="0" timestamp="2018-10-19T19:04:44" hostname="taco.local" time="0.016">
+<testsuite name="lang.TestNameAnalysis" tests="6" skipped="0" failures="1" errors="0" timestamp="2018-10-20T14:07:03" hostname="taco.local" time="0.014">
   <properties/>
-  <testcase name="runTest[ok3.in]" classname="lang.TestNameAnalysis" time="0.004"/>
-  <testcase name="runTest[ok2.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[ok3.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[ok2.in]" classname="lang.TestNameAnalysis" time="0.001"/>
   <testcase name="runTest[redeclared.in]" classname="lang.TestNameAnalysis" time="0.003"/>
-  <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.001"/>
-  <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.004">
+  <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.003">
     <failure message="org.junit.ComparisonFailure: Output differs expected:&lt;...e should be intType![]&gt; but was:&lt;...e should be intType![&#10;Error at line 11: symbol 'x' is not a function!]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Output differs expected:&lt;...e should be intType![]&gt; but was:&lt;...e should be intType![
 Error at line 11: symbol 'x' is not a function!]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
@@ -67,7 +67,7 @@ Error at line 11: symbol 'x' is not a function!]&gt;
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="runTest[predefinedfuntest.in]" classname="lang.TestNameAnalysis" time="0.001"/>
+  <testcase name="runTest[predefinedfuntest.in]" classname="lang.TestNameAnalysis" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

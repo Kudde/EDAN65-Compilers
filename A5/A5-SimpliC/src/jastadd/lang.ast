@@ -25,12 +25,14 @@ IdDecl : Expr ::= <ID>;
 UnknownDecl : IdDecl;
 Literal: Expr ::= <NUMERAL>;
 FunCall: Expr ::= IdUse Expr*;
+
 ArithmeticExpr : Expr ::= Left:Expr Right:Expr;
 Mul: ArithmeticExpr;
 Div: ArithmeticExpr;
 Plus: ArithmeticExpr;
 Sub: ArithmeticExpr;
 Mod: ArithmeticExpr;
+
 BoolExpr : Expr ::= Left:Expr Right:Expr;
 Equal: BoolExpr;
 NotEqual: BoolExpr;

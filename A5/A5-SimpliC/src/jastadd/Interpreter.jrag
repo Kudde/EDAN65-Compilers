@@ -1,31 +1,204 @@
 import java.util.HashMap;
 aspect Interpreter {
-  public void Program.eval() {
-    throw new RuntimeException();
-  }
-  public int Fun.eval(ActivationRecord actrec) {
-    throw new RuntimeException();
-  }
-  public void Stmt.eval(ActivationRecord actrec) {
-    throw new RuntimeException();
-  }
-  public int Expr.eval(ActivationRecord actrec) {
-    throw new RuntimeException();
-  }
 
-  public class ActivationRecord {
-    private HashMap<String, Integer> map;
-    public ActivationRecord() {
-      map = new HashMap<String, Integer>();
-    }
+        // PROGRAM
+        public void Program.eval() {
+                boolean found = false;
+                for (Fun fun : getFuns()) {
+                        if (fun.getIdDecl().getID().equals("main")) {
+                                found = true;
+                                fun.eval(new ActivationRecord());
+                        }
+                }
+                if (!found)
+                        throw new RuntimeException();
+        }
+        // FUN
+        public int Fun.eval(ActivationRecord actrec) {
+                Block block = getBlock();
+                int returnValue = 0;
+                try {
+                        block.eval(actrec);
+                } catch (ReturnException r) {
+                        returnValue = r.getReturn();
+                }
+                return returnValue;
+        }
+        // BLOCK
+        public void Block.eval(ActivationRecord actrec) throws ReturnException {
+                for (Stmt s : getStmts()) {
+                        s.eval(actrec);
+                }
+        }
 
-    public void put(String name, int value) {
-      map.put(name, value);
-    }
+        // LOS STMTOS ------------------------------------------
+        public abstract void Stmt.eval(ActivationRecord actrec)
+        throws ReturnException;
 
-    public int get(String name) {
-      return 0;
-  //    return map.containsKey(name) ? map.get(name) : null;
-    }
-  }
+        public void DeclStmt.eval(ActivationRecord actrec) {
+                Expr expr = getExpr();
+                String id = getIdDecl().getID();
+
+                if (hasExpr())
+                        actrec.put(id, expr.eval(actrec));
+                else
+                        actrec.put(id, 0);
+
+                //System.out.println("ID : " + id);
+                //System.out.println(expr.eval(actrec));
+        }
+
+        public void AssignStmt.eval(ActivationRecord actrec) {
+                Expr expr = getExpr();
+                String id = getIdUse().decl().getID();
+                actrec.put(id, expr.eval(actrec));
+                //System.out.println(expr.eval(actrec));
+        }
+
+        public void WhileStmt.eval(ActivationRecord actrec) throws ReturnException {
+                while (getExpr().eval(actrec) == 1) {
+                        getBlock().eval(actrec);
+                }
+        }
+
+        public void IfStmt.eval(ActivationRecord actrec) throws ReturnException {
+                if (getExpr().eval(actrec) == 1)
+                        getIf().eval(actrec);
+                else
+                        if (hasElse())
+                                getElse().eval(actrec);
+
+        }
+
+        public void ReturnStmt.eval(ActivationRecord actrec) throws ReturnException {
+                throw new ReturnException(getExpr().eval(actrec));
+        }
+
+        public void ExprStmt.eval(ActivationRecord actrec) {
+                getExpr().eval(actrec);
+        }
+
+
+
+
+        public abstract int Expr.eval(ActivationRecord actrec);
+
+        // ArithmeticExpr --------------------------------------------------
+        public int ArithmeticExpr.eval(ActivationRecord actrec) {
+                return 0;
+        }
+
+        public int Mul.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) * getRight().eval(actrec);
+        }
+
+        public int Div.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) / getRight().eval(actrec);
+        }
+
+        public int Plus.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) + getRight().eval(actrec);
+        }
+
+        public int Sub.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) - getRight().eval(actrec);
+        }
+
+        public int Mod.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) % getRight().eval(actrec);
+        }
+
+        // BoolExpr --------------------------------------------------
+        public int BoolExpr.eval(ActivationRecord actrec) {
+                return 0;
+        }
+
+        public int Equal.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) == getRight().eval(actrec) ? 1 : 0;
+        }
+
+        public int NotEqual.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) != getRight().eval(actrec) ? 1 : 0;
+        }
+
+        public int Less.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) < getRight().eval(actrec) ? 1 : 0;
+        }
+
+        public int Greater.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) > getRight().eval(actrec) ? 1 : 0;
+        }
+
+        public int LessEqual.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) <= getRight().eval(actrec) ? 1 : 0;
+        }
+
+        public int GreaterEqual.eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) >= getRight().eval(actrec) ? 1 : 0;
+        }
+
+        // Other EXPR --------------------------------------------------
+
+        public int IdUse.eval(ActivationRecord actrec) {
+                return actrec.get(decl().getID());
+        }
+
+        public int IdDecl.eval(ActivationRecord actrec) {
+                return actrec.get(getID());
+        }
+
+        public int Literal.eval(ActivationRecord actrec) {
+                return Integer.parseInt(getNUMERAL());
+        }
+
+        public int FunCall.eval(ActivationRecord actrec) {
+                if (getIdUse().decl().getID().equals("print"))
+                        System.out.println(getExpr(0).eval(actrec));
+
+                // Fun fun = getIdUse().decl().function();
+                // ActivationRecord acr = new ActivationRecord();
+                // Param p = fun.getParam();
+                //
+                // for (int i = 0; i < p.getNumParamDecl(); i++)
+                //         acr.put(p.getParamDecl(i).getIdDecl().getID(), getExpr(i).eval(actrec));
+                //
+                // return fun.eval(acr);
+                return 0;
+
+
+        }
+
+
+        // ReturnException ---------------------------------------------
+        public class ReturnException extends Exception {
+        private int value;
+
+        public ReturnException(int value) {
+                super();
+                this.value = value;
+        }
+        public int getReturn() {
+                return value;
+        }
+        }
+
+        // Actrec --------------------------------------------------
+        public class ActivationRecord {
+        private HashMap<String, Integer> map;
+        public ActivationRecord() {
+                map = new HashMap<String, Integer>();
+        }
+
+        public void put(String name, int value) {
+                map.put(name, value);
+        }
+
+        public int get(String name) {
+                Object n = map.get(name);
+                if (n == null)
+                        return 0;
+                else
+                        return (int) n;
+        }
+        }
 }

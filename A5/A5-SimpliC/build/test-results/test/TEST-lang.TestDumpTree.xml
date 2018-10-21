@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestDumpTree" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-10-20T14:02:23" hostname="XPS15" time="0.252">
+<testsuite name="lang.TestDumpTree" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-10-21T14:23:22" hostname="taco.local" time="0.113">
   <properties/>
-  <testcase name="runTest[addmultest.in]" classname="lang.TestDumpTree" time="0.07"/>
-  <testcase name="runTest[addtest.in]" classname="lang.TestDumpTree" time="0.023"/>
-  <testcase name="runTest[allexprtest.in]" classname="lang.TestDumpTree" time="0.027"/>
-  <testcase name="runTest[decltest.in]" classname="lang.TestDumpTree" time="0.017"/>
-  <testcase name="runTest[divtest.in]" classname="lang.TestDumpTree" time="0.02"/>
-  <testcase name="runTest[funcalltest.in]" classname="lang.TestDumpTree" time="0.011"/>
-  <testcase name="runTest[funtest.in]" classname="lang.TestDumpTree" time="0.011"/>
-  <testcase name="runTest[gcd.in]" classname="lang.TestDumpTree" time="0.025"/>
-  <testcase name="runTest[multest.in]" classname="lang.TestDumpTree" time="0.011"/>
-  <testcase name="runTest[paramtest.in]" classname="lang.TestDumpTree" time="0.01"/>
-  <testcase name="runTest[subtest.in]" classname="lang.TestDumpTree" time="0.01"/>
-  <testcase name="runTest[whiletest.in]" classname="lang.TestDumpTree" time="0.015"/>
+  <testcase name="runTest[gcd.in]" classname="lang.TestDumpTree" time="0.077"/>
+  <testcase name="runTest[paramtest.in]" classname="lang.TestDumpTree" time="0.003"/>
+  <testcase name="runTest[subtest.in]" classname="lang.TestDumpTree" time="0.004"/>
+  <testcase name="runTest[addmultest.in]" classname="lang.TestDumpTree" time="0.003"/>
+  <testcase name="runTest[multest.in]" classname="lang.TestDumpTree" time="0.003"/>
+  <testcase name="runTest[funtest.in]" classname="lang.TestDumpTree" time="0.002"/>
+  <testcase name="runTest[addtest.in]" classname="lang.TestDumpTree" time="0.003"/>
+  <testcase name="runTest[whiletest.in]" classname="lang.TestDumpTree" time="0.002"/>
+  <testcase name="runTest[decltest.in]" classname="lang.TestDumpTree" time="0.003"/>
+  <testcase name="runTest[divtest.in]" classname="lang.TestDumpTree" time="0.004"/>
+  <testcase name="runTest[allexprtest.in]" classname="lang.TestDumpTree" time="0.005"/>
+  <testcase name="runTest[funcalltest.in]" classname="lang.TestDumpTree" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

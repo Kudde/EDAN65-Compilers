@@ -1,22 +1,29 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.HashMap;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:5
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:5
  * @astdecl Block : Stmt ::= Stmt*;
  * @production Block : {@link Stmt} ::= <span class="component">{@link Stmt}*</span>;
 
  */
 public class Block extends Stmt implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:63
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:42
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:42
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(" {\n");
@@ -25,12 +32,14 @@ public class Block extends Stmt implements Cloneable {
 		}
 	}
   /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:63
+   * @aspect Interpreter
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:28
    */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
+  public void eval(ActivationRecord actrec) throws ReturnException {
+                for (Stmt s : getStmts()) {
+                        s.eval(actrec);
+                }
+        }
   /**
    * @declaredat ASTNode:1
    */
@@ -283,10 +292,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:13
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:13
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:13")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:13")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -317,10 +326,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute inh
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:12
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:12
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:12")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:12")
   public IdDecl lookup(String name) {
     Object _parameters = name;
     if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
@@ -351,12 +360,12 @@ protected java.util.Set lookup_String_visited;
   protected java.util.Map lookup_String_values;
 
   /**
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:9
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:9
    * @apilevel internal
    */
   public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
     if (_callerNode == getStmtListNoTransform()) {
-      // @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:38
+      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:38
       int childIndex = _callerNode.getIndexOfChild(_childNode);
       {
       		IdDecl decl = localLookup(name);
@@ -368,7 +377,7 @@ protected java.util.Set lookup_String_visited;
     }
   }
   /**
-   * @declaredat C:\\Users\\kevin\\LTH\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:9
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:9
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute lookup
    */

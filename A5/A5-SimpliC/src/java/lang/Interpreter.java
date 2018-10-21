@@ -10,9 +10,6 @@ import lang.ast.Program;
 import lang.ast.LangParser;
 import lang.ast.LangScanner;
 
-/**
- * Dumps the parsed Abstract Syntax Tree of a Calc program.
- */
 public class Interpreter {
 	/**
 	 * Entry point
@@ -22,11 +19,11 @@ public class Interpreter {
     public static Object DrAST_root_node; //Enable debugging with DrAST
 
 	public static void main(String[] args) {
+                System.out.println("HEj hej");
 		try {
 			if (args.length != 1) {
 				System.err.println(
 						"You must specify a source file on the command line!");
-				printUsage();
 				System.exit(1);
 				return;
 			}
@@ -35,8 +32,16 @@ public class Interpreter {
 			LangScanner scanner = new LangScanner(new FileReader(filename));
 			LangParser parser = new LangParser();
 			Program program = (Program) parser.parse(scanner);
-            DrAST_root_node = program; //Enable debugging with DrAST
-			System.out.println(program.dumpTree());
+                        if (program.errors().size() > 0) {
+                                System.err.println( "The program does not compile correctly!");
+                                System.exit(1);
+                                return;
+                        } else {
+                                System.out.println("Starting program eval");
+                                program.eval();
+                        }
+
+
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found!");
 			System.exit(1);
@@ -47,8 +52,5 @@ public class Interpreter {
 		}
 	}
 
-	private static void printUsage() {
-		System.err.println("Usage: DumpTree FILE");
-		System.err.println("  where FILE is the file to be parsed");
-	}
+
 }
