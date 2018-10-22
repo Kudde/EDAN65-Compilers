@@ -1,0 +1,12 @@
+int rawr(int i) {
+        if (i == 1) {
+                return 1;
+        } else {
+                i = i - 1;
+                return rawr(i) * 2;
+        }
+}
+
+int main() {
+        print(rawr(5));
+}

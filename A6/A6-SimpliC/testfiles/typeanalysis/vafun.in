@@ -1,0 +1,14 @@
+int a(int o) {
+  return 3;
+}
+
+int fun () {
+  int b = 1;
+  int c = 2;
+  a = b + 3;
+  c();
+}
+
+int b () {
+  return 54;
+}

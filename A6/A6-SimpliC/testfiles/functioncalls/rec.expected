@@ -1,0 +1,9 @@
+Fun: rawr
+Reach: { rawr }
+ > rawr
+
+Fun: main
+Reach: { print rawr }
+ > rawr
+ > print
+

@@ -1,0 +1,19 @@
+int bakeBrownies() {
+        return eatIceCream();
+}
+
+int eatIceCream() {
+	return brewCoffee();
+}
+
+int brewCoffee() {
+        return 42;
+}
+
+
+
+int main() {
+	bakeBrownies();
+        eatIceCream();
+
+}

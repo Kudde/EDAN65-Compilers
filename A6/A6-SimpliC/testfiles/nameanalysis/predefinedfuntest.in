@@ -1,0 +1,7 @@
+int print() {
+}
+
+int fun() {
+read();
+print(3);
+}

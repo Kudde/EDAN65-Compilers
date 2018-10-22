@@ -1,0 +1,28 @@
+Program
+  List
+    Fun
+      IntType ID="int"
+      IdDecl ID="a"
+      Param
+        List
+      Block
+        List
+          DeclStmt
+            IntType ID="int"
+            IdDecl ID="x"
+            Opt
+          DeclStmt
+            IntType ID="int"
+            IdDecl ID="y"
+            Opt
+          AssignStmt
+            IdUse ID="x"
+            Literal NUMERAL="5"
+          AssignStmt
+            IdUse ID="y"
+            IdUse ID="x"
+          DeclStmt
+            IntType ID="int"
+            IdDecl ID="k"
+            Opt
+              Literal NUMERAL="3"

@@ -1,0 +1,12 @@
+Fun: gcd1
+Reach: { }
+
+Fun: gcd2
+Reach: { gcd2 }
+ > gcd2
+
+Fun: main
+Reach: { gcd2 gcd1 print }
+ > print
+ > gcd1
+ > gcd2

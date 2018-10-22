@@ -1,0 +1,35 @@
+int print4(int a, int b) {
+  while(1) {
+    int k = 3;
+    int x = 1;
+    if (x != k) {
+      while (1 == 1) {
+        int potato;
+        print(potato);
+      }
+    } else {
+      k = 2;
+    }
+  }
+  return print(k);
+}
+
+int print1337(int c, int d, int e) {
+  e = 2 * 2;
+  c = 1 / 0;
+  print(e, c);
+  d = 4;
+  print(e, c, d);
+  while(c) {
+    while(d) {
+
+    while(e) {
+    if (e < d) {
+    k = 1;
+    }
+
+    }
+    }
+  }
+  return 2 + 3;
+}

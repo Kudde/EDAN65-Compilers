@@ -1,0 +1,85 @@
+aspect TypeAnalysis {
+
+  // ExprType
+  syn Type Expr.type();
+
+  eq FunCall.type() = getIdUse().type();
+  eq IdDecl.type() = intType();
+  eq IdUse.type() = decl().type();
+  eq Literal.type() = intType();
+
+  eq ArithmeticExpr.type() {
+    Type left = getLeft().type();
+    Type right = getLeft().type();
+    if ((left.isIntType() && right.isIntType())
+    ||(left.isBoolType() && right.isBoolType()))
+      return intType();
+    else
+      return unknownType();
+  }
+  eq BoolExpr.type() {
+    Type left = getLeft().type();
+		Type right = getRight().type();
+		if (left.isIntType() && right.isIntType())
+			return boolType();
+		else
+			return unknownType();
+  }
+
+  // ExpectedType
+  syn Type Expr.expectedType();
+  eq Literal.expectedType() = intType();
+  eq ArithmeticExpr.expectedType() = intType();
+  eq BoolExpr.expectedType() = boolType();
+  eq FunCall.expectedType() = intType();
+  eq IdDecl.expectedType() = intType();
+  eq IdUse.expectedType() = decl().expectedType();
+
+  syn boolean Stmt.isIncompatible() = !compatibleTypes();
+
+  syn boolean Type.compatibleType(Type type) = this.equals(type);
+
+  syn boolean Stmt.compatibleTypes() = true;
+  eq AssignStmt.compatibleTypes() = getIdUse().type().compatibleType(getExpr().type());
+  eq IfStmt.compatibleTypes() = getExpr().type().compatibleType(boolType());
+  eq WhileStmt.compatibleTypes() = getExpr().type().compatibleType(boolType());
+  eq ReturnStmt.compatibleTypes() = getExpr().type().compatibleType(intType());
+
+
+  // variable | function
+  inh boolean IdDecl.isVariable();
+  inh boolean IdDecl.isFunction();
+  eq DeclStmt.getIdDecl().isVariable() = true;
+  eq DeclStmt.getIdDecl().isFunction() = false;
+  eq Fun.getIdDecl().isVariable() = false;
+  eq Fun.getIdDecl().isFunction() = true;
+  eq Fun.getParam().isVariable() = true;
+  eq Fun.getParam().isFunction() = false;
+  eq Program.unknownDecl().isVariable() = false;
+  eq Program.unknownDecl().isFunction() = false;
+
+
+
+
+  // // number
+  inh Fun IdDecl.function();
+  eq Program.getChild().function() = null;
+  eq Fun.getIdDecl().function() = this;
+  syn boolean FunCall.incorrectNumberOfParams() {
+	if(getIdUse().decl().isVariable())	//Quick fix. - not LUdde
+		return false;
+	
+  	if (getIdUse().decl().isUnknown())
+  		return false;
+
+  	int params = getIdUse().decl().function().getParam().getNumParamDecl();
+  	if (params != getNumExpr())
+  		return true;
+  	else
+  		return false;
+
+
+  }
+
+
+}

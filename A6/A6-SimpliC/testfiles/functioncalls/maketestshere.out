@@ -1,0 +1,8 @@
+Fun: add
+Reach: { }
+
+Fun: main
+Reach: { add print }
+ > add
+ > print
+
