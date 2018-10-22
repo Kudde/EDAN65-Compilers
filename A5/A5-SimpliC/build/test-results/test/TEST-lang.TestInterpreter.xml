@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestInterpreter" tests="6" skipped="0" failures="1" errors="0" timestamp="2018-10-21T14:23:23" hostname="taco.local" time="0.011">
+<testsuite name="lang.TestInterpreter" tests="8" skipped="0" failures="1" errors="0" timestamp="2018-10-22T08:02:50" hostname="KevsMonsterPC" time="0.052">
   <properties/>
-  <testcase name="runTest[variables.in]" classname="lang.TestInterpreter" time="0.002"/>
-  <testcase name="runTest[fun.in]" classname="lang.TestInterpreter" time="0.003">
-    <failure message="org.junit.ComparisonFailure: Output no match expected:&lt;[]&gt; but was:&lt;[0]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Output no match expected:&lt;[]&gt; but was:&lt;[0]&gt;
+  <testcase name="runTest[fun.in]" classname="lang.TestInterpreter" time="0.004"/>
+  <testcase name="runTest[if.in]" classname="lang.TestInterpreter" time="0.004"/>
+  <testcase name="runTest[main1.in]" classname="lang.TestInterpreter" time="0.007"/>
+  <testcase name="runTest[print.in]" classname="lang.TestInterpreter" time="0.003"/>
+  <testcase name="runTest[shadow.in]" classname="lang.TestInterpreter" time="0.004">
+    <failure message="org.junit.ComparisonFailure: Output no match expected:&lt;2&#10;[1&#10;0]&gt; but was:&lt;2&#10;[2&#10;2]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: Output no match expected:&lt;2
+[1
+0]&gt; but was:&lt;2
+[2
+2]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at lang.TestInterpreter.compareOutput(TestInterpreter.java:64)
 	at lang.TestInterpreter.runTest(TestInterpreter.java:47)
@@ -63,10 +70,9 @@
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="runTest[main1.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[if.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[while.in]" classname="lang.TestInterpreter" time="0.002"/>
-  <testcase name="runTest[print.in]" classname="lang.TestInterpreter" time="0.001"/>
+  <testcase name="runTest[uniqueName.in]" classname="lang.TestInterpreter" time="0.005"/>
+  <testcase name="runTest[variables.in]" classname="lang.TestInterpreter" time="0.011"/>
+  <testcase name="runTest[while.in]" classname="lang.TestInterpreter" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

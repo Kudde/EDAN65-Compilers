@@ -1,14 +1,14 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.HashMap;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:10
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:10
  * @astdecl IntType : Type ::= <ID:String>;
  * @production IntType : {@link Type} ::= <span class="component">&lt;ID:String&gt;</span>;
 
@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 public class IntType extends Type implements Cloneable {
   /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:166
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:166
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + getID());
@@ -208,10 +208,10 @@ protected boolean isIntType_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:48
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NTAUtils.jrag:48
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:47")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NTAUtils.jrag:47")
   public boolean isIntType() {
     ASTState state = state();
     if (isIntType_computed) {
@@ -246,10 +246,10 @@ protected boolean print_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:58
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NTAUtils.jrag:58
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:57")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NTAUtils.jrag:57")
   public String print() {
     ASTState state = state();
     if (print_computed) {

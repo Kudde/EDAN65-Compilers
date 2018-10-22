@@ -1,15 +1,15 @@
 package lang.ast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.HashMap;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 /**
  * @ast class
  * @aspect Interpreter
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:186
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:191
  */
 public class ActivationRecord extends java.lang.Object {
   
@@ -28,12 +28,25 @@ public class ActivationRecord extends java.lang.Object {
 
   
 
-        public int get(String name) {
+        public Integer get(String name) {
                 Object n = map.get(name);
                 if (n == null)
-                        return 0;
+                        return null;
                 else
                         return (int) n;
+        }
+
+  
+
+        public void print() {
+          for (String name: map.keySet()){
+
+            String key = name.toString();
+            String value = map.get(name).toString();
+            System.out.println("Key: " + key + " Value: " + value);
+
+
+          }
         }
 
 

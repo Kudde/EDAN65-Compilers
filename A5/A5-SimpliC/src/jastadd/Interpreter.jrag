@@ -152,20 +152,25 @@ aspect Interpreter {
         }
 
         public int FunCall.eval(ActivationRecord actrec) {
-                if (getIdUse().decl().getID().equals("print"))
-                        System.out.println(getExpr(0).eval(actrec));
+                if (getIdUse().decl().getID().equals("print")) {
+                  System.out.println(getExpr(0).eval(actrec));
+                } else {
 
-                // Fun fun = getIdUse().decl().function();
-                // ActivationRecord acr = new ActivationRecord();
-                // Param p = fun.getParam();
-                //
-                // for (int i = 0; i < p.getNumParamDecl(); i++)
-                //         acr.put(p.getParamDecl(i).getIdDecl().getID(), getExpr(i).eval(actrec));
-                //
-                // return fun.eval(acr);
+
+                Fun fun = getIdUse().decl().function();
+                ActivationRecord localAcr = new ActivationRecord();
+                Param p = fun.getParam();
+
+                for (int i = 0; i < p.getNumParamDecl(); i++)
+                        localAcr.put(p.getParamDecl(i).getIdDecl().getID(),
+                        getExpr(i).eval(actrec));
+                return fun.eval(localAcr);
+              }
                 return 0;
+        }
 
-
+        public String IdDecl.uniqueName(ActivationRecord actrec, String name) {
+          return "Shenmezuo";
         }
 
 
@@ -193,12 +198,24 @@ aspect Interpreter {
                 map.put(name, value);
         }
 
-        public int get(String name) {
+        public Integer get(String name) {
                 Object n = map.get(name);
                 if (n == null)
-                        return 0;
+                        return null;
                 else
                         return (int) n;
         }
+
+        public void print() {
+          for (String name: map.keySet()){
+
+            String key = name.toString();
+            String value = map.get(name).toString();
+            System.out.println("Key: " + key + " Value: " + value);
+
+
+          }
         }
+
+      }
 }
