@@ -41,7 +41,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 	}
   /**
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:210
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:208
    */
   protected Fun funcall() {
       		return null;
@@ -532,7 +532,7 @@ public class ASTNode<T extends ASTNode> extends beaver.Symbol implements Cloneab
 
   /**
    * @aspect <NoAspect>
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:215
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:212
    */
     /** @apilevel internal */
   protected void collect_contributors_Fun_functionCalls(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {

@@ -90,11 +90,12 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    reachable_reset();
     localLookup_String_reset();
     lookup_String_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:35
+   * @declaredat ASTNode:36
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
@@ -104,14 +105,14 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
     Fun_functionCalls_value = null;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:43
+   * @declaredat ASTNode:44
    */
   public Fun clone() throws CloneNotSupportedException {
     Fun node = (Fun) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:48
+   * @declaredat ASTNode:49
    */
   public Fun copy() {
     try {
@@ -131,7 +132,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:67
+   * @declaredat ASTNode:68
    */
   @Deprecated
   public Fun fullCopy() {
@@ -142,7 +143,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:77
+   * @declaredat ASTNode:78
    */
   public Fun treeCopyNoTransform() {
     Fun tree = (Fun) copy();
@@ -163,7 +164,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:97
+   * @declaredat ASTNode:98
    */
   public Fun treeCopy() {
     Fun tree = (Fun) copy();
@@ -179,7 +180,7 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:111
+   * @declaredat ASTNode:112
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -288,6 +289,74 @@ public class Fun extends ASTNode<ASTNode> implements Cloneable {
   public Block getBlockNoTransform() {
     return (Block) getChildNoTransform(3);
   }
+/** @apilevel internal */
+protected ASTState.Cycle reachable_cycle = null;
+  /** @apilevel internal */
+  private void reachable_reset() {
+    reachable_computed = false;
+    reachable_initialized = false;
+    reachable_value = null;
+    reachable_cycle = null;
+  }
+  /** @apilevel internal */
+  protected boolean reachable_computed = false;
+
+  /** @apilevel internal */
+  protected Set<Fun> reachable_value;
+  /** @apilevel internal */
+  protected boolean reachable_initialized = false;
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN, isCircular=true)
+  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:219")
+  public Set<Fun> reachable() {
+    if (reachable_computed) {
+      return reachable_value;
+    }
+    ASTState state = state();
+    if (!reachable_initialized) {
+      reachable_initialized = true;
+      reachable_value = new HashSet<Fun>();
+    }
+    if (!state.inCircle() || state.calledByLazyAttribute()) {
+      state.enterCircle();
+      do {
+        reachable_cycle = state.nextCycle();
+        Set<Fun> new_reachable_value = reachable_compute();
+        if (!AttributeValue.equals(reachable_value, new_reachable_value)) {
+          state.setChangeInCycle();
+        }
+        reachable_value = new_reachable_value;
+      } while (state.testAndClearChangeInCycle());
+      reachable_computed = true;
+      state.startLastCycle();
+      Set<Fun> $tmp = reachable_compute();
+
+      state.leaveCircle();
+    } else if (reachable_cycle != state.cycle()) {
+      reachable_cycle = state.cycle();
+      if (state.lastCycle()) {
+        reachable_computed = true;
+        Set<Fun> new_reachable_value = reachable_compute();
+        return new_reachable_value;
+      }
+      Set<Fun> new_reachable_value = reachable_compute();
+      if (!AttributeValue.equals(reachable_value, new_reachable_value)) {
+        state.setChangeInCycle();
+      }
+      reachable_value = new_reachable_value;
+    } else {
+    }
+    return reachable_value;
+  }
+  /** @apilevel internal */
+  private Set<Fun> reachable_compute() {
+                  Set<Fun> reach = new HashSet<Fun>();
+                  for (IdDecl id : functionCalls()) {
+                          Fun fun = id.function();
+                          reach.add(fun);
+                          reach.addAll(fun.reachable());
+                  }
+                  return reach;
+          }
 /** @apilevel internal */
 protected java.util.Set localLookup_String_visited;
   /** @apilevel internal */
@@ -521,10 +590,10 @@ protected boolean Fun_functionCalls_visited = false;
   /**
    * @attribute coll
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:215
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:212
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.COLL)
-  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:215")
+  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:212")
   public Set<IdDecl> functionCalls() {
     ASTState state = state();
     if (Fun_functionCalls_computed) {

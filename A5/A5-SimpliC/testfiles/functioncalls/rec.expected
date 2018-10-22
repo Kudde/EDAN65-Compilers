@@ -3,7 +3,7 @@ Reach: { rawr }
  > rawr
 
 Fun: main
-Reach: { rawr print }
- > print
+Reach: { print rawr }
  > rawr
+ > print
 

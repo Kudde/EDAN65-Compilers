@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * @ast class
  * @aspect Interpreter
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:237
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:246
  */
 public class ActivationRecord extends java.lang.Object {
   

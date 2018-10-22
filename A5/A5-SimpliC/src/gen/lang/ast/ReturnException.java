@@ -11,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * @ast class
  * @aspect Interpreter
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:224
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:233
  */
 public class ReturnException extends Exception {
   

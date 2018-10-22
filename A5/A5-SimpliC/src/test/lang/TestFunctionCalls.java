@@ -33,6 +33,7 @@ public class TestFunctionCalls {
 		for(Fun fun : program.getFuns()) {
 			sb.append("Fun: ");
 			sb.append(fun.getIdDecl().getID()).append("\n");
+			appendReach(sb, fun).append("\n");
 			for (IdDecl id : fun.functionCalls()) {
 				sb.append(" > ");
 				sb.append(id.getID()).append("\n");
@@ -45,6 +46,19 @@ public class TestFunctionCalls {
 				new File(TEST_DIRECTORY, Util.changeExtension(filename, ".out")),
 				new File(TEST_DIRECTORY, Util.changeExtension(filename, ".expected")));
 	}
+
+	private StringBuilder appendReach(StringBuilder sb, Fun fun) {
+
+			sb.append("Reach: { ");
+			for (Fun f : fun.reachable()) {
+				sb.append(f.getIdDecl().getID());
+				sb.append(" ");
+			}
+			sb.append("}");
+
+			return sb;
+	}
+
 
 	@Parameters(name = "{0}")
 	public static Iterable<Object[]> getTests() {

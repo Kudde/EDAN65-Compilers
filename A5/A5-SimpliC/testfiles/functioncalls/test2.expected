@@ -1,5 +1,5 @@
 Fun: bakeBrownies
-Reach: { eatIceCream brewCoffee }
+Reach: { brewCoffee eatIceCream }
  > eatIceCream
 
 Fun: eatIceCream
@@ -10,7 +10,6 @@ Fun: brewCoffee
 Reach: { }
 
 Fun: main
-Reach: { eatIceCream brewCoffee bakeBrownies }
+Reach: { bakeBrownies brewCoffee eatIceCream }
  > eatIceCream
  > bakeBrownies
-

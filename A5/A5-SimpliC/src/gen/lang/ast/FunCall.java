@@ -503,7 +503,7 @@ protected boolean enclosingFunction_visited = false;
 
   /** @apilevel internal */
   protected void collect_contributors_Fun_functionCalls(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:217
+    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:214
     {
       Fun target = (Fun) (enclosingFunction());
       java.util.Set<ASTNode> contributors = _map.get(target);

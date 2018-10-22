@@ -201,23 +201,32 @@ aspect Interpreter {
         eq IfStmt.getElse().appendUniqueID() = uniqueId();
 
         //  FunCallGraph-------------------------------------------------
-        
+
         inh Fun FunCall.enclosingFunction();
         eq Fun.getBlock().enclosingFunction() = this;
-
-
 
         protected Fun ASTNode.funcall() {
       		return null;
       	}
-
 
         coll Set<IdDecl> Fun.functionCalls() [new HashSet<IdDecl>()] with add root Program;
 
         FunCall contributes getIdUse().decl()
       		to Fun.functionCalls() for enclosingFunction();
 
+        // REACH -------------------------------------------------------
 
+        syn Set<Fun> Fun.reachable() circular [new HashSet<Fun>()];
+
+        eq Fun.reachable() {
+                Set<Fun> reach = new HashSet<Fun>();
+                for (IdDecl id : functionCalls()) {
+                        Fun fun = id.function();
+                        reach.add(fun);
+                        reach.addAll(fun.reachable());
+                }
+                return reach;
+        }
 
 
         // ReturnException ---------------------------------------------
