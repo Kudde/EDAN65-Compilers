@@ -1,41 +1,42 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:26
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:26
  * @astdecl Literal : Expr ::= <NUMERAL:String>;
  * @production Literal : {@link Expr} ::= <span class="component">&lt;NUMERAL:String&gt;</span>;
 
  */
 public class Literal extends Expr implements Cloneable {
   /**
-   * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:127
+   * @aspect Interpreter
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:152
    */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
+  public int eval(ActivationRecord actrec) {
+                return Integer.parseInt(getNUMERAL());
+        }
   /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:155
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:155
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(getNUMERAL());
 	}
   /**
-   * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:151
+   * @aspect Visitor
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:127
    */
-  public int eval(ActivationRecord actrec) {
-                return Integer.parseInt(getNUMERAL());
-        }
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
   /**
    * @declaredat ASTNode:1
    */
@@ -225,10 +226,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:9
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:9
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:4")
   public Type type() {
     ASTState state = state();
     if (type_computed) {
@@ -263,10 +264,10 @@ protected boolean expectedType_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:31
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:31
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:30")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:30")
   public Type expectedType() {
     ASTState state = state();
     if (expectedType_computed) {

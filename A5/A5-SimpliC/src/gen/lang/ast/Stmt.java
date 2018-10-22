@@ -1,15 +1,16 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:14
+ * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:14
  * @astdecl Stmt : ASTNode;
  * @production Stmt : {@link ASTNode};
 
@@ -17,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:36
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:37
    */
   public abstract void eval(ActivationRecord actrec)
         throws ReturnException;
@@ -47,9 +48,9 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    localLookup_String_reset();
     isIncompatible_reset();
     compatibleTypes_reset();
-    localLookup_String_reset();
     uniqueId_reset();
   }
   /** @apilevel internal 
@@ -93,6 +94,42 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    */
   public abstract Stmt treeCopy();
 /** @apilevel internal */
+protected java.util.Set localLookup_String_visited;
+  /** @apilevel internal */
+  private void localLookup_String_reset() {
+    localLookup_String_values = null;
+    localLookup_String_visited = null;
+  }
+  /** @apilevel internal */
+  protected java.util.Map localLookup_String_values;
+
+  /**
+   * @attribute syn
+   * @aspect NameAnalysis
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:22
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:22")
+  public IdDecl localLookup(String name) {
+    Object _parameters = name;
+    if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
+    if (localLookup_String_values == null) localLookup_String_values = new java.util.HashMap(4);
+    ASTState state = state();
+    if (localLookup_String_values.containsKey(_parameters)) {
+      return (IdDecl) localLookup_String_values.get(_parameters);
+    }
+    if (localLookup_String_visited.contains(_parameters)) {
+      throw new RuntimeException("Circular definition of attribute Stmt.localLookup(String).");
+    }
+    localLookup_String_visited.add(_parameters);
+    state().enterLazyAttribute();
+    IdDecl localLookup_String_value = unknownDecl();
+    localLookup_String_values.put(_parameters, localLookup_String_value);
+    state().leaveLazyAttribute();
+    localLookup_String_visited.remove(_parameters);
+    return localLookup_String_value;
+  }
+/** @apilevel internal */
 protected boolean isIncompatible_visited = false;
   /** @apilevel internal */
   private void isIncompatible_reset() {
@@ -108,10 +145,10 @@ protected boolean isIncompatible_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:38
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:38
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:38")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:38")
   public boolean isIncompatible() {
     ASTState state = state();
     if (isIncompatible_computed) {
@@ -144,10 +181,10 @@ protected boolean compatibleTypes_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:42
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:42")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42")
   public boolean compatibleTypes() {
     ASTState state = state();
     if (compatibleTypes_computed) {
@@ -164,49 +201,13 @@ protected boolean compatibleTypes_visited = false;
     compatibleTypes_visited = false;
     return compatibleTypes_value;
   }
-/** @apilevel internal */
-protected java.util.Set localLookup_String_visited;
-  /** @apilevel internal */
-  private void localLookup_String_reset() {
-    localLookup_String_values = null;
-    localLookup_String_visited = null;
-  }
-  /** @apilevel internal */
-  protected java.util.Map localLookup_String_values;
-
-  /**
-   * @attribute syn
-   * @aspect NameAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:22
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:22")
-  public IdDecl localLookup(String name) {
-    Object _parameters = name;
-    if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
-    if (localLookup_String_values == null) localLookup_String_values = new java.util.HashMap(4);
-    ASTState state = state();
-    if (localLookup_String_values.containsKey(_parameters)) {
-      return (IdDecl) localLookup_String_values.get(_parameters);
-    }
-    if (localLookup_String_visited.contains(_parameters)) {
-      throw new RuntimeException("Circular definition of attribute Stmt.localLookup(String).");
-    }
-    localLookup_String_visited.add(_parameters);
-    state().enterLazyAttribute();
-    IdDecl localLookup_String_value = unknownDecl();
-    localLookup_String_values.put(_parameters, localLookup_String_value);
-    state().leaveLazyAttribute();
-    localLookup_String_visited.remove(_parameters);
-    return localLookup_String_value;
-  }
   /**
    * @attribute inh
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:193
+   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:194
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:193")
+  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:194")
   public String uniqueId() {
     ASTState state = state();
     if (uniqueId_computed) {
@@ -240,7 +241,7 @@ protected boolean uniqueId_visited = false;
 
   /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:64
+    // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Errors.jrag:64
     if (isIncompatible()) {
       {
         Program target = (Program) (program());

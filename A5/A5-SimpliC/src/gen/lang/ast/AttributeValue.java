@@ -1,12 +1,13 @@
 package lang.ast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /** Wrapper class for storing nullable attribute values. 
  * @ast class
  * @declaredat ASTState:2

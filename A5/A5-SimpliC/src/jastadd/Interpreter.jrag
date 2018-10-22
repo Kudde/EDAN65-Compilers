@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.HashSet;
 aspect Interpreter {
 
         // PROGRAM
@@ -198,6 +199,30 @@ aspect Interpreter {
         eq WhileStmt.getBlock().appendUniqueID() = uniqueId();
         eq IfStmt.getIf().appendUniqueID() = uniqueId();
         eq IfStmt.getElse().appendUniqueID() = uniqueId();
+
+        //  FunCallGraph-------------------------------------------------
+        // inh Fun Stmt.enclosingFunction();
+        // eq Block.getStmt(int index).enclosingFunction() = (Fun)getParent();
+        //
+        // syn Set<Fun> Block.functionCalls() {
+        //         Set<Fun> funSet = new HashSet<Fun>();
+        //         for (int i = 0; i < getNumStmt(); i++) {
+        //           funSet.add(getStmt(i).enclosingFunction());
+        //         }
+        //         return funSet;
+        // }
+
+
+        protected Fun ASTNode.funcall() {
+      		return null;
+      	}
+
+
+        coll Set<Fun> Program.functionCalls() [new HashSet<Fun>()] with add root Program;
+
+        IdDecl contributes funcall()
+      		when isFunction()
+      		to Program.functionCalls() for program();
 
 
 
