@@ -1,15 +1,16 @@
 package lang.ast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.HashMap;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast class
  * @aspect Interpreter
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:191
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:219
  */
 public class ActivationRecord extends java.lang.Object {
   

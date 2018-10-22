@@ -1,29 +1,30 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.HashMap;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:42
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:42
  * @astdecl GreaterEqual : BoolExpr ::= Left:Expr Right:Expr;
  * @production GreaterEqual : {@link BoolExpr};
 
  */
 public class GreaterEqual extends BoolExpr implements Cloneable {
   /**
-   * @aspect Interpreter
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:136
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:104
    */
-  public int eval(ActivationRecord actrec) {
-                return getLeft().eval(actrec) >= getRight().eval(actrec) ? 1 : 0;
-        }
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
   /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:149
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:149
    */
   public void prettyPrint(PrintStream out, String ind) {
 		getLeft().prettyPrint(out, ind);
@@ -31,12 +32,12 @@ public class GreaterEqual extends BoolExpr implements Cloneable {
 		getRight().prettyPrint(out, ind);
 	}
   /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:104
+   * @aspect Interpreter
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:137
    */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
+  public int eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) >= getRight().eval(actrec) ? 1 : 0;
+        }
   /**
    * @declaredat ASTNode:1
    */

@@ -1,34 +1,30 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.HashMap;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:18
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:18
  * @astdecl IfStmt : Stmt ::= Expr If:Block [Else:Block];
  * @production IfStmt : {@link Stmt} ::= <span class="component">{@link Expr}</span> <span class="component">If:{@link Block}</span> <span class="component">[Else:{@link Block}]</span>;
 
  */
 public class IfStmt extends Stmt implements Cloneable {
   /**
-   * @aspect Interpreter
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:64
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:117
    */
-  public void eval(ActivationRecord actrec) throws ReturnException {
-                if (getExpr().eval(actrec) == 1)
-                        getIf().eval(actrec);
-                else
-                        if (hasElse())
-                                getElse().eval(actrec);
-
-        }
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
   /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:75
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:75
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(ind + "if (");
@@ -43,12 +39,17 @@ public class IfStmt extends Stmt implements Cloneable {
 		}
 	}
   /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:117
+   * @aspect Interpreter
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:65
    */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
+  public void eval(ActivationRecord actrec) throws ReturnException {
+                if (getExpr().eval(actrec) == 1)
+                        getIf().eval(actrec);
+                else
+                        if (hasElse())
+                                getElse().eval(actrec);
+
+        }
   /**
    * @declaredat ASTNode:1
    */
@@ -298,10 +299,10 @@ protected boolean compatibleTypes_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:44
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:44
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:42")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:42")
   public boolean compatibleTypes() {
     ASTState state = state();
     if (compatibleTypes_computed) {
@@ -317,5 +318,30 @@ protected boolean compatibleTypes_visited = false;
     state().leaveLazyAttribute();
     compatibleTypes_visited = false;
     return compatibleTypes_value;
+  }
+  /**
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:186
+   * @apilevel internal
+   */
+  public String Define_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
+    if (_callerNode == getElseOptNoTransform()) {
+      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:200
+      return uniqueId();
+    }
+    else if (_callerNode == getIfNoTransform()) {
+      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:199
+      return uniqueId();
+    }
+    else {
+      return getParent().Define_appendUniqueID(this, _callerNode);
+    }
+  }
+  /**
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:186
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute appendUniqueID
+   */
+  protected boolean canDefine_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
+    return true;
   }
 }

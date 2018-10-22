@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestNameAnalysis" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-10-22T08:02:50" hostname="KevsMonsterPC" time="0.038">
+<testsuite name="lang.TestNameAnalysis" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-10-22T09:44:38" hostname="taco.local" time="0.01">
   <properties/>
-  <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.003"/>
-  <testcase name="runTest[ok2.in]" classname="lang.TestNameAnalysis" time="0.006"/>
-  <testcase name="runTest[ok3.in]" classname="lang.TestNameAnalysis" time="0.006"/>
-  <testcase name="runTest[predefinedfuntest.in]" classname="lang.TestNameAnalysis" time="0.006"/>
-  <testcase name="runTest[redeclared.in]" classname="lang.TestNameAnalysis" time="0.011"/>
-  <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.005"/>
+  <testcase name="runTest[ok3.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[ok2.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[redeclared.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[ok1.in]" classname="lang.TestNameAnalysis" time="0.001"/>
+  <testcase name="runTest[undeclared.in]" classname="lang.TestNameAnalysis" time="0.002"/>
+  <testcase name="runTest[predefinedfuntest.in]" classname="lang.TestNameAnalysis" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

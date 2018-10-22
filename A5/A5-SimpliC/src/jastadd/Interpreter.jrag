@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Scanner;
 aspect Interpreter {
 
         // PROGRAM
@@ -37,7 +38,7 @@ aspect Interpreter {
 
         public void DeclStmt.eval(ActivationRecord actrec) {
                 Expr expr = getExpr();
-                String id = getIdDecl().getID();
+                String id = getIdDecl().uniqueId();
 
                 if (hasExpr())
                         actrec.put(id, expr.eval(actrec));
@@ -50,7 +51,7 @@ aspect Interpreter {
 
         public void AssignStmt.eval(ActivationRecord actrec) {
                 Expr expr = getExpr();
-                String id = getIdUse().decl().getID();
+                String id = getIdUse().decl().uniqueId();
                 actrec.put(id, expr.eval(actrec));
                 //System.out.println(expr.eval(actrec));
         }
@@ -140,7 +141,7 @@ aspect Interpreter {
         // Other EXPR --------------------------------------------------
 
         public int IdUse.eval(ActivationRecord actrec) {
-                return actrec.get(decl().getID());
+                return actrec.get(decl().uniqueId());
         }
 
         public int IdDecl.eval(ActivationRecord actrec) {
@@ -153,25 +154,52 @@ aspect Interpreter {
 
         public int FunCall.eval(ActivationRecord actrec) {
                 if (getIdUse().decl().getID().equals("print")) {
-                  System.out.println(getExpr(0).eval(actrec));
-                } else {
+                        System.out.println(getExpr(0).eval(actrec));
 
+                } else if (getIdUse().decl().getID().equals("read")){
+                        Scanner sc = new Scanner(System.in);
+                        String in = sc.nextLine();
+                        try {
+                                return Integer.parseInt(in);
+                        } catch (Exception e) {
+                                return 0;
+                        }
+
+                } else {
 
                 Fun fun = getIdUse().decl().function();
                 ActivationRecord localAcr = new ActivationRecord();
                 Param p = fun.getParam();
 
                 for (int i = 0; i < p.getNumParamDecl(); i++)
-                        localAcr.put(p.getParamDecl(i).getIdDecl().getID(),
+                        localAcr.put(p.getParamDecl(i).getIdDecl().uniqueId(),
                         getExpr(i).eval(actrec));
                 return fun.eval(localAcr);
               }
                 return 0;
         }
 
-        public String IdDecl.uniqueName(ActivationRecord actrec, String name) {
-          return "Shenmezuo";
-        }
+        // Skuggning ---------------------------------------------------
+
+
+        syn String IdDecl.uniqueId() = appendUniqueID() + getID();
+        inh String IdDecl.appendUniqueID();
+
+        eq Program.unknownDecl().appendUniqueID() = "";
+        eq Fun.getIdDecl().appendUniqueID() =  "";
+        eq Param.getParamDecl(int i).appendUniqueID() = i + "p_";
+        eq DeclStmt.getIdDecl().appendUniqueID() = uniqueId();
+
+        inh String Stmt.uniqueId();
+        eq Block.getStmt(int i).uniqueId() = appendUniqueID() + Integer.toString(i) + "s_";
+
+        inh String Block.appendUniqueID();
+        eq Fun.getBlock().appendUniqueID() = "";
+        eq WhileStmt.getBlock().appendUniqueID() = uniqueId();
+        eq IfStmt.getIf().appendUniqueID() = uniqueId();
+        eq IfStmt.getElse().appendUniqueID() = uniqueId();
+
+
 
 
         // ReturnException ---------------------------------------------
