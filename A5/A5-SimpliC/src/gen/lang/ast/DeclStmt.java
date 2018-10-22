@@ -1,24 +1,45 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:16
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:16
  * @astdecl DeclStmt : Stmt ::= Type IdDecl [Expr];
  * @production DeclStmt : {@link Stmt} ::= <span class="component">{@link Type}</span> <span class="component">{@link IdDecl}</span> <span class="component">[{@link Expr}]</span>;
 
  */
 public class DeclStmt extends Stmt implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:111
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:56
+   */
+  public void prettyPrint(PrintStream out, String ind) {
+		getType().prettyPrint(out, ind);
+		out.print(" ");
+		getIdDecl().prettyPrint(out, ind);
+		if(hasExpr()) {
+			out.print(" = ");
+			getExpr().prettyPrint(out, ind);
+		}
+		out.print(";\n");
+	}
+  /**
    * @aspect Interpreter
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:40
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:40
    */
   public void eval(ActivationRecord actrec) {
                 Expr expr = getExpr();
@@ -32,27 +53,6 @@ public class DeclStmt extends Stmt implements Cloneable {
                 //System.out.println("ID : " + id);
                 //System.out.println(expr.eval(actrec));
         }
-  /**
-   * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:56
-   */
-  public void prettyPrint(PrintStream out, String ind) {
-		getType().prettyPrint(out, ind);
-		out.print(" ");
-		getIdDecl().prettyPrint(out, ind);
-		if(hasExpr()) {
-			out.print(" = ");
-			getExpr().prettyPrint(out, ind);
-		}
-		out.print(";\n");
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:111
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
   /**
    * @declaredat ASTNode:1
    */
@@ -299,10 +299,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:23
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:23
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:23")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:23")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -327,12 +327,12 @@ protected java.util.Set localLookup_String_visited;
   		return getIdDecl().getID().equals(name) ? getIdDecl() : unknownDecl();
   	}
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:187
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
    * @apilevel internal
    */
   public String Define_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:192
+      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:192
       return uniqueId();
     }
     else {
@@ -340,7 +340,7 @@ protected java.util.Set localLookup_String_visited;
     }
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:187
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute appendUniqueID
    */
@@ -348,12 +348,12 @@ protected java.util.Set localLookup_String_visited;
     return true;
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:50
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:50
    * @apilevel internal
    */
   public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:52
+      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:52
       return true;
     }
     else {
@@ -361,7 +361,7 @@ protected java.util.Set localLookup_String_visited;
     }
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:50
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:50
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isVariable
    */
@@ -369,12 +369,12 @@ protected java.util.Set localLookup_String_visited;
     return true;
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:51
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:51
    * @apilevel internal
    */
   public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:53
+      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:53
       return false;
     }
     else {
@@ -382,7 +382,7 @@ protected java.util.Set localLookup_String_visited;
     }
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:51
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:51
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isFunction
    */
@@ -391,7 +391,7 @@ protected java.util.Set localLookup_String_visited;
   }
   /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Errors.jrag:54
+    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:54
     if (getIdDecl().isFunction()) {
       {
         Program target = (Program) (program());

@@ -1,24 +1,31 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:4
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:4
  * @astdecl Param : ASTNode ::= ParamDecl*;
  * @production Param : {@link ASTNode} ::= <span class="component">{@link ParamDecl}*</span>;
 
  */
 public class Param extends ASTNode<ASTNode> implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:60
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:25
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:25
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print("(");
@@ -28,13 +35,6 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
 					out.print(", ");
 		}
 		out.print(")");
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:60
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
 	}
   /**
    * @declaredat ASTNode:1
@@ -274,12 +274,12 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
     return getParamDeclListNoTransform();
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:187
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
    * @apilevel internal
    */
   public String Define_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getParamDeclListNoTransform()) {
-      // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:191
+      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:191
       int i = _callerNode.getIndexOfChild(_childNode);
       return i + "p_";
     }
@@ -288,7 +288,7 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
     }
   }
   /**
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:187
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute appendUniqueID
    */

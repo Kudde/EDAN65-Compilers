@@ -9,6 +9,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import lang.ast.ErrorMessage;
 import lang.ast.Fun;
+import lang.ast.IdDecl;
 import lang.ast.Program;
 
 /**
@@ -28,9 +29,17 @@ public class TestFunctionCalls {
 	@Test public void runTest() throws Exception {
 		Program program = (Program) Util.parse(new File(TEST_DIRECTORY, filename));
 		StringBuilder sb = new StringBuilder();
-		for (Fun f : program.functionCalls()) {
-			sb.append(f).append("\n");
+
+		for(Fun fun : program.getFuns()) {
+			sb.append("Fun: ");
+			sb.append(fun.getIdDecl().getID()).append("\n");
+			for (IdDecl id : fun.functionCalls()) {
+				sb.append(" > ");
+				sb.append(id.getID()).append("\n");
+			}
+			sb.append("\n");
 		}
+
 		String actual = sb.toString();
 		Util.compareOutput(actual,
 				new File(TEST_DIRECTORY, Util.changeExtension(filename, ".out")),
@@ -41,4 +50,5 @@ public class TestFunctionCalls {
 	public static Iterable<Object[]> getTests() {
 		return Util.getTestParameters(TEST_DIRECTORY, ".in");
 	}
+
 }

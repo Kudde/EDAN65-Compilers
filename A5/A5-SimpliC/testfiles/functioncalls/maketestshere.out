@@ -1,0 +1,6 @@
+Fun: add
+
+Fun: main
+ > add
+ > print
+

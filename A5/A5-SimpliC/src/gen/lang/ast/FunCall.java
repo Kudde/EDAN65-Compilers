@@ -1,24 +1,45 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:27
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:27
  * @astdecl FunCall : Expr ::= IdUse Expr*;
  * @production FunCall : {@link Expr} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}*</span>;
 
  */
 public class FunCall extends Expr implements Cloneable {
   /**
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:142
+   */
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:170
+   */
+  public void prettyPrint(PrintStream out, String ind) {
+		out.print(ind + getIdUse().getID());
+		out.print("(");
+		for(int i = 0; i < getNumExpr(); i++) {
+			getExpr(i).prettyPrint(out, ind);
+			if(i != getNumExpr() - 1)
+				out.print(", ");
+		}
+		out.print(")");
+	}
+  /**
    * @aspect Interpreter
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:156
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:156
    */
   public int eval(ActivationRecord actrec) {
                 if (getIdUse().decl().getID().equals("print")) {
@@ -46,27 +67,6 @@ public class FunCall extends Expr implements Cloneable {
               }
                 return 0;
         }
-  /**
-   * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:170
-   */
-  public void prettyPrint(PrintStream out, String ind) {
-		out.print(ind + getIdUse().getID());
-		out.print("(");
-		for(int i = 0; i < getNumExpr(); i++) {
-			getExpr(i).prettyPrint(out, ind);
-			if(i != getNumExpr() - 1)
-				out.print(", ");
-		}
-		out.print(")");
-	}
-  /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:142
-   */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
   /**
    * @declaredat ASTNode:1
    */
@@ -110,22 +110,23 @@ public class FunCall extends Expr implements Cloneable {
     type_reset();
     expectedType_reset();
     incorrectNumberOfParams_reset();
+    enclosingFunction_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:35
+   * @declaredat ASTNode:36
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:39
+   * @declaredat ASTNode:40
    */
   public FunCall clone() throws CloneNotSupportedException {
     FunCall node = (FunCall) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:44
+   * @declaredat ASTNode:45
    */
   public FunCall copy() {
     try {
@@ -145,7 +146,7 @@ public class FunCall extends Expr implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:63
+   * @declaredat ASTNode:64
    */
   @Deprecated
   public FunCall fullCopy() {
@@ -156,7 +157,7 @@ public class FunCall extends Expr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:73
+   * @declaredat ASTNode:74
    */
   public FunCall treeCopyNoTransform() {
     FunCall tree = (FunCall) copy();
@@ -177,7 +178,7 @@ public class FunCall extends Expr implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:93
+   * @declaredat ASTNode:94
    */
   public FunCall treeCopy() {
     FunCall tree = (FunCall) copy();
@@ -193,7 +194,7 @@ public class FunCall extends Expr implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:107
+   * @declaredat ASTNode:108
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -352,10 +353,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:6
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:6
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:4")
   public Type type() {
     ASTState state = state();
     if (type_computed) {
@@ -390,10 +391,10 @@ protected boolean expectedType_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:34
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:34
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:30")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:30")
   public Type expectedType() {
     ASTState state = state();
     if (expectedType_computed) {
@@ -426,10 +427,10 @@ protected boolean incorrectNumberOfParams_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:68
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:68
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:68")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:68")
   public boolean incorrectNumberOfParams() {
     ASTState state = state();
     if (incorrectNumberOfParams_computed) {
@@ -462,9 +463,61 @@ protected boolean incorrectNumberOfParams_visited = false;
   
   
     }
+  /**
+   * @attribute inh
+   * @aspect Interpreter
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:205
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:205")
+  public Fun enclosingFunction() {
+    ASTState state = state();
+    if (enclosingFunction_computed) {
+      return enclosingFunction_value;
+    }
+    if (enclosingFunction_visited) {
+      throw new RuntimeException("Circular definition of attribute FunCall.enclosingFunction().");
+    }
+    enclosingFunction_visited = true;
+    state().enterLazyAttribute();
+    enclosingFunction_value = getParent().Define_enclosingFunction(this, null);
+    enclosingFunction_computed = true;
+    state().leaveLazyAttribute();
+    enclosingFunction_visited = false;
+    return enclosingFunction_value;
+  }
+/** @apilevel internal */
+protected boolean enclosingFunction_visited = false;
+  /** @apilevel internal */
+  private void enclosingFunction_reset() {
+    enclosingFunction_computed = false;
+    
+    enclosingFunction_value = null;
+    enclosingFunction_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean enclosingFunction_computed = false;
+
+  /** @apilevel internal */
+  protected Fun enclosingFunction_value;
+
+  /** @apilevel internal */
+  protected void collect_contributors_Fun_functionCalls(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
+    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:217
+    {
+      Fun target = (Fun) (enclosingFunction());
+      java.util.Set<ASTNode> contributors = _map.get(target);
+      if (contributors == null) {
+        contributors = new java.util.LinkedHashSet<ASTNode>();
+        _map.put((ASTNode) target, contributors);
+      }
+      contributors.add(this);
+    }
+    super.collect_contributors_Fun_functionCalls(_root, _map);
+  }
   /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Errors.jrag:42
+    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:42
     if (getIdUse().decl().isVariable()) {
       {
         Program target = (Program) (program());
@@ -476,7 +529,7 @@ protected boolean incorrectNumberOfParams_visited = false;
         contributors.add(this);
       }
     }
-    // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Errors.jrag:69
+    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:69
     if (incorrectNumberOfParams()) {
       {
         Program target = (Program) (program());
@@ -489,6 +542,11 @@ protected boolean incorrectNumberOfParams_visited = false;
       }
     }
     super.collect_contributors_Program_errors(_root, _map);
+  }
+  /** @apilevel internal */
+  protected void contributeTo_Fun_functionCalls(Set<IdDecl> collection) {
+    super.contributeTo_Fun_functionCalls(collection);
+    collection.add(getIdUse().decl());
   }
   /** @apilevel internal */
   protected void contributeTo_Program_errors(Set<ErrorMessage> collection) {

@@ -1,1 +1,8 @@
-Chingchingiling
+int add(int a, int b) {
+        return a + b;
+}
+
+int main() {
+        int meh = add(11 + 22);
+        print(meh);
+}

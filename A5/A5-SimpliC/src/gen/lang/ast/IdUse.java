@@ -1,42 +1,42 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+import java.io.ByteArrayOutputStream;
+import java.lang.reflect.InvocationTargetException;
 /**
  * @ast node
- * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\lang.ast:23
+ * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:23
  * @astdecl IdUse : Expr ::= <ID:String>;
  * @production IdUse : {@link Expr} ::= <span class="component">&lt;ID:String&gt;</span>;
 
  */
 public class IdUse extends Expr implements Cloneable {
   /**
-   * @aspect Interpreter
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Interpreter.jrag:144
+   * @aspect Visitor
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:139
    */
-  public int eval(ActivationRecord actrec) {
-                return actrec.get(decl().uniqueId());
-        }
+  public Object accept(Visitor visitor, Object data) {
+		return visitor.visit(this, data);
+	}
   /**
    * @aspect PrettyPrint
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\PrettyPrint.jrag:159
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:159
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(getID());
 	}
   /**
-   * @aspect Visitor
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Visitor.jrag:139
+   * @aspect Interpreter
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:144
    */
-  public Object accept(Visitor visitor, Object data) {
-		return visitor.visit(this, data);
-	}
+  public int eval(ActivationRecord actrec) {
+                return actrec.get(decl().uniqueId());
+        }
   /**
    * @declaredat ASTNode:1
    */
@@ -80,9 +80,9 @@ public class IdUse extends Expr implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
-    decl_reset();
     type_reset();
     expectedType_reset();
+    decl_reset();
     lookup_String_reset();
   }
   /** @apilevel internal 
@@ -211,44 +211,6 @@ public class IdUse extends Expr implements Cloneable {
     return tokenString_ID != null ? tokenString_ID : "";
   }
 /** @apilevel internal */
-protected boolean decl_visited = false;
-  /** @apilevel internal */
-  private void decl_reset() {
-    decl_computed = false;
-    
-    decl_value = null;
-    decl_visited = false;
-  }
-  /** @apilevel internal */
-  protected boolean decl_computed = false;
-
-  /** @apilevel internal */
-  protected IdDecl decl_value;
-
-  /**
-   * @attribute syn
-   * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:4
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:4")
-  public IdDecl decl() {
-    ASTState state = state();
-    if (decl_computed) {
-      return decl_value;
-    }
-    if (decl_visited) {
-      throw new RuntimeException("Circular definition of attribute IdUse.decl().");
-    }
-    decl_visited = true;
-    state().enterLazyAttribute();
-    decl_value = lookup(getID());
-    decl_computed = true;
-    state().leaveLazyAttribute();
-    decl_visited = false;
-    return decl_value;
-  }
-/** @apilevel internal */
 protected boolean type_visited = false;
   /** @apilevel internal */
   private void type_reset() {
@@ -266,10 +228,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:8
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:8
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:4")
   public Type type() {
     ASTState state = state();
     if (type_computed) {
@@ -304,10 +266,10 @@ protected boolean expectedType_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:36
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:36
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\TypeAnalysis.jrag:30")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:30")
   public Type expectedType() {
     ASTState state = state();
     if (expectedType_computed) {
@@ -324,13 +286,51 @@ protected boolean expectedType_visited = false;
     expectedType_visited = false;
     return expectedType_value;
   }
+/** @apilevel internal */
+protected boolean decl_visited = false;
+  /** @apilevel internal */
+  private void decl_reset() {
+    decl_computed = false;
+    
+    decl_value = null;
+    decl_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean decl_computed = false;
+
+  /** @apilevel internal */
+  protected IdDecl decl_value;
+
+  /**
+   * @attribute syn
+   * @aspect NameAnalysis
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:4
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:4")
+  public IdDecl decl() {
+    ASTState state = state();
+    if (decl_computed) {
+      return decl_value;
+    }
+    if (decl_visited) {
+      throw new RuntimeException("Circular definition of attribute IdUse.decl().");
+    }
+    decl_visited = true;
+    state().enterLazyAttribute();
+    decl_value = lookup(getID());
+    decl_computed = true;
+    state().leaveLazyAttribute();
+    decl_visited = false;
+    return decl_value;
+  }
   /**
    * @attribute inh
    * @aspect NameAnalysis
-   * @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:5
+   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:5
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\NameAnalysis.jrag:5")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:5")
   public IdDecl lookup(String name) {
     Object _parameters = name;
     if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
@@ -362,7 +362,7 @@ protected java.util.Set lookup_String_visited;
 
   /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat C:\\Users\\Kevin Johansson\\Desktop\\HT2018\\EDAN65\\edan65\\A5\\A5-SimpliC\\src\\jastadd\\Errors.jrag:34
+    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:34
     if (decl().isUnknown()) {
       {
         Program target = (Program) (program());
