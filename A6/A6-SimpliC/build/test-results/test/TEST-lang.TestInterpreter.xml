@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="lang.TestInterpreter" tests="9" skipped="0" failures="0" errors="0" timestamp="2018-10-22T15:51:53" hostname="taco.local" time="0.013">
+<testsuite name="lang.TestInterpreter" tests="9" skipped="0" failures="0" errors="0" timestamp="2018-10-24T11:04:37" hostname="varg-2" time="0.051">
   <properties/>
-  <testcase name="runTest[gcd.in]" classname="lang.TestInterpreter" time="0.002"/>
-  <testcase name="runTest[variables.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[uniqueName.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[fun.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[shadow.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[main1.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[if.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[while.in]" classname="lang.TestInterpreter" time="0.001"/>
-  <testcase name="runTest[print.in]" classname="lang.TestInterpreter" time="0.001"/>
+  <testcase name="runTest[main1.in]" classname="lang.TestInterpreter" time="0.004"/>
+  <testcase name="runTest[print.in]" classname="lang.TestInterpreter" time="0.004"/>
+  <testcase name="runTest[if.in]" classname="lang.TestInterpreter" time="0.005"/>
+  <testcase name="runTest[while.in]" classname="lang.TestInterpreter" time="0.003"/>
+  <testcase name="runTest[uniqueName.in]" classname="lang.TestInterpreter" time="0.003"/>
+  <testcase name="runTest[gcd.in]" classname="lang.TestInterpreter" time="0.006"/>
+  <testcase name="runTest[variables.in]" classname="lang.TestInterpreter" time="0.003"/>
+  <testcase name="runTest[fun.in]" classname="lang.TestInterpreter" time="0.004"/>
+  <testcase name="runTest[shadow.in]" classname="lang.TestInterpreter" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

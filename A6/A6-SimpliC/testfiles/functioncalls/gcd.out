@@ -6,8 +6,8 @@ Reach: { gcd2 }
  > gcd2
 
 Fun: main
-Reach: { gcd1 print gcd2 }
+Reach: { gcd1 gcd2 print }
+ > gcd1
  > gcd2
  > print
- > gcd1
 

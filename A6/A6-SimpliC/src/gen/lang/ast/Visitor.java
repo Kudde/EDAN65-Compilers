@@ -1,19 +1,19 @@
 package lang.ast;
 
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * Visitor interface for Calc language. Each concrete node type must
  * have a visit method.
  * @ast interface
  * @aspect Visitor
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:6
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:6
  */
 public interface Visitor {
 

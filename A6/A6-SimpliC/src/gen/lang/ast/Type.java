@@ -1,16 +1,16 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:9
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/lang.ast:9
  * @astdecl Type : ASTNode;
  * @production Type : {@link ASTNode};
 
@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:136
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:136
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
@@ -49,10 +49,10 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
    */
   public void flushAttrCache() {
     super.flushAttrCache();
+    compatibleType_Type_reset();
     isUnknownType_reset();
     isIntType_reset();
     isBoolType_reset();
-    compatibleType_Type_reset();
   }
   /** @apilevel internal 
    * @declaredat ASTNode:25
@@ -97,11 +97,47 @@ public abstract class Type extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:57
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:57
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:57")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:57")
   public abstract String print();
+/** @apilevel internal */
+protected java.util.Set compatibleType_Type_visited;
+  /** @apilevel internal */
+  private void compatibleType_Type_reset() {
+    compatibleType_Type_values = null;
+    compatibleType_Type_visited = null;
+  }
+  /** @apilevel internal */
+  protected java.util.Map compatibleType_Type_values;
+
+  /**
+   * @attribute syn
+   * @aspect TypeAnalysis
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:40
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:40")
+  public boolean compatibleType(Type type) {
+    Object _parameters = type;
+    if (compatibleType_Type_visited == null) compatibleType_Type_visited = new java.util.HashSet(4);
+    if (compatibleType_Type_values == null) compatibleType_Type_values = new java.util.HashMap(4);
+    ASTState state = state();
+    if (compatibleType_Type_values.containsKey(_parameters)) {
+      return (Boolean) compatibleType_Type_values.get(_parameters);
+    }
+    if (compatibleType_Type_visited.contains(_parameters)) {
+      throw new RuntimeException("Circular definition of attribute Type.compatibleType(Type).");
+    }
+    compatibleType_Type_visited.add(_parameters);
+    state().enterLazyAttribute();
+    boolean compatibleType_Type_value = this.equals(type);
+    compatibleType_Type_values.put(_parameters, compatibleType_Type_value);
+    state().leaveLazyAttribute();
+    compatibleType_Type_visited.remove(_parameters);
+    return compatibleType_Type_value;
+  }
 /** @apilevel internal */
 protected boolean isUnknownType_visited = false;
   /** @apilevel internal */
@@ -118,10 +154,10 @@ protected boolean isUnknownType_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:41
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:41
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:41")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:41")
   public boolean isUnknownType() {
     ASTState state = state();
     if (isUnknownType_computed) {
@@ -154,10 +190,10 @@ protected boolean isIntType_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:47
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:47
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:47")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:47")
   public boolean isIntType() {
     ASTState state = state();
     if (isIntType_computed) {
@@ -190,10 +226,10 @@ protected boolean isBoolType_visited = false;
   /**
    * @attribute syn
    * @aspect Types
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:53
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:53
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NTAUtils.jrag:53")
+  @ASTNodeAnnotation.Source(aspect="Types", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NTAUtils.jrag:53")
   public boolean isBoolType() {
     ASTState state = state();
     if (isBoolType_computed) {
@@ -209,41 +245,5 @@ protected boolean isBoolType_visited = false;
     state().leaveLazyAttribute();
     isBoolType_visited = false;
     return isBoolType_value;
-  }
-/** @apilevel internal */
-protected java.util.Set compatibleType_Type_visited;
-  /** @apilevel internal */
-  private void compatibleType_Type_reset() {
-    compatibleType_Type_values = null;
-    compatibleType_Type_visited = null;
-  }
-  /** @apilevel internal */
-  protected java.util.Map compatibleType_Type_values;
-
-  /**
-   * @attribute syn
-   * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:40
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:40")
-  public boolean compatibleType(Type type) {
-    Object _parameters = type;
-    if (compatibleType_Type_visited == null) compatibleType_Type_visited = new java.util.HashSet(4);
-    if (compatibleType_Type_values == null) compatibleType_Type_values = new java.util.HashMap(4);
-    ASTState state = state();
-    if (compatibleType_Type_values.containsKey(_parameters)) {
-      return (Boolean) compatibleType_Type_values.get(_parameters);
-    }
-    if (compatibleType_Type_visited.contains(_parameters)) {
-      throw new RuntimeException("Circular definition of attribute Type.compatibleType(Type).");
-    }
-    compatibleType_Type_visited.add(_parameters);
-    state().enterLazyAttribute();
-    boolean compatibleType_Type_value = this.equals(type);
-    compatibleType_Type_values.put(_parameters, compatibleType_Type_value);
-    state().leaveLazyAttribute();
-    compatibleType_Type_visited.remove(_parameters);
-    return compatibleType_Type_value;
   }
 }

@@ -1,13 +1,13 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
  * @astdecl List : ASTNode;
@@ -17,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 public class List<T extends ASTNode> extends ASTNode<T> implements Cloneable, Iterable<T> {
   /**
    * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:66
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:66
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);

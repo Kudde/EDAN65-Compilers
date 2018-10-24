@@ -1,16 +1,16 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:4
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/lang.ast:4
  * @astdecl Param : ASTNode ::= ParamDecl*;
  * @production Param : {@link ASTNode} ::= <span class="component">{@link ParamDecl}*</span>;
 
@@ -18,14 +18,14 @@ import java.lang.reflect.InvocationTargetException;
 public class Param extends ASTNode<ASTNode> implements Cloneable {
   /**
    * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:60
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:60
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
   /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:25
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/PrettyPrint.jrag:25
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print("(");
@@ -274,12 +274,34 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
     return getParamDeclListNoTransform();
   }
   /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:298
+   * @apilevel internal
+   */
+  public boolean Define_isParam(ASTNode _callerNode, ASTNode _childNode) {
+    if (_callerNode == getParamDeclListNoTransform()) {
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:301
+      int index = _callerNode.getIndexOfChild(_childNode);
+      return true;
+    }
+    else {
+      return getParent().Define_isParam(this, _callerNode);
+    }
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:298
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute isParam
+   */
+  protected boolean canDefine_isParam(ASTNode _callerNode, ASTNode _childNode) {
+    return true;
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:187
    * @apilevel internal
    */
   public String Define_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getParamDeclListNoTransform()) {
-      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:191
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:191
       int i = _callerNode.getIndexOfChild(_childNode);
       return i + "p_";
     }
@@ -288,7 +310,7 @@ public class Param extends ASTNode<ASTNode> implements Cloneable {
     }
   }
   /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:187
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute appendUniqueID
    */

@@ -1,16 +1,16 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:31
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/lang.ast:31
  * @astdecl Div : ArithmeticExpr ::= Left:Expr Right:Expr;
  * @production Div : {@link ArithmeticExpr};
 
@@ -18,27 +18,35 @@ import java.lang.reflect.InvocationTargetException;
 public class Div extends ArithmeticExpr implements Cloneable {
   /**
    * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:76
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:76
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
   /**
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:232
+   */
+  public void genEval(PrintStream out) {
+		out.println("        movq $0, %rdx");// NB: clear RDX to prepare division
+	 	out.println("        idivq %rbx");
+	 }
+  /**
+   * @aspect Interpreter
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:97
+   */
+  public int eval(ActivationRecord actrec) {
+                return getLeft().eval(actrec) / getRight().eval(actrec);
+        }
+  /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:103
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/PrettyPrint.jrag:103
    */
   public void prettyPrint(PrintStream out, String ind) {
 		getLeft().prettyPrint(out, ind);
 		out.print(" / ");
 		getRight().prettyPrint(out, ind);
 	}
-  /**
-   * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:97
-   */
-  public int eval(ActivationRecord actrec) {
-                return getLeft().eval(actrec) / getRight().eval(actrec);
-        }
   /**
    * @declaredat ASTNode:1
    */

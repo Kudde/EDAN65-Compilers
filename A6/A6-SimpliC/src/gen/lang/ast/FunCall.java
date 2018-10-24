@@ -1,16 +1,16 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:27
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/lang.ast:27
  * @astdecl FunCall : Expr ::= IdUse Expr*;
  * @production FunCall : {@link Expr} ::= <span class="component">{@link IdUse}</span> <span class="component">{@link Expr}*</span>;
 
@@ -18,28 +18,28 @@ import java.lang.reflect.InvocationTargetException;
 public class FunCall extends Expr implements Cloneable {
   /**
    * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:142
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:142
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
   /**
-   * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:170
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:279
    */
-  public void prettyPrint(PrintStream out, String ind) {
-		out.print(ind + getIdUse().getID());
-		out.print("(");
-		for(int i = 0; i < getNumExpr(); i++) {
-			getExpr(i).prettyPrint(out, ind);
-			if(i != getNumExpr() - 1)
-				out.print(", ");
+  public void genCode(PrintStream out) {
+		for (int i = getNumExpr() - 1; i >= 0; --i) {
+			getExpr(i).genCode(out);
+			out.println("				pushq %rax");
 		}
-		out.print(")");
+		out.println("				call " + getIdUse().getID());
+		if (getNumExpr() != 0) {
+    	out.println("        addq $" + (8 * getNumExpr()) + ", %rsp");
+		}
 	}
   /**
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:156
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:156
    */
   public int eval(ActivationRecord actrec) {
                 if (getIdUse().decl().getID().equals("print")) {
@@ -67,6 +67,20 @@ public class FunCall extends Expr implements Cloneable {
               }
                 return 0;
         }
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/PrettyPrint.jrag:170
+   */
+  public void prettyPrint(PrintStream out, String ind) {
+		out.print(ind + getIdUse().getID());
+		out.print("(");
+		for(int i = 0; i < getNumExpr(); i++) {
+			getExpr(i).prettyPrint(out, ind);
+			if(i != getNumExpr() - 1)
+				out.print(", ");
+		}
+		out.print(")");
+	}
   /**
    * @declaredat ASTNode:1
    */
@@ -353,10 +367,10 @@ protected boolean type_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:6
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:6
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:4")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:4")
   public Type type() {
     ASTState state = state();
     if (type_computed) {
@@ -391,10 +405,10 @@ protected boolean expectedType_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:34
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:34
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:30")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:30")
   public Type expectedType() {
     ASTState state = state();
     if (expectedType_computed) {
@@ -427,10 +441,10 @@ protected boolean incorrectNumberOfParams_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:68
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:68
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:68")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:68")
   public boolean incorrectNumberOfParams() {
     ASTState state = state();
     if (incorrectNumberOfParams_computed) {
@@ -466,10 +480,10 @@ protected boolean incorrectNumberOfParams_visited = false;
   /**
    * @attribute inh
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:205
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:205
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:205")
+  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:205")
   public Fun enclosingFunction() {
     ASTState state = state();
     if (enclosingFunction_computed) {
@@ -502,22 +516,8 @@ protected boolean enclosingFunction_visited = false;
   protected Fun enclosingFunction_value;
 
   /** @apilevel internal */
-  protected void collect_contributors_Fun_functionCalls(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:214
-    {
-      Fun target = (Fun) (enclosingFunction());
-      java.util.Set<ASTNode> contributors = _map.get(target);
-      if (contributors == null) {
-        contributors = new java.util.LinkedHashSet<ASTNode>();
-        _map.put((ASTNode) target, contributors);
-      }
-      contributors.add(this);
-    }
-    super.collect_contributors_Fun_functionCalls(_root, _map);
-  }
-  /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:42
+    // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Errors.jrag:42
     if (getIdUse().decl().isVariable()) {
       {
         Program target = (Program) (program());
@@ -529,7 +529,7 @@ protected boolean enclosingFunction_visited = false;
         contributors.add(this);
       }
     }
-    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:69
+    // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Errors.jrag:69
     if (incorrectNumberOfParams()) {
       {
         Program target = (Program) (program());
@@ -544,9 +544,18 @@ protected boolean enclosingFunction_visited = false;
     super.collect_contributors_Program_errors(_root, _map);
   }
   /** @apilevel internal */
-  protected void contributeTo_Fun_functionCalls(Set<IdDecl> collection) {
-    super.contributeTo_Fun_functionCalls(collection);
-    collection.add(getIdUse().decl());
+  protected void collect_contributors_Fun_functionCalls(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
+    // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:214
+    {
+      Fun target = (Fun) (enclosingFunction());
+      java.util.Set<ASTNode> contributors = _map.get(target);
+      if (contributors == null) {
+        contributors = new java.util.LinkedHashSet<ASTNode>();
+        _map.put((ASTNode) target, contributors);
+      }
+      contributors.add(this);
+    }
+    super.collect_contributors_Fun_functionCalls(_root, _map);
   }
   /** @apilevel internal */
   protected void contributeTo_Program_errors(Set<ErrorMessage> collection) {
@@ -557,5 +566,10 @@ protected boolean enclosingFunction_visited = false;
     if (incorrectNumberOfParams()) {
       collection.add(error("incorrect number of arguments"));
     }
+  }
+  /** @apilevel internal */
+  protected void contributeTo_Fun_functionCalls(Set<IdDecl> collection) {
+    super.contributeTo_Fun_functionCalls(collection);
+    collection.add(getIdUse().decl());
   }
 }

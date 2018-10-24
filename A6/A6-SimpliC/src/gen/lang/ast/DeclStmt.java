@@ -1,16 +1,16 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:16
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/lang.ast:16
  * @astdecl DeclStmt : Stmt ::= Type IdDecl [Expr];
  * @production DeclStmt : {@link Stmt} ::= <span class="component">{@link Type}</span> <span class="component">{@link IdDecl}</span> <span class="component">[{@link Expr}]</span>;
 
@@ -18,28 +18,23 @@ import java.lang.reflect.InvocationTargetException;
 public class DeclStmt extends Stmt implements Cloneable {
   /**
    * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:111
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:111
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
   /**
-   * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:56
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:190
    */
-  public void prettyPrint(PrintStream out, String ind) {
-		getType().prettyPrint(out, ind);
-		out.print(" ");
-		getIdDecl().prettyPrint(out, ind);
-		if(hasExpr()) {
-			out.print(" = ");
-			getExpr().prettyPrint(out, ind);
-		}
-		out.print(";\n");
-	}
+  public void genCode(PrintStream out) {
+			 if (!hasExpr()) return;
+			 getExpr().genCode(out);
+			 out.println("        movq %rax, " + getIdDecl().address());
+	 }
   /**
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:40
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:40
    */
   public void eval(ActivationRecord actrec) {
                 Expr expr = getExpr();
@@ -53,6 +48,20 @@ public class DeclStmt extends Stmt implements Cloneable {
                 //System.out.println("ID : " + id);
                 //System.out.println(expr.eval(actrec));
         }
+  /**
+   * @aspect PrettyPrint
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/PrettyPrint.jrag:56
+   */
+  public void prettyPrint(PrintStream out, String ind) {
+		getType().prettyPrint(out, ind);
+		out.print(" ");
+		getIdDecl().prettyPrint(out, ind);
+		if(hasExpr()) {
+			out.print(" = ");
+			getExpr().prettyPrint(out, ind);
+		}
+		out.print(";\n");
+	}
   /**
    * @declaredat ASTNode:1
    */
@@ -299,10 +308,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:23
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:23
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:23")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:23")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -327,33 +336,12 @@ protected java.util.Set localLookup_String_visited;
   		return getIdDecl().getID().equals(name) ? getIdDecl() : unknownDecl();
   	}
   /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
-   * @apilevel internal
-   */
-  public String Define_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
-    if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:192
-      return uniqueId();
-    }
-    else {
-      return getParent().Define_appendUniqueID(this, _callerNode);
-    }
-  }
-  /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:187
-   * @apilevel internal
-   * @return {@code true} if this node has an equation for the inherited attribute appendUniqueID
-   */
-  protected boolean canDefine_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
-    return true;
-  }
-  /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:50
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:50
    * @apilevel internal
    */
   public boolean Define_isVariable(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:52
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:52
       return true;
     }
     else {
@@ -361,7 +349,7 @@ protected java.util.Set localLookup_String_visited;
     }
   }
   /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:50
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:50
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isVariable
    */
@@ -369,12 +357,12 @@ protected java.util.Set localLookup_String_visited;
     return true;
   }
   /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:51
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:51
    * @apilevel internal
    */
   public boolean Define_isFunction(ASTNode _callerNode, ASTNode _childNode) {
     if (_callerNode == getIdDeclNoTransform()) {
-      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:53
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:53
       return false;
     }
     else {
@@ -382,16 +370,58 @@ protected java.util.Set localLookup_String_visited;
     }
   }
   /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:51
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:51
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute isFunction
    */
   protected boolean canDefine_isFunction(ASTNode _callerNode, ASTNode _childNode) {
     return true;
   }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:298
+   * @apilevel internal
+   */
+  public boolean Define_isParam(ASTNode _callerNode, ASTNode _childNode) {
+    if (_callerNode == getIdDeclNoTransform()) {
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:302
+      return false;
+    }
+    else {
+      return getParent().Define_isParam(this, _callerNode);
+    }
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:298
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute isParam
+   */
+  protected boolean canDefine_isParam(ASTNode _callerNode, ASTNode _childNode) {
+    return true;
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:187
+   * @apilevel internal
+   */
+  public String Define_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
+    if (_callerNode == getIdDeclNoTransform()) {
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:192
+      return uniqueId();
+    }
+    else {
+      return getParent().Define_appendUniqueID(this, _callerNode);
+    }
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:187
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute appendUniqueID
+   */
+  protected boolean canDefine_appendUniqueID(ASTNode _callerNode, ASTNode _childNode) {
+    return true;
+  }
   /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:54
+    // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Errors.jrag:54
     if (getIdDecl().isFunction()) {
       {
         Program target = (Program) (program());

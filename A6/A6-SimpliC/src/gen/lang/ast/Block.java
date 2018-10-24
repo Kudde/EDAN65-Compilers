@@ -1,16 +1,16 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:5
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/lang.ast:5
  * @astdecl Block : Stmt ::= Stmt*;
  * @production Block : {@link Stmt} ::= <span class="component">{@link Stmt}*</span>;
 
@@ -18,14 +18,31 @@ import java.lang.reflect.InvocationTargetException;
 public class Block extends Stmt implements Cloneable {
   /**
    * @aspect Visitor
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Visitor.jrag:63
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Visitor.jrag:63
    */
   public Object accept(Visitor visitor, Object data) {
 		return visitor.visit(this, data);
 	}
   /**
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:144
+   */
+  public void genCode(PrintStream out) {
+		for (Stmt s : getStmts())
+			s.genCode(out);
+	}
+  /**
+   * @aspect Interpreter
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:30
+   */
+  public void eval(ActivationRecord actrec) throws ReturnException {
+                for (Stmt s : getStmts()) {
+                        s.eval(actrec);
+                }
+        }
+  /**
    * @aspect PrettyPrint
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/PrettyPrint.jrag:42
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/PrettyPrint.jrag:42
    */
   public void prettyPrint(PrintStream out, String ind) {
 		out.print(" {\n");
@@ -33,15 +50,6 @@ public class Block extends Stmt implements Cloneable {
 			getStmt(i).prettyPrint(out, ind);
 		}
 	}
-  /**
-   * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:30
-   */
-  public void eval(ActivationRecord actrec) throws ReturnException {
-                for (Stmt s : getStmts()) {
-                        s.eval(actrec);
-                }
-        }
   /**
    * @declaredat ASTNode:1
    */
@@ -82,24 +90,25 @@ public class Block extends Stmt implements Cloneable {
   public void flushAttrCache() {
     super.flushAttrCache();
     localLookup_String_reset();
-    appendUniqueID_reset();
     lookup_String_reset();
+    localIndex_reset();
+    appendUniqueID_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:34
+   * @declaredat ASTNode:35
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:38
+   * @declaredat ASTNode:39
    */
   public Block clone() throws CloneNotSupportedException {
     Block node = (Block) super.clone();
     return node;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:43
+   * @declaredat ASTNode:44
    */
   public Block copy() {
     try {
@@ -119,7 +128,7 @@ public class Block extends Stmt implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:62
+   * @declaredat ASTNode:63
    */
   @Deprecated
   public Block fullCopy() {
@@ -130,7 +139,7 @@ public class Block extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:72
+   * @declaredat ASTNode:73
    */
   public Block treeCopyNoTransform() {
     Block tree = (Block) copy();
@@ -151,7 +160,7 @@ public class Block extends Stmt implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:92
+   * @declaredat ASTNode:93
    */
   public Block treeCopy() {
     Block tree = (Block) copy();
@@ -167,7 +176,7 @@ public class Block extends Stmt implements Cloneable {
     return tree;
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:106
+   * @declaredat ASTNode:107
    */
   protected boolean is$Equal(ASTNode node) {
     return super.is$Equal(node);    
@@ -295,10 +304,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:13
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:13
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:13")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:13")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -328,11 +337,83 @@ protected java.util.Set localLookup_String_visited;
   	}
   /**
    * @attribute inh
-   * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:197
+   * @aspect NameAnalysis
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:12
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:197")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:12")
+  public IdDecl lookup(String name) {
+    Object _parameters = name;
+    if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
+    if (lookup_String_values == null) lookup_String_values = new java.util.HashMap(4);
+    ASTState state = state();
+    if (lookup_String_values.containsKey(_parameters)) {
+      return (IdDecl) lookup_String_values.get(_parameters);
+    }
+    if (lookup_String_visited.contains(_parameters)) {
+      throw new RuntimeException("Circular definition of attribute Block.lookup(String).");
+    }
+    lookup_String_visited.add(_parameters);
+    state().enterLazyAttribute();
+    IdDecl lookup_String_value = getParent().Define_lookup(this, null, name);
+    lookup_String_values.put(_parameters, lookup_String_value);
+    state().leaveLazyAttribute();
+    lookup_String_visited.remove(_parameters);
+    return lookup_String_value;
+  }
+/** @apilevel internal */
+protected java.util.Set lookup_String_visited;
+  /** @apilevel internal */
+  private void lookup_String_reset() {
+    lookup_String_values = null;
+    lookup_String_visited = null;
+  }
+  /** @apilevel internal */
+  protected java.util.Map lookup_String_values;
+
+  /**
+   * @attribute inh
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:317
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="CodeGen", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:317")
+  public int localIndex() {
+    ASTState state = state();
+    if (localIndex_computed) {
+      return localIndex_value;
+    }
+    if (localIndex_visited) {
+      throw new RuntimeException("Circular definition of attribute Block.localIndex().");
+    }
+    localIndex_visited = true;
+    state().enterLazyAttribute();
+    localIndex_value = getParent().Define_localIndex(this, null);
+    localIndex_computed = true;
+    state().leaveLazyAttribute();
+    localIndex_visited = false;
+    return localIndex_value;
+  }
+/** @apilevel internal */
+protected boolean localIndex_visited = false;
+  /** @apilevel internal */
+  private void localIndex_reset() {
+    localIndex_computed = false;
+    localIndex_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean localIndex_computed = false;
+
+  /** @apilevel internal */
+  protected int localIndex_value;
+
+  /**
+   * @attribute inh
+   * @aspect Interpreter
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:197
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:197")
   public String appendUniqueID() {
     ASTState state = state();
     if (appendUniqueID_computed) {
@@ -365,70 +446,12 @@ protected boolean appendUniqueID_visited = false;
   protected String appendUniqueID_value;
 
   /**
-   * @attribute inh
-   * @aspect NameAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:12
-   */
-  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:12")
-  public IdDecl lookup(String name) {
-    Object _parameters = name;
-    if (lookup_String_visited == null) lookup_String_visited = new java.util.HashSet(4);
-    if (lookup_String_values == null) lookup_String_values = new java.util.HashMap(4);
-    ASTState state = state();
-    if (lookup_String_values.containsKey(_parameters)) {
-      return (IdDecl) lookup_String_values.get(_parameters);
-    }
-    if (lookup_String_visited.contains(_parameters)) {
-      throw new RuntimeException("Circular definition of attribute Block.lookup(String).");
-    }
-    lookup_String_visited.add(_parameters);
-    state().enterLazyAttribute();
-    IdDecl lookup_String_value = getParent().Define_lookup(this, null, name);
-    lookup_String_values.put(_parameters, lookup_String_value);
-    state().leaveLazyAttribute();
-    lookup_String_visited.remove(_parameters);
-    return lookup_String_value;
-  }
-/** @apilevel internal */
-protected java.util.Set lookup_String_visited;
-  /** @apilevel internal */
-  private void lookup_String_reset() {
-    lookup_String_values = null;
-    lookup_String_visited = null;
-  }
-  /** @apilevel internal */
-  protected java.util.Map lookup_String_values;
-
-  /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:194
-   * @apilevel internal
-   */
-  public String Define_uniqueId(ASTNode _callerNode, ASTNode _childNode) {
-    if (_callerNode == getStmtListNoTransform()) {
-      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:195
-      int i = _callerNode.getIndexOfChild(_childNode);
-      return appendUniqueID() + Integer.toString(i) + "s_";
-    }
-    else {
-      return getParent().Define_uniqueId(this, _callerNode);
-    }
-  }
-  /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:194
-   * @apilevel internal
-   * @return {@code true} if this node has an equation for the inherited attribute uniqueId
-   */
-  protected boolean canDefine_uniqueId(ASTNode _callerNode, ASTNode _childNode) {
-    return true;
-  }
-  /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:9
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:9
    * @apilevel internal
    */
   public IdDecl Define_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
     if (_callerNode == getStmtListNoTransform()) {
-      // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:38
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:38
       int childIndex = _callerNode.getIndexOfChild(_childNode);
       {
       		IdDecl decl = localLookup(name);
@@ -440,11 +463,55 @@ protected java.util.Set lookup_String_visited;
     }
   }
   /**
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:9
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:9
    * @apilevel internal
    * @return {@code true} if this node has an equation for the inherited attribute lookup
    */
   protected boolean canDefine_lookup(ASTNode _callerNode, ASTNode _childNode, String name) {
+    return true;
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:201
+   * @apilevel internal
+   */
+  public int Define_index(ASTNode _callerNode, ASTNode _childNode) {
+    if (_callerNode == getStmtListNoTransform()) {
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:202
+      int index = _callerNode.getIndexOfChild(_childNode);
+      return index;
+    }
+    else {
+      return getParent().Define_index(this, _callerNode);
+    }
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:201
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute index
+   */
+  protected boolean canDefine_index(ASTNode _callerNode, ASTNode _childNode) {
+    return true;
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:194
+   * @apilevel internal
+   */
+  public String Define_uniqueId(ASTNode _callerNode, ASTNode _childNode) {
+    if (_callerNode == getStmtListNoTransform()) {
+      // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:195
+      int i = _callerNode.getIndexOfChild(_childNode);
+      return appendUniqueID() + Integer.toString(i) + "s_";
+    }
+    else {
+      return getParent().Define_uniqueId(this, _callerNode);
+    }
+  }
+  /**
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:194
+   * @apilevel internal
+   * @return {@code true} if this node has an equation for the inherited attribute uniqueId
+   */
+  protected boolean canDefine_uniqueId(ASTNode _callerNode, ASTNode _childNode) {
     return true;
   }
 }

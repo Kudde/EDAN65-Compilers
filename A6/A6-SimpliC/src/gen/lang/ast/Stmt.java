@@ -1,24 +1,29 @@
 /* This file was generated with JastAdd2 (http://jastadd.org) version 2.3.2 */
 package lang.ast;
-import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.HashSet;
 /**
  * @ast node
- * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/lang.ast:14
+ * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/lang.ast:14
  * @astdecl Stmt : ASTNode;
  * @production Stmt : {@link ASTNode};
 
  */
 public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
   /**
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:153
+   */
+  public void genCode(PrintStream out) {}
+  /**
    * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:37
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:37
    */
   public abstract void eval(ActivationRecord actrec)
         throws ReturnException;
@@ -51,16 +56,18 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
     isIncompatible_reset();
     compatibleTypes_reset();
     localLookup_String_reset();
+    index_reset();
+    funName_reset();
     uniqueId_reset();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:25
+   * @declaredat ASTNode:27
    */
   public void flushCollectionCache() {
     super.flushCollectionCache();
   }
   /** @apilevel internal 
-   * @declaredat ASTNode:29
+   * @declaredat ASTNode:31
    */
   public Stmt clone() throws CloneNotSupportedException {
     Stmt node = (Stmt) super.clone();
@@ -72,7 +79,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
    * @deprecated Please use treeCopy or treeCopyNoTransform instead
-   * @declaredat ASTNode:40
+   * @declaredat ASTNode:42
    */
   @Deprecated
   public abstract Stmt fullCopy();
@@ -81,7 +88,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:48
+   * @declaredat ASTNode:50
    */
   public abstract Stmt treeCopyNoTransform();
   /**
@@ -90,7 +97,7 @@ public abstract class Stmt extends ASTNode<ASTNode> implements Cloneable {
    * The copy is dangling, i.e. has no parent.
    * @return dangling copy of the subtree at this node
    * @apilevel low-level
-   * @declaredat ASTNode:56
+   * @declaredat ASTNode:58
    */
   public abstract Stmt treeCopy();
 /** @apilevel internal */
@@ -109,10 +116,10 @@ protected boolean isIncompatible_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:38
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:38
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:38")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:38")
   public boolean isIncompatible() {
     ASTState state = state();
     if (isIncompatible_computed) {
@@ -145,10 +152,10 @@ protected boolean compatibleTypes_visited = false;
   /**
    * @attribute syn
    * @aspect TypeAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:42
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:42
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/TypeAnalysis.jrag:42")
+  @ASTNodeAnnotation.Source(aspect="TypeAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/TypeAnalysis.jrag:42")
   public boolean compatibleTypes() {
     ASTState state = state();
     if (compatibleTypes_computed) {
@@ -178,10 +185,10 @@ protected java.util.Set localLookup_String_visited;
   /**
    * @attribute syn
    * @aspect NameAnalysis
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:22
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:22
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.SYN)
-  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/NameAnalysis.jrag:22")
+  @ASTNodeAnnotation.Source(aspect="NameAnalysis", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/NameAnalysis.jrag:22")
   public IdDecl localLookup(String name) {
     Object _parameters = name;
     if (localLookup_String_visited == null) localLookup_String_visited = new java.util.HashSet(4);
@@ -203,11 +210,85 @@ protected java.util.Set localLookup_String_visited;
   }
   /**
    * @attribute inh
-   * @aspect Interpreter
-   * @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:194
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:201
    */
   @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
-  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Interpreter.jrag:194")
+  @ASTNodeAnnotation.Source(aspect="CodeGen", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:201")
+  public int index() {
+    ASTState state = state();
+    if (index_computed) {
+      return index_value;
+    }
+    if (index_visited) {
+      throw new RuntimeException("Circular definition of attribute Stmt.index().");
+    }
+    index_visited = true;
+    state().enterLazyAttribute();
+    index_value = getParent().Define_index(this, null);
+    index_computed = true;
+    state().leaveLazyAttribute();
+    index_visited = false;
+    return index_value;
+  }
+/** @apilevel internal */
+protected boolean index_visited = false;
+  /** @apilevel internal */
+  private void index_reset() {
+    index_computed = false;
+    index_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean index_computed = false;
+
+  /** @apilevel internal */
+  protected int index_value;
+
+  /**
+   * @attribute inh
+   * @aspect CodeGen
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:204
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="CodeGen", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/CodeGen.jrag:204")
+  public String funName() {
+    ASTState state = state();
+    if (funName_computed) {
+      return funName_value;
+    }
+    if (funName_visited) {
+      throw new RuntimeException("Circular definition of attribute Stmt.funName().");
+    }
+    funName_visited = true;
+    state().enterLazyAttribute();
+    funName_value = getParent().Define_funName(this, null);
+    funName_computed = true;
+    state().leaveLazyAttribute();
+    funName_visited = false;
+    return funName_value;
+  }
+/** @apilevel internal */
+protected boolean funName_visited = false;
+  /** @apilevel internal */
+  private void funName_reset() {
+    funName_computed = false;
+    
+    funName_value = null;
+    funName_visited = false;
+  }
+  /** @apilevel internal */
+  protected boolean funName_computed = false;
+
+  /** @apilevel internal */
+  protected String funName_value;
+
+  /**
+   * @attribute inh
+   * @aspect Interpreter
+   * @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:194
+   */
+  @ASTNodeAnnotation.Attribute(kind=ASTNodeAnnotation.Kind.INH)
+  @ASTNodeAnnotation.Source(aspect="Interpreter", declaredAt="/h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Interpreter.jrag:194")
   public String uniqueId() {
     ASTState state = state();
     if (uniqueId_computed) {
@@ -241,7 +322,7 @@ protected boolean uniqueId_visited = false;
 
   /** @apilevel internal */
   protected void collect_contributors_Program_errors(Program _root, java.util.Map<ASTNode, java.util.Set<ASTNode>> _map) {
-    // @declaredat /Users/ludde/ht18/edan65/A5/A5-SimpliC/src/jastadd/Errors.jrag:64
+    // @declaredat /h/d5/d/dat14kjo/edan65/A6/A6-SimpliC/src/jastadd/Errors.jrag:64
     if (isIncompatible()) {
       {
         Program target = (Program) (program());
